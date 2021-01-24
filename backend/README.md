@@ -3,7 +3,7 @@
 ### Setup steps backend
 1. npm install
 2. npm run dev
-3. create dev.env in root folder   
+3. create dev.env in backend folder   
 dev.env content
 ```
 PORT=3000
