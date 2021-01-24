@@ -1,6 +1,8 @@
 const express = require("express");
+require("./db/mongoose");
 const usersRoute = require("./routes/users");
 const eventsRoute = require("./routes/events");
+require("dotenv").config();
 
 const app = express();
 const port = 3000 || process.env.PORT;

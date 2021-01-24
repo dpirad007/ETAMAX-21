@@ -1,30 +1,39 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    email:{
-        type: mongoose.SchemaTypes.Email,
-        required: true
+  email: {
+    type: String,
+    required: true,
+  },
+  rollno: {
+    type: Number,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  criteria: {
+    crit1: { type: Boolean, default: false },
+    crit2: { type: Boolean, default: false },
+    crit3: { type: Boolean, default: false },
+  },
+  moneyOwed: {
+    type: Boolean,
+  },
+  events: [
+    {
+      type: String,
     },
-    rollno:{
-        type: Number,
-        required: true
-    },
-    password:{
+  ],
+  tokens: [
+    {
+      token: {
         type: String,
-        required: true
+      },
     },
-    criteria:{
-        crit1: {type: Boolean, default: false},
-        crit2: {type: Boolean, default: false},
-        crit3: {type: Boolean, default: false},
-    },
-    moneyOwed:{
-        type: Boolean,
-    },
-    events:[{
-        type: String
-    }],
-})
+  ],
+});
 
 module.exports = mongoose.model("User", userSchema);
 
