@@ -26,7 +26,7 @@ usersRoute.get("/yo", async (req, res) => {
 // POST api/users/
 usersRoute.post("/", async (req, res) => {
   const salt = await bcrypt.genSalt();
-  const hashedPassword = await bcrypt.hash(req.body.passrod, salt);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const user = new User({
     email: req.body.email,
     rollno: req.body.rollno,
