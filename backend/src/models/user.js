@@ -34,4 +34,3 @@ module.exports = mongoose.model("User", userSchema);
 // - criteria { cr1, cr2, cr3... }
 // - moneyOwed
 // - events [ eventID ]
-// const hashedPassword = await bcrypt.hash(req.body.passrod, 10)
