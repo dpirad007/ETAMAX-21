@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd -f ./dev.env nodemon src/server.js"
+    "dev": "env-cmd -f ./dev.env nodemon src/server.js",
+    "start": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
