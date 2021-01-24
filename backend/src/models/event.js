@@ -7,6 +7,7 @@ const eventSchema = new mongoose.Schema({
     },
     eventTime:{
         // Event's start time and end time
+        type: String,
         required: true
     },
     category:{

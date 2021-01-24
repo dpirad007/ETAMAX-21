@@ -1,9 +1,11 @@
-const express = require("express");
-const usersRoute = require("./routes/users");
-const eventsRoute = require("./routes/events");
+require('dotenv').config();
+const express = require('express')
+const usersRoute=require('./src/routes/users')
+const eventsRoute=require('./src/routes/events')
 
-const app = express();
-const port = 3000 || process.env.PORT;
+
+const app = express()
+const port = process.env.PORT;
 // app.use((req,res,next)=>{
 //     res.status(503).send('The service is under maintainance')
 // })
