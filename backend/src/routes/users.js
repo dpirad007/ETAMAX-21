@@ -13,20 +13,11 @@ usersRoute.get("/", async (req, res) => {
   }
 });
 
-usersRoute.get("/yo", async (req, res) => {
-  res.send("YO");
-  const user = new User({
-    email: "dionyo",
-    rollno: 121212,
-    password: "qwerty",
-  });
-  await user.save();
-});
-
 // POST api/users/
 usersRoute.post("/", async (req, res) => {
-  const salt = await bcrypt.genSalt();
-  const hashedPassword = await bcrypt.hash(req.body.passrod, salt);
+  // const salt = await bcrypt.genSalt();
+  // const hashedPassword = await bcrypt.hash(req.body.passrod, salt);
+  const hashedPassword = await bcrypt.hash(req.body.password, 8);
   const user = new User({
     email: req.body.email,
     rollno: req.body.rollno,
@@ -34,6 +25,7 @@ usersRoute.post("/", async (req, res) => {
   });
   try {
     const newUser = await user.save();
+    await user.generateAuthToken();
     res.status(201).send({ message: "User stored successfully" });
   } catch (err) {
     res.status(400).send({ message: err.message });
