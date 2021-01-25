@@ -11,12 +11,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique:true,
     trim:true,
-    minlength:6,
-    validate(value) {
-      if (value<600000) {
-        throw new Error('Invalid roll no');
-      }
-    },
+    minlength:6
   },
   password: {
     type: String,

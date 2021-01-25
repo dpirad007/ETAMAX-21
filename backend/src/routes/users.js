@@ -2,6 +2,8 @@ const express = require("express");
 const usersRoute = new express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const auth=require('../middleware/auth')
+
 
 // GET api/users/
 usersRoute.get("/", async (req, res) => {
