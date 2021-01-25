@@ -2,8 +2,7 @@ const express = require("express");
 const usersRoute = new express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-const auth=require('../middleware/auth')
-
+const auth = require("../middleware/auth");
 
 // GET api/users/
 usersRoute.get("/", async (req, res) => {
@@ -27,22 +26,39 @@ usersRoute.post("/", async (req, res) => {
   });
   try {
     const newUser = await user.save();
-    await user.generateAuthToken();
+    await user.authenticateUser();
     res.status(201).send({ message: "User stored successfully" });
   } catch (err) {
     res.status(400).send({ message: err.message });
   }
 });
 
-// POST api/users/login 
-usersRoute.post('/login',async(req,res)=>{
+// POST api/users/login
+usersRoute.post("/login", async (req, res) => {
   try {
-    const user = await User.findByCredentials(req.body.email, req.body.password)
+    const user = await User.findByCredentials(
+      req.body.email,
+      req.body.password
+    );
     const token = await user.authenticateUser();
-    res.send({ user, token })
+    res.send({ user, token });
   } catch (error) {
-    res.status(400).send({error: error.message})
+    res.status(400).send({ error: error.message });
   }
-})
+});
+
+usersRoute.post("/users/logout", auth, async (req, res) => {
+  try {
+    req.user.tokens = req.user.tokens.filter((token) => {
+      return token.token !== req.token;
+    });
+
+    await req.user.save();
+
+    res.send();
+  } catch (e) {
+    res.status(500).send();
+  }
+});
 
 module.exports = usersRoute;
