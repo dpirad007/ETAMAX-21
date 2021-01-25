@@ -13,16 +13,6 @@ usersRoute.get("/", async (req, res) => {
   }
 });
 
-usersRoute.get("/yo", async (req, res) => {
-  res.send("YO");
-  const user = new User({
-    email: "dionyo",
-    rollno: 121212,
-    password: "qwerty",
-  });
-  await user.save();
-});
-
 // POST api/users/
 usersRoute.post("/", async (req, res) => {
   const salt = await bcrypt.genSalt();
@@ -34,10 +24,22 @@ usersRoute.post("/", async (req, res) => {
   });
   try {
     const newUser = await user.save();
-    res.status(201).send({ message: "User stored successfully" });
+    token = await user.authenticateUser();
+    res.status(201).send({ newUser,token});
   } catch (err) {
     res.status(400).send({ message: err.message });
   }
 });
+
+// POST api/users/login 
+usersRoute.post('/login',async(req,res)=>{
+  try {
+    const user = await User.findByCredentials(req.body.email, req.body.password)
+    const token = await user.authenticateUser();
+    res.send({ user, token })
+  } catch (error) {
+    res.status(400).send({error: error.message})
+  }
+})
 
 module.exports = usersRoute;
