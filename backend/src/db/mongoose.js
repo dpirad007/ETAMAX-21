@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
 
-mongoose.connect("mongodb://127.0.0.1:27017/etamax", {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
