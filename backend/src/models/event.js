@@ -35,16 +35,7 @@ const eventSchema = new mongoose.Schema({
   },
   registered: [
     {
-      user1: {
-        type: String,
-      },
-      user2: {
-        type: String,
-      },
-      user3: {
-        type: String,
-      },
-      user4: {
+      team: {
         type: String,
       },
     },
