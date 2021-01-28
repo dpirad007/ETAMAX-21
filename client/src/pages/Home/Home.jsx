@@ -3,9 +3,9 @@ import { Layout, Menu, Row, Col } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  CalendarOutlined,
   UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 
 //components
@@ -32,13 +32,13 @@ const Home = () => {
       >
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
+          <Menu.Item key="1" icon={<HomeOutlined />}>
             Home
           </Menu.Item>
-          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+          <Menu.Item key="2" icon={<CalendarOutlined />}>
             Events
           </Menu.Item>
-          <Menu.Item key="3" icon={<UploadOutlined />}>
+          <Menu.Item key="3" icon={<UserOutlined />}>
             Profile
           </Menu.Item>
         </Menu>

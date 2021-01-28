@@ -1,11 +1,7 @@
 import React from "react";
 import { Card, Avatar } from "antd";
 
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -21,11 +17,7 @@ const HomeCard = () => {
             src="https://image.freepik.com/free-vector/banana-logo_10250-3606.jpg"
           />
         }
-        actions={[
-          <SettingOutlined key="setting" />,
-          <EditOutlined key="edit" />,
-          <EllipsisOutlined key="ellipsis" />,
-        ]}
+        actions={[<PlusOutlined key="plus" />]}
       >
         <Meta
           avatar={
