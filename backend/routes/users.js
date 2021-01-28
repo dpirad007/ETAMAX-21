@@ -38,10 +38,11 @@ router.post('/signup',function(req,res,next){
       res.json({err:err});
     }
     else{
-      if(req.body.firstname)
-        user.firstname=req.body.firstname;
-      if(req.body.lastname)
-        user.lastname=req.body.lastname;
+      if(req.body.name)
+        user.firstname=req.body.name;
+      
+      if(req.body.rollno)
+        user.lastname=req.body.rollno;
   
       user.token=token;
 
