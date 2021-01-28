@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Avatar, Button, notification } from "antd";
+import { Card, Avatar, notification } from "antd";
 
 import { PlusOutlined } from "@ant-design/icons";
 
