@@ -1,9 +1,17 @@
 import React from "react";
-import { Card, Avatar } from "antd";
+import { Card, Avatar, Button, notification } from "antd";
 
 import { PlusOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
+
+const openNotification = () => {
+  notification.open({
+    message: "Added your lame event",
+    description: "Waasup",
+    duration: 2,
+  });
+};
 
 const HomeCard = () => {
   return (
@@ -17,7 +25,7 @@ const HomeCard = () => {
             src="https://image.freepik.com/free-vector/banana-logo_10250-3606.jpg"
           />
         }
-        actions={[<PlusOutlined key="plus" />]}
+        actions={[<PlusOutlined key="plus" onClick={openNotification} />]}
       >
         <Meta
           avatar={

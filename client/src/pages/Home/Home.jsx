@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Row, Col } from "antd";
 
 //components
-import HomeCard from "../../components/Home/HomeCard";
+import HomeCard from "../../components/Home/HomeCard/HomeCard";
 
 import "./Home.css";
 
