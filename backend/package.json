@@ -1,34 +1,26 @@
 {
-  "name": "etamax",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "etamaxweb",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "server": "env-cmd -f ./dev.env nodemon src/server.js",
-    "client": "cd ../ && npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "nodemon ./bin/www"
   },
-  "proxy": "http://localhost:5000",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rohangawhade/ETAMAX-21.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rohangawhade/ETAMAX-21/issues"
-  },
-  "homepage": "https://github.com/rohangawhade/ETAMAX-21#readme",
   "dependencies": {
-    "bcrypt": "^5.0.0",
-    "concurrently": "^5.3.0",
-    "express": "^4.17.1",
+    "@sendgrid/mail": "^7.4.2",
+    "cookie-parser": "~1.4.4",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.3",
     "mongoose": "^5.11.13",
-    "validator": "^13.5.2"
-  },
-  "devDependencies": {
-    "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.7"
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0"
   }
 }
