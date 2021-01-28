@@ -28,7 +28,7 @@ const Navbar = ({ collapse, setCollapse }) => {
             <Link to="/events">Events</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<UserOutlined />}>
-            <Link to="/events">Profile</Link>
+            <Link to="/profile">Profile</Link>
           </Menu.Item>
         </Menu>
       </Sider>
