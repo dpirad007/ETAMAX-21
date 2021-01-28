@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Row, Col } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -7,6 +7,9 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
+
+//components
+import HomeCard from "../../components/Home/HomeCard";
 
 import "./Home.css";
 
@@ -58,7 +61,28 @@ const Home = () => {
             minHeight: 280,
           }}
         >
-          Events will be displayed here
+          <Row gutter={[16, 16]} justify="space-around" align="middle">
+            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+              <HomeCard />
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+              <HomeCard />
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 6 }}>
+              <HomeCard />
+            </Col>
+          </Row>
+          <Row gutter={[16, 16]} justify="space-around" align="middle">
+            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+              <HomeCard />
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+              <HomeCard />
+            </Col>
+            <Col xs={{ span: 24 }} lg={{ span: 6 }}>
+              <HomeCard />
+            </Col>
+          </Row>
         </Content>
       </Layout>
     </Layout>
