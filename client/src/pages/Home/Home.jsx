@@ -61,25 +61,73 @@ const Home = () => {
             minHeight: 280,
           }}
         >
-          <Row gutter={[16, 16]} justify="space-around" align="middle">
-            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+          <Row gutter={[16, 16]} type="flex" align="middle">
+            <Col
+              xs={{ span: 24 }}
+              lg={{ span: 8 }}
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <HomeCard />
             </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              lg={{ span: 8 }}
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <HomeCard />
             </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 6 }}>
+            <Col
+              xs={{ span: 24 }}
+              lg={{ span: 8 }}
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <HomeCard />
             </Col>
           </Row>
-          <Row gutter={[16, 16]} justify="space-around" align="middle">
-            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+          <Row gutter={[16, 16]} type="flex" align="middle">
+            <Col
+              xs={{ span: 24 }}
+              lg={{ span: 8 }}
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <HomeCard />
             </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 8 }}>
+            <Col
+              xs={{ span: 24 }}
+              lg={{ span: 8 }}
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <HomeCard />
             </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 6 }}>
+            <Col
+              xs={{ span: 24 }}
+              lg={{ span: 8 }}
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <HomeCard />
             </Col>
           </Row>
