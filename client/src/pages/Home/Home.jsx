@@ -44,7 +44,10 @@ const Home = () => {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }}>
+        <Header
+          className="site-layout-background"
+          style={{ padding: 0, fontSize: "large" }}
+        >
           {React.createElement(
             collapse ? MenuUnfoldOutlined : MenuFoldOutlined,
             {
@@ -52,6 +55,7 @@ const Home = () => {
               onClick: () => toggle(),
             }
           )}
+          Etamax
         </Header>
         <Content
           className="site-layout-background"

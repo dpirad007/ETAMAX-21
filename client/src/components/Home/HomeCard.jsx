@@ -9,7 +9,7 @@ const HomeCard = () => {
   return (
     <div>
       <Card
-        style={{ maxWidth: 300 }}
+        style={{ maxWidth: 400, border: "#d6d6d6  1px solid" }}
         cover={
           <img
             style={{ border: "#d6d6d6  1px solid" }}
