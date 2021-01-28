@@ -1,9 +1,9 @@
 import React from "react";
-import { Card, Avatar, notification } from "antd";
+import { Card, notification } from "antd";
 
 import { PlusOutlined } from "@ant-design/icons";
 
-const { Meta } = Card;
+import "./HomeCard.css";
 
 const openNotification = () => {
   notification.open({
@@ -17,7 +17,7 @@ const HomeCard = () => {
   return (
     <div>
       <Card
-        style={{ maxWidth: 350, border: "#d6d6d6  1px solid" }}
+        style={{ maxWidth: 300, border: "#d6d6d6  1px solid" }}
         cover={
           <img
             style={{ border: "#d6d6d6  1px solid" }}
@@ -27,13 +27,11 @@ const HomeCard = () => {
         }
         actions={[<PlusOutlined key="plus" onClick={openNotification} />]}
       >
-        <Meta
-          avatar={
-            <Avatar src="https://cdn3.iconfinder.com/data/icons/iconset-1-1/24/icon_set_outlinder-05-512.png" />
-          }
-          title="Yolo solo"
-          description="banananananaanan"
-        />
+        <div>
+          <div className="hc-title">Bananana</div>
+          <div className="hc-desc">Team size: 10</div>
+          <div className="hc-desc">sup</div>
+        </div>
       </Card>
     </div>
   );
