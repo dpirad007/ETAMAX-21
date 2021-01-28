@@ -6,6 +6,9 @@ import {
   HomeOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
+
+import "./Navbar.css";
+
 const { Sider } = Layout;
 
 const Navbar = ({ collapse, setCollapse }) => {
