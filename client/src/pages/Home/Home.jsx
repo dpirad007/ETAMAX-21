@@ -10,6 +10,7 @@ import {
 
 //components
 import HomeCard from "../../components/Home/HomeCard";
+import Navbar from "../../components/Misc/Navbar/Navbar";
 
 import "./Home.css";
 
@@ -23,26 +24,7 @@ const Home = () => {
   };
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapse}
-        collapsedWidth="60"
-        width="150"
-      >
-        <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1" icon={<HomeOutlined />}>
-            Home
-          </Menu.Item>
-          <Menu.Item key="2" icon={<CalendarOutlined />}>
-            Events
-          </Menu.Item>
-          <Menu.Item key="3" icon={<UserOutlined />}>
-            Profile
-          </Menu.Item>
-        </Menu>
-      </Sider>
+      <Navbar collapse={collapse} setCollapse={setCollapse} />
       <Layout className="site-layout">
         <Header
           className="site-layout-background"
