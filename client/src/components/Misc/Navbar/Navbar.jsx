@@ -33,6 +33,12 @@ const Navbar = ({ collapse, setCollapse }) => {
           <Menu.Item key="3" icon={<UserOutlined />}>
             <Link to="/profile">Profile</Link>
           </Menu.Item>
+          <Menu.Item key="4" icon={<UserOutlined />}>
+            <Link to="/login">Login</Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<UserOutlined />}>
+            <Link to="/register">Register</Link>
+          </Menu.Item>
         </Menu>
       </Sider>
     </div>
