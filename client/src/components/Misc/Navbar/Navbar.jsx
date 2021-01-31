@@ -22,7 +22,7 @@ const Navbar = ({ collapse, setCollapse }) => {
         collapsedWidth="60"
         width="150"
       >
-        <div className="logo" />
+        <div className="logo">η</div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
