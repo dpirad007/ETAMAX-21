@@ -1,7 +1,7 @@
 ## ETAMAX 2021 WEBSITE
 ---
 ## Setup Steps
-1. git clone https://github.com/lokeshrbohara/ETAMAX-2021.git
+1. git clone https://github.com/rohangawhade/ETAMAX-21.git
 ### Setup steps backend
 1. cd backend
 2. npm install
