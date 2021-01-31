@@ -22,7 +22,7 @@ const Navbar = ({ collapse, setCollapse }) => {
         collapsedWidth="60"
         width="150"
       >
-        <div className="logo" />
+        <div className="logo">η</div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
@@ -32,12 +32,6 @@ const Navbar = ({ collapse, setCollapse }) => {
           </Menu.Item>
           <Menu.Item key="3" icon={<UserOutlined />}>
             <Link to="/profile">Profile</Link>
-          </Menu.Item>
-          <Menu.Item key="4" icon={<UserOutlined />}>
-            <Link to="/login">Login</Link>
-          </Menu.Item>
-          <Menu.Item key="5" icon={<UserOutlined />}>
-            <Link to="/register">Register</Link>
           </Menu.Item>
         </Menu>
       </Sider>

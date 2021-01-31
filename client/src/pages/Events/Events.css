@@ -1,0 +1,27 @@
+.e-main {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.e-main-item {
+  padding: 1rem;
+}
+
+.e-dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .e-main {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

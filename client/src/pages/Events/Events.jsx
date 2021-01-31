@@ -1,82 +1,41 @@
 import React, { Fragment } from "react";
-import { Row, Col } from "antd";
+import { Menu, Dropdown, Button } from "antd";
 
 //components
 import HomeCard from "../../components/Home/HomeCard/HomeCard";
 
+import "./Events.css";
+
+const menu = (
+  <Menu>
+    <Menu.Item>Day1</Menu.Item>
+    <Menu.Item>Day2</Menu.Item>
+    <Menu.Item>Day3</Menu.Item>
+  </Menu>
+);
+
 const Events = () => {
   return (
     <Fragment>
-      <Row gutter={[16, 16]} type="flex" align="middle">
-        <Col
-          xs={{ span: 24 }}
-          lg={{ span: 8 }}
-          style={{
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+      <div className="e-dropdown">
+        <Dropdown overlay={menu} placement="bottomLeft">
+          <Button>Categories</Button>
+        </Dropdown>
+      </div>
+      <div className="e-main">
+        <div className="e-main-item">
           <HomeCard />
-        </Col>
-        <Col
-          xs={{ span: 24 }}
-          lg={{ span: 8 }}
-          style={{
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        </div>
+        <div className="e-main-item">
           <HomeCard />
-        </Col>
-        <Col
-          xs={{ span: 24 }}
-          lg={{ span: 8 }}
-          style={{
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        </div>
+        <div className="e-main-item">
           <HomeCard />
-        </Col>
-      </Row>
-      <Row gutter={[16, 16]} type="flex" align="middle">
-        <Col
-          xs={{ span: 24 }}
-          lg={{ span: 8 }}
-          style={{
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        </div>
+        <div className="e-main-item">
           <HomeCard />
-        </Col>
-        <Col
-          xs={{ span: 24 }}
-          lg={{ span: 8 }}
-          style={{
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <HomeCard />
-        </Col>
-        <Col
-          xs={{ span: 24 }}
-          lg={{ span: 8 }}
-          style={{
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <HomeCard />
-        </Col>
-      </Row>
+        </div>
+      </div>
     </Fragment>
   );
 };
