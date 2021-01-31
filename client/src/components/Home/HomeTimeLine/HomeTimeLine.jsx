@@ -1,11 +1,6 @@
 import { Timeline } from 'antd';
 
-import { ClockCircleOutlined, CustomerServiceOutlined } from '@ant-design/icons';
-
-import Filter1Icon from '@material-ui/icons/Filter1';
-import Filter2Icon from '@material-ui/icons/Filter2';
-import Filter3Icon from '@material-ui/icons/Filter3';
-
+import { ClockCircleOutlined, CustomerServiceOutlined, SendOutlined } from '@ant-design/icons';
 
 import { Typography } from 'antd';
 const { Title } = Typography;
@@ -16,7 +11,7 @@ const HomeTimeLine = () => {
         <Title style={{margin: "10px"}}>Full Program Timeline</Title>
         <Timeline mode="alternate" style={{marginTop: "10px"}}>
             {/* Day 1 Timeline */}
-          <Timeline.Item color="green" dot={<Filter1Icon style={{ fontSize: '28px' }} />}><h1>Start of Day 1 Etamax</h1></Timeline.Item>
+          <Timeline.Item color="green" dot={<SendOutlined style={{ fontSize: '28px' }} />}><h1>Start of Day 1 Etamax</h1></Timeline.Item>
           <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>Dance Solo / Team</Timeline.Item>
           <Timeline.Item dot={<CustomerServiceOutlined style={{ fontSize: '16px' }} />}>Music Competition</Timeline.Item>
           <Timeline.Item>Network problems being solved 2015-09-01</Timeline.Item>
@@ -24,7 +19,7 @@ const HomeTimeLine = () => {
           <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>
 
           {/* Day 2 Timeline */}
-          <Timeline.Item color="green" dot={<Filter2Icon style={{ fontSize: '28px' }} />}><h1>Start of Day 1 Etamax</h1></Timeline.Item>
+          <Timeline.Item color="green" dot={<SendOutlined style={{ fontSize: '28px' }} />}><h1>Start of Day 2 Etamax</h1></Timeline.Item>
           <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>Dance Solo / Team</Timeline.Item>
           <Timeline.Item dot={<CustomerServiceOutlined style={{ fontSize: '16px' }} />}>Music Competition</Timeline.Item>
           <Timeline.Item>Network problems being solved 2015-09-01</Timeline.Item>
@@ -32,7 +27,7 @@ const HomeTimeLine = () => {
           <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>
 
           {/* Day 3 Timeline */}
-          <Timeline.Item color="green" dot={<Filter3Icon style={{ fontSize: '28px' }} />}><h1>Start of Day 1 Etamax</h1></Timeline.Item>
+          <Timeline.Item color="green" dot={<SendOutlined style={{ fontSize: '28px' }} />}><h1>Start of Day 3 Etamax</h1></Timeline.Item>
           <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>Dance Solo / Team</Timeline.Item>
           <Timeline.Item dot={<CustomerServiceOutlined style={{ fontSize: '16px' }} />}>Music Competition</Timeline.Item>
           <Timeline.Item>Network problems being solved 2015-09-01</Timeline.Item>
