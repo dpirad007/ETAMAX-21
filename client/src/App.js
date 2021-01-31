@@ -54,7 +54,6 @@ function App() {
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
-
                 <Route exact path="/events" component={Events} />
               </Switch>
             </Content>
