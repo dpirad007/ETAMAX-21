@@ -10,6 +10,12 @@
   padding: 1rem;
 }
 
+.e-dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 576px) {
   .e-main {
     display: grid;
