@@ -1,19 +1,18 @@
-import React from "react";
-import { Card, notification } from "antd";
+import React, { useState } from "react";
+import { Card } from "antd";
 
 import { PlusOutlined } from "@ant-design/icons";
 
+import ModalView from "../../Misc/Modal/Modal";
+
 import "./HomeCard.css";
 
-const openNotification = () => {
-  notification.open({
-    message: "Added your lame event",
-    description: "Waasup",
-    duration: 2,
-  });
-};
-
 const HomeCard = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const changeModal = (bool) => {
+    setModalVisible(bool);
+  };
   return (
     <div>
       <Card
@@ -25,8 +24,16 @@ const HomeCard = () => {
             src="https://image.freepik.com/free-vector/banana-logo_10250-3606.jpg"
           />
         }
-        actions={[<PlusOutlined key="plus" onClick={openNotification} />]}
+        actions={[
+          <PlusOutlined
+            key="plus"
+            onClick={() => {
+              changeModal(true);
+            }}
+          />,
+        ]}
       >
+        <ModalView modalVisible={modalVisible} changeModal={changeModal} />
         <div>
           <div className="hc-title">Bananana</div>
           <div className="hc-desc">Team size: 10</div>

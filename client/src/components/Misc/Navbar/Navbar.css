@@ -13,8 +13,8 @@
 }
 
 .logo {
-  height: 32px;
-  content: url("../../../images/etamax_logo.png");
+  font-size: xx-large;
+  color: white;
   margin: 16px;
 }
 
