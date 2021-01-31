@@ -1,0 +1,34 @@
+{
+  "name": "etamax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "env-cmd -f ./dev.env nodemon src/server.js",
+    "client": "cd ../ && npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "proxy": "http://localhost:5000",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohangawhade/ETAMAX-21.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohangawhade/ETAMAX-21/issues"
+  },
+  "homepage": "https://github.com/rohangawhade/ETAMAX-21#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.13",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.7"
+  }
+}
