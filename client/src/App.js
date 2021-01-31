@@ -7,6 +7,7 @@ import "./App.css";
 //Pages
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
+import Events from "./pages/Events/Events";
 
 //components
 import Navbar from "./components/Misc/Navbar/Navbar";
@@ -48,6 +49,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/profile" component={Profile} />
+                <Route exact path="/events" component={Events} />
               </Switch>
             </Content>
           </Layout>
