@@ -2,7 +2,7 @@ import { Carousel } from "antd";
 import { Fragment } from "react";
 
 const contentStyle = {
-  height: "400px",
+  height: "200px",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
