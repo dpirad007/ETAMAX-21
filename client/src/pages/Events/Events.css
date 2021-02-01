@@ -13,7 +13,8 @@
 .e-dropdown {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  padding: 1rem;
 }
 
 @media only screen and (max-width: 576px) {
