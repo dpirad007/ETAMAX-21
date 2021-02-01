@@ -1,10 +1,6 @@
 import React, { Fragment } from "react";
 
-import {
-  ClockCircleOutlined,
-  CustomerServiceOutlined,
-  SendOutlined,
-} from "@ant-design/icons";
+import { ClockCircleOutlined } from "@ant-design/icons";
 
 import {
   VerticalTimeline,
