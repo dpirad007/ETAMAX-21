@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
@@ -15,10 +15,6 @@ const options = [
 
 const Home = () => {
   const [selectedDay, setSelectedDay] = useState(1);
-
-  useEffect(() => {
-    console.log(selectedDay);
-  }, [selectedDay]);
 
   return (
     <Fragment>
