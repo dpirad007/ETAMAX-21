@@ -8,19 +8,23 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
+import {
+  timeLineDataDay1,
+  timeLineDataDay2,
+  timeLineDataDay3,
+} from "./TimeLineData.js";
+
 const rightArrow = {
   borderRight: "7px solid  rgb(33, 150, 243)",
 };
 
-const leftArrow = {
-  borderTop: "7px solid transparent",
-  borderBottom: "7px solid transparent",
-  borderRight: "7px solid green",
+const headerContentStyles = {
+  background: "rgb(33, 150, 243)",
+  color: "#fff",
 };
 
 const contentStyles = {
-  background: "rgb(33, 150, 243)",
-  color: "#fff",
+  background: "#51c2d5",
 };
 
 const normalIconStyles = {
@@ -31,12 +35,8 @@ const normalIconStyles = {
   alignContent: "center",
 };
 
-const importantIconStyles = {
-  ...normalIconStyles,
-  background: "#7cffb3",
-};
-
 const HomeTimeLine = ({ selectedDay }) => {
+  console.log(timeLineDataDay1);
   let finalTimeline = null;
 
   switch (selectedDay) {
@@ -45,105 +45,39 @@ const HomeTimeLine = ({ selectedDay }) => {
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={contentStyles}
+            contentStyle={headerContentStyles}
             contentArrowStyle={rightArrow}
             date="2011 - present"
             iconStyle={normalIconStyles}
             icon={<ClockCircleOutlined />}
           >
-            <h3 className="vertical-timeline-element-title">Day1</h3>
-            <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-            <p>
-              Creative Direction, User Experience, Visual Design, Project
-              Management, Team Leading
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentArrowStyle={leftArrow}
-            date="2010 - 2011"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Art Director</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              San Francisco, CA
-            </h4>
-            <p>
-              Creative Direction, User Experience, Visual Design, SEO, Online
-              Marketing
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2008 - 2010"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Los Angeles, CA
-            </h4>
-            <p>User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2006 - 2008"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              San Francisco, CA
-            </h4>
-            <p>User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="April 2013"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
             <h3 className="vertical-timeline-element-title">
-              Content Marketing for Web, Mobile and Social Media
+              Events of Day One
             </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Online Course
-            </h4>
-            <p>Strategy, Social Media</p>
+            <h4 className="vertical-timeline-element-subtitle">Etamax</h4>
+            <p>Timeline Day 1</p>
           </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="November 2012"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Agile Development Scrum Master
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Certification
-            </h4>
-            <p>Creative Direction, User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="2002 - 2006"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Bachelor of Science in Interactive Digital Media Visual Imaging
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Bachelor Degree
-            </h4>
-            <p>Creative Direction, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          />
+          {timeLineDataDay1
+            ? timeLineDataDay1.map((obj) => {
+                return (
+                  <VerticalTimelineElement
+                    className="vertical-timeline-element--work"
+                    date={obj.date}
+                    contentStyle={contentStyles}
+                    iconStyle={normalIconStyles}
+                    icon={<ClockCircleOutlined />}
+                  >
+                    <h3 className="vertical-timeline-element-title">
+                      {obj.h3}
+                    </h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                      {obj.h4}
+                    </h4>
+                    <p style={{ color: "#fff" }}>{obj.p}</p>
+                  </VerticalTimelineElement>
+                );
+              })
+            : null}
         </VerticalTimeline>
       );
       break;
@@ -153,105 +87,39 @@ const HomeTimeLine = ({ selectedDay }) => {
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={contentStyles}
+            contentStyle={headerContentStyles}
             contentArrowStyle={rightArrow}
             date="2011 - present"
             iconStyle={normalIconStyles}
             icon={<ClockCircleOutlined />}
           >
-            <h3 className="vertical-timeline-element-title">Day2</h3>
-            <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-            <p>
-              Creative Direction, User Experience, Visual Design, Project
-              Management, Team Leading
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentArrowStyle={leftArrow}
-            date="2010 - 2011"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Art Director</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              San Francisco, CA
-            </h4>
-            <p>
-              Creative Direction, User Experience, Visual Design, SEO, Online
-              Marketing
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2008 - 2010"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Los Angeles, CA
-            </h4>
-            <p>User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2006 - 2008"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              San Francisco, CA
-            </h4>
-            <p>User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="April 2013"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
             <h3 className="vertical-timeline-element-title">
-              Content Marketing for Web, Mobile and Social Media
+              Events of Day Two
             </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Online Course
-            </h4>
-            <p>Strategy, Social Media</p>
+            <h4 className="vertical-timeline-element-subtitle">Etamax</h4>
+            <p>Timeline Day 2</p>
           </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="November 2012"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Agile Development Scrum Master
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Certification
-            </h4>
-            <p>Creative Direction, User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="2002 - 2006"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Bachelor of Science in Interactive Digital Media Visual Imaging
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Bachelor Degree
-            </h4>
-            <p>Creative Direction, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          />
+          {timeLineDataDay2
+            ? timeLineDataDay2.map((obj) => {
+                return (
+                  <VerticalTimelineElement
+                    className="vertical-timeline-element--work"
+                    date={obj.date}
+                    contentStyle={contentStyles}
+                    iconStyle={normalIconStyles}
+                    icon={<ClockCircleOutlined />}
+                  >
+                    <h3 className="vertical-timeline-element-title">
+                      {obj.h3}
+                    </h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                      {obj.h4}
+                    </h4>
+                    <p style={{ color: "#fff" }}>{obj.p}</p>
+                  </VerticalTimelineElement>
+                );
+              })
+            : null}
         </VerticalTimeline>
       );
       break;
@@ -261,105 +129,39 @@ const HomeTimeLine = ({ selectedDay }) => {
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={contentStyles}
+            contentStyle={headerContentStyles}
             contentArrowStyle={rightArrow}
             date="2011 - present"
             iconStyle={normalIconStyles}
             icon={<ClockCircleOutlined />}
           >
-            <h3 className="vertical-timeline-element-title">Day3</h3>
-            <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-            <p>
-              Creative Direction, User Experience, Visual Design, Project
-              Management, Team Leading
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentArrowStyle={leftArrow}
-            date="2010 - 2011"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Art Director</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              San Francisco, CA
-            </h4>
-            <p>
-              Creative Direction, User Experience, Visual Design, SEO, Online
-              Marketing
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2008 - 2010"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Los Angeles, CA
-            </h4>
-            <p>User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2006 - 2008"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              San Francisco, CA
-            </h4>
-            <p>User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="April 2013"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
             <h3 className="vertical-timeline-element-title">
-              Content Marketing for Web, Mobile and Social Media
+              Events of Day Three
             </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Online Course
-            </h4>
-            <p>Strategy, Social Media</p>
+            <h4 className="vertical-timeline-element-subtitle">Etamax</h4>
+            <p>Timeline Day 3</p>
           </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="November 2012"
-            iconStyle={importantIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Agile Development Scrum Master
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Certification
-            </h4>
-            <p>Creative Direction, User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="2002 - 2006"
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Bachelor of Science in Interactive Digital Media Visual Imaging
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Bachelor Degree
-            </h4>
-            <p>Creative Direction, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            iconStyle={normalIconStyles}
-            icon={<ClockCircleOutlined />}
-          />
+          {timeLineDataDay3
+            ? timeLineDataDay3.map((obj) => {
+                return (
+                  <VerticalTimelineElement
+                    className="vertical-timeline-element--work"
+                    date={obj.date}
+                    contentStyle={contentStyles}
+                    iconStyle={normalIconStyles}
+                    icon={<ClockCircleOutlined />}
+                  >
+                    <h3 className="vertical-timeline-element-title">
+                      {obj.h3}
+                    </h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                      {obj.h4}
+                    </h4>
+                    <p style={{ color: "#fff" }}>{obj.p}</p>
+                  </VerticalTimelineElement>
+                );
+              })
+            : null}
         </VerticalTimeline>
       );
       break;
