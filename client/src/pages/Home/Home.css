@@ -5,3 +5,7 @@
 .ho-main {
   padding: 0.25rem;
 }
+
+.ho-dropdown-item {
+  width: 30%;
+}
