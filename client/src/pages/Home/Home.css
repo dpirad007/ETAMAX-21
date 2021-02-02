@@ -9,3 +9,9 @@
 .ho-dropdown-item {
   width: 30%;
 }
+
+@media only screen and (max-width: 576px) {
+  .ho-dropdown-item {
+    width: 100%;
+  }
+}
