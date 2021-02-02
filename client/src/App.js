@@ -30,7 +30,7 @@ function App() {
           <Layout className="site-layout">
             <Header
               className="site-layout-background"
-              style={{ padding: 0, fontSize: "large" }}
+              style={{ padding: 0, fontSize: "x-large", fontWeight: "700" }}
             >
               {React.createElement(
                 collapse ? MenuUnfoldOutlined : MenuFoldOutlined,

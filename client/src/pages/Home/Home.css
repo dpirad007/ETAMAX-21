@@ -10,6 +10,18 @@
   width: 30%;
 }
 
+.Dropdown-control, .Dropdown-option, .Dropdown-option.is-selected{
+  background-color: #001529;
+  color: white;
+  font-weight: 700;
+  font-size: large;
+}
+
+.Dropdown-option:hover{
+  background-color: #f2f9fc;
+  color: #333;
+}
+
 @media only screen and (max-width: 576px) {
   .ho-dropdown-item {
     width: 100%;

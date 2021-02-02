@@ -12,7 +12,7 @@ const EventCard = () => {
       <div className="ec-title">Solo Dance</div>
       <div className="ec-cat">Team Size: 10</div>
       <div className="ec-desc">
-        This is singinf dummies just sing along , and sing and sing
+        This is singing dummies just sing along, and sing and sing!!
       </div>
       <div className="ec-add-btn">+</div>
     </div>
