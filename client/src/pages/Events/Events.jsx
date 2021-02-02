@@ -3,6 +3,7 @@ import { Menu, Dropdown, Button } from "antd";
 
 //components
 import HomeCard from "../../components/Home/HomeCard/HomeCard";
+import EventCard from "../../components/Events/EventCard/EventCard";
 
 import "./Events.css";
 
@@ -24,16 +25,17 @@ const Events = () => {
       </div>
       <div className="e-main">
         <div className="e-main-item">
-          <HomeCard />
+          <EventCard />
         </div>
         <div className="e-main-item">
-          <HomeCard />
+          <EventCard />
         </div>
         <div className="e-main-item">
-          <HomeCard />
+          <EventCard />
         </div>
+
         <div className="e-main-item">
-          <HomeCard />
+          <EventCard />
         </div>
       </div>
     </Fragment>
