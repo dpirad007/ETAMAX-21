@@ -40,9 +40,9 @@
 }
 
 .ec-add-btn {
+  padding: 1rem;
   text-align: center;
   width: 100%;
-
   font-size: xx-large;
   transition: 0.4s;
 }
