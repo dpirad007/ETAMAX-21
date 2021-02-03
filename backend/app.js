@@ -1,26 +1,18 @@
+var path = require('path');
+
 var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var passport = require('passport');
+
+require('dotenv').config();
+var config = require('./config');
+
+require('./db/mongoose')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var verifyemail = require('./routes/verifyemail');
-require('dotenv').config();
-
-const mongoose=require("mongoose");
-var passport=require('passport');
-var authenticate=require('./authenticate');
-var config=require('./config');
-
-const url=config.mongoUrl;
-const connect=mongoose.connect(url);
-
-connect.then((db)=>{
-  console.log("connected correctly");
-
-},(err)=>{console.log(err)});
 
 
 var app = express();
@@ -43,17 +35,17 @@ app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
-app.use('/api/verifyemail', verifyemail);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
+
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -63,8 +55,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(5000,()=>{
-  console.log("hello");
+app.listen(config.port, () => {
+  console.log("Server is up and running on port " + config.port);
 });
 
 
