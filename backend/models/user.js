@@ -3,11 +3,15 @@ var Schema=mongoose.Schema;
 var passportLocalMongoose=require('passport-local-mongoose');
 
 var User=new Schema({
-    name:{
+    firstname:{
         type:String,
         default:''
     },
-    rollno:{
+    lastname:{
+        type:String,
+        default:''
+    },
+    token:{
         type:String,
         default:''
     }

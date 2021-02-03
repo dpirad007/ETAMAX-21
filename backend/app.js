@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var verifyemail = require('./routes/verifyemail');
 require('dotenv').config();
 
 const mongoose=require("mongoose");
@@ -18,7 +19,6 @@ const connect=mongoose.connect(url);
 
 connect.then((db)=>{
   console.log("connected correctly");
-
 
 },(err)=>{console.log(err)});
 
@@ -43,13 +43,13 @@ app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/verifyemail', verifyemail);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
-  
 });
 
 // error handler

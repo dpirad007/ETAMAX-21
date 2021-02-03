@@ -8,6 +8,12 @@ require('dotenv').config()
 
 router.use(bodyParser.json());
 
+var crypto = require("crypto");
+
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+
 router.get('/', authenticate.verifyUser, function(req, res, next) {
   User.find({})
   .then((users)=>{
@@ -21,7 +27,8 @@ router.get('/', authenticate.verifyUser, function(req, res, next) {
 router.post('/signup',function(req,res,next){
 
   
-  
+  var token = crypto.randomBytes(20).toString('hex');
+
   User.register(new User({username:req.body.username}),
   req.body.password, (err,user)=>{
 
@@ -31,12 +38,12 @@ router.post('/signup',function(req,res,next){
       res.json({err:err});
     }
     else{
-      if(req.body.name)
-        user.name=req.body.name;
-      if(req.body.rollno)
-        user.rollno=req.body.rollno;
+      if(req.body.firstname)
+        user.firstname=req.body.firstname;
+      if(req.body.lastname)
+        user.lastname=req.body.lastname;
   
-      
+      user.token=token;
 
       user.save((err,user)=>{
         if(err){
@@ -48,7 +55,19 @@ router.post('/signup',function(req,res,next){
 
         // Email
 
-       
+        const msg = {
+          to: req.body.username, // Change to your recipient
+          from: 'prithvirajpatil2511@gmail.com', // Change to your verified sender
+          subject: 'ETAMAX AUTHENTICATION EMAIL!!',
+          text: 'Please click on the following link to verify your email!!',
+          html: '<strong>Please click on the following link to verify your email!!</strong><a href="http://localhost:5000/api/verifyemail/'+req.body.username+'/'+token+'">Click Here!!</a>',
+        }
+
+        sgMail.send(msg).then(() => {
+          console.log('emails sent successfully!');
+        }).catch(error => {
+          console.log(error);
+        });
         // Email
 
 
@@ -56,7 +75,7 @@ router.post('/signup',function(req,res,next){
 
           res.statusCode=200;
           res.setHeader('Content-Type','application/json');
-          res.json({success:true,status:'Registration Successful !'});  
+          res.json({success:true,status:'Registration Successful ! Please verify your Email to continue!'});  
       });
       
       });
@@ -66,13 +85,20 @@ router.post('/signup',function(req,res,next){
 });
 
 router.post('/login',passport.authenticate('local'),(req,res,next)=>{
-  
+  if(req.user.token===""){
     var jtoken=authenticate.getToken({_id:req.user._id});
   
     res.statusCode=200;
     res.setHeader('Content-Type','application/json');
     res.json({success:true, token:jtoken , status:'Login  Successful !'}); 
- 
+  }
+   
+  else{
+    res.statusCode=401;
+    res.setHeader('Content-Type','application/json');
+    res.json({status:'Email not verified!'}); 
+  }
+  
 });
 
 
