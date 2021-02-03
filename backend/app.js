@@ -8,7 +8,6 @@ var logger = require('morgan');
 var passport = require('passport');
 
 require('dotenv').config();
-var config = require('./config');
 
 require('./db/mongoose')
 
@@ -51,10 +50,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.listen(config.port, () => {
-  console.log("Server is up and running on port " + config.port);
-});
-
 
 module.exports = app;
