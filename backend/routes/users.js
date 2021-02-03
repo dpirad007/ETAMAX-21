@@ -1,59 +1,39 @@
 var express = require('express');
 var router = express.Router();
-const bodyParser = require('body-parser');
-var User = require('../models/user');
 var passport = require('passport');
-var authenticate = require('../authenticate');
 require('dotenv').config()
 
-router.use(bodyParser.json());
 
-router.get('/', authenticate.verifyUser, function (req, res, next) {
-  User.find({})
-    .then((users) => {
+var User = require('../models/user');
+var authenticate = require('../authenticate');
+
+router.get('/', authenticate.verifyUser, async (req, res) => {
+  try {
+    let users = await User.find({})
+    res.send(users)
+  } catch (e) {
+    res.status(400).send(e)
+  } 
+});
+
+//This route WILL NOT be used in the final app. Only for testing api 
+router.post('/add-user', async (req, res) => {
+  let user = new User(req.body)
+
+  try {
+    await User.register(user, req.body.password);
+
+    passport.authenticate('local')(req, res, () => {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
-      res.json(users);
-    }, (err) => next(err))
-    .catch((err) => next(err));
-});
-
-//This route will not be used in the final app only for testing api 
-router.post('/signup', function (req, res, next) {
-  User.register(new User({ username: req.body.username }),
-    req.body.password, (err, user) => {
-
-      if (err) {
-        res.statusCode = 500;
-        res.setHeader('Content-Type', 'application/json');
-        res.json({ err: err });
-      }
-      else {
-        if (req.body.name)
-          user.name = req.body.name;
-        if (req.body.rollno)
-          user.rollno = req.body.rollno;
-
-        user.save((err, user) => {
-          if (err) {
-            res.statusCode = 500;
-            res.setHeader('Content-Type', 'application/json');
-            res.json({ err: err });
-            return;
-          }
-
-          passport.authenticate('local')(req, res, () => {
-
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            res.json({ success: true, status: 'Registration Successful !' });
-          });
-
-        });
-      }
+      res.json({ success: true, status: 'Registration Successful !' });
     });
+  } catch (e) {
+    res.status(500).send(e)
+  }
 
 });
+
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
 
@@ -65,8 +45,7 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 
 });
 
-
-
+//Logout done on the client side using JWT
 router.get('/logout', (req, res, next) => {
 
 });
