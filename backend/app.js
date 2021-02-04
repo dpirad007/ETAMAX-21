@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var logger = require('morgan');
 var passport = require('passport');
+var cors = require('cors')
+
 
 require('dotenv').config();
 
@@ -29,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
-
+app.use(cors()) // Use this after the variable declaration
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
