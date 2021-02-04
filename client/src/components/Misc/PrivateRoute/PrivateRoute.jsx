@@ -14,6 +14,8 @@ const PrivateRoute = ({ completedProfile, component: Component, ...rest }) => {
           return <Redirect to="/details" />;
         } else if (completedProfile === "NO-DATA") {
           return <Redirect to="/login" />;
+        } else {
+          return <Redirect to="/login" />;
         }
       }}
     />
