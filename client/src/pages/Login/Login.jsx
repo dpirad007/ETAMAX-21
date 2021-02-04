@@ -18,7 +18,6 @@ const Login = () => {
         // use => localStorage.getItem('usertoken') for accessing usertoken
         
         // code - when login is successful
-      
       })
       .catch(function (error) {
         console.log(error);
@@ -65,13 +64,7 @@ const Login = () => {
             placeholder="Password"
           />
         </Form.Item>
-        <Form.Item>
-
-
-          <a className="login-form-forgot" href="https://fcrit.ac.in">
-            Forgot password
-        </a>
-        </Form.Item>
+        
 
         <Form.Item>
           <Button type="primary" htmlType="submit" className="login-form-button">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Button } from "antd";
+import { SmileOutlined } from '@ant-design/icons';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import "./App.css";
 
@@ -22,6 +23,14 @@ function App() {
   const toggle = () => {
     setCollapse(!collapse);
   };
+  const isLoggedIn = localStorage.getItem('usertoken') != null;
+  
+  const logout = () => {
+    console.log('Logout Request!');
+    localStorage.removeItem('usertoken');
+
+  };
+
   return (
     <div className="App">
       <Router>
@@ -40,6 +49,9 @@ function App() {
                 }
               )}
               Etamax
+              {isLoggedIn &&
+                <Button onClick={()=> logout()} style={{ background: "rgba(0, 0, 0, 0.85)", color: "white", float:"right", marginRight:"2%", marginTop:"1%" }} icon={<SmileOutlined rotate={180} />}>Logout</Button>
+              }
             </Header>
             <Content
               className="site-layout-background"
