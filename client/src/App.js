@@ -26,8 +26,9 @@ function App() {
   const toggle = () => {
     setCollapse(!collapse);
   };
-  const [isLoggedIn, loginupdater ]  = useState(localStorage.getItem("usertoken") != null);
-
+  const [isLoggedIn, loginupdater] = useState(
+    localStorage.getItem("usertoken") != null
+  );
 
   useEffect(() => {
     var token = window.localStorage.getItem("usertoken");
@@ -42,15 +43,18 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setCompletedProfile("NO-DATA");
       });
   }, []);
 
-  return completedProfile !== undefined ? (
+  return (
     <div className="App">
       <Router>
         <Layout style={{ minHeight: "100vh" }}>
-          <Navbar collapse={collapse} isLoggedIn={isLoggedIn} loginupdater={loginupdater} />
+          <Navbar
+            collapse={collapse}
+            isLoggedIn={isLoggedIn}
+            loginupdater={loginupdater}
+          />
           <Layout className="site-layout">
             <Header
               className="site-layout-background"
@@ -76,7 +80,17 @@ function App() {
               <Switch>
                 <PrivateRoute exact path="/" component={Home} />
                 <PrivateRoute exact path="/profile" component={Profile} />
-                <Route exact path="/login" render={(props) => <Login isLoggedIn={isLoggedIn} loginupdater={loginupdater} {...props} />} />
+                <Route
+                  exact
+                  path="/login"
+                  render={(props) => (
+                    <Login
+                      isLoggedIn={isLoggedIn}
+                      loginupdater={loginupdater}
+                      {...props}
+                    />
+                  )}
+                />
                 <PrivateRoute
                   exact
                   path="/"
@@ -103,7 +117,7 @@ function App() {
         </Layout>
       </Router>
     </div>
-  ) : null;
+  );
 }
 
 export default App;
