@@ -19,6 +19,7 @@ const Login = () => {
         // use => localStorage.getItem('usertoken') for accessing usertoken
 
         // code - when login is successful
+        history.push("/login");
       })
       .catch(function (error) {
         console.log(error);
@@ -66,7 +67,6 @@ const Login = () => {
             placeholder="Password"
           />
         </Form.Item>
-        
 
         <Form.Item>
           <Button
