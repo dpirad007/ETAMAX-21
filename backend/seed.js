@@ -27,9 +27,10 @@ const generateUser = rollNo => ({
     department: departmentMap[rollNo[0]],
     semester: semesterMap[rollNo.slice(2, 4)],
     password: faker.internet.password(),
+    collegeName: faker.company.companyName(),
+    phoneNo: faker.phone.phoneNumber('##########'),
     hasFilledProfile: true,
 });
-
 const addUsers = async () => {
     if ((await User.countDocuments()) === 6 * 4 * 60) {
         console.log('Users already added');

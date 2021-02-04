@@ -13,7 +13,6 @@ require('dotenv').config();
 
 require('./db/mongoose')
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events')
 
@@ -33,7 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(cors()) // Use this after the variable declaration
 
-app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/events', eventsRouter);
 
