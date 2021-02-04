@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+
+import ModalView from "../../Misc/Modal/Modal";
 
 import "./EventCard.css";
 
 const EventCard = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const changeModal = (bool) => {
+    setModalVisible(bool);
+  };
   return (
     <div className="ec-main">
       <img
@@ -14,7 +21,15 @@ const EventCard = () => {
       <div className="ec-desc">
         This is singing dummies just sing along, and sing and sing!!
       </div>
-      <div className="ec-add-btn">+</div>
+      <div
+        className="ec-add-btn"
+        onClick={() => {
+          changeModal(true);
+        }}
+      >
+        +
+      </div>
+      <ModalView modalVisible={modalVisible} changeModal={changeModal} />
     </div>
   );
 };

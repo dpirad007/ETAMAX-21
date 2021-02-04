@@ -15,8 +15,12 @@ const menu = [
 const Events = () => {
   return (
     <Fragment>
-      <div className="ho-dropdown">
-        <Dropdown className="ho-dropdown-item" options={menu} placeholder="Select Day" />
+      <div className="e-dropdown">
+        <Dropdown
+          className="e-dropdown-item"
+          options={menu}
+          placeholder="Select Day"
+        />
       </div>
       <div className="e-main">
         <div className="e-main-item">
