@@ -5,7 +5,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
-const Login = () => {
+
+const Login = (props) => {
   let history = useHistory();
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
@@ -20,6 +21,7 @@ const Login = () => {
 
         // code - when login is successful
         history.push("/");
+        props.loginupdater(true);
       })
       .catch(function (error) {
         console.log(error);

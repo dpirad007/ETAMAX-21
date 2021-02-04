@@ -24,18 +24,14 @@ function App() {
   const toggle = () => {
     setCollapse(!collapse);
   };
-  const isLoggedIn = localStorage.getItem("usertoken") != null;
+  const [isLoggedIn, loginupdater ]  = useState(localStorage.getItem("usertoken") != null);
 
-  const logout = () => {
-    console.log("Logout Request!");
-    localStorage.removeItem("usertoken");
-  };
 
   return (
     <div className="App">
       <Router>
         <Layout style={{ minHeight: "100vh" }}>
-          <Navbar collapse={collapse} />
+          <Navbar collapse={collapse} isLoggedIn={isLoggedIn} loginupdater={loginupdater} />
           <Layout className="site-layout">
             <Header
               className="site-layout-background"
@@ -49,21 +45,6 @@ function App() {
                 }
               )}
               Etamax
-              {isLoggedIn && (
-                <Button
-                  onClick={() => logout()}
-                  style={{
-                    background: "rgba(0, 0, 0, 0.85)",
-                    color: "white",
-                    float: "right",
-                    marginRight: "2%",
-                    marginTop: "1%",
-                  }}
-                  icon={<SmileOutlined rotate={180} />}
-                >
-                  Logout
-                </Button>
-              )}
             </Header>
             <Content
               className="site-layout-background"
@@ -76,7 +57,7 @@ function App() {
               <Switch>
                 <PrivateRoute exact path="/" component={Home} />
                 <PrivateRoute exact path="/profile" component={Profile} />
-                <Route exact path="/login" component={Login} />
+                <Route exact path="/login" render={(props) => <Login isLoggedIn={isLoggedIn} loginupdater={loginupdater} {...props} />} />
                 {/*<Route exact path="/register" component={Register} />*/}
                 <PrivateRoute exact path="/events" component={Events} />
               </Switch>
