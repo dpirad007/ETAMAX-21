@@ -45,12 +45,12 @@ var userSchema = new mongoose.Schema({
         minlength: 4,
     },
     criteria: {
-        one: { type: Boolean, default: false },
-        two: { type: Boolean, default: false },
-        three: { type: Boolean, default: false },
-        c: { type: Boolean, default: false },
-        t: { type: Boolean, default: false },
-        f: { type: Boolean, default: false }
+        1: { type: Boolean, default: false },
+        2: { type: Boolean, default: false },
+        3: { type: Boolean, default: false },
+        C: { type: Boolean, default: false },
+        T: { type: Boolean, default: false },
+        F: { type: Boolean, default: false }
     },
     moneyOwed: {
         type: Number,
@@ -61,7 +61,9 @@ var userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    events: [{ type: mongoose.Schema.Types.ObjectId, ref: Event }]
+    events: [
+        { type: mongoose.Schema.Types.ObjectId, ref: Event }
+    ]
     // tokens: [
     //     {
     //         token: {
