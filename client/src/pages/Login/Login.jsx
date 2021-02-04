@@ -19,7 +19,7 @@ const Login = () => {
         // use => localStorage.getItem('usertoken') for accessing usertoken
 
         // code - when login is successful
-        history.push("/login");
+        history.push("/");
       })
       .catch(function (error) {
         console.log(error);

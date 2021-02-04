@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Layout, Button } from "antd";
-import { SmileOutlined } from '@ant-design/icons';
+import { SmileOutlined } from "@ant-design/icons";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import "./App.css";
 
@@ -9,7 +9,7 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
+// import Register from "./pages/Register/Register";
 
 import Events from "./pages/Events/Events";
 
@@ -24,12 +24,11 @@ function App() {
   const toggle = () => {
     setCollapse(!collapse);
   };
-  const isLoggedIn = localStorage.getItem('usertoken') != null;
-  
-  const logout = () => {
-    console.log('Logout Request!');
-    localStorage.removeItem('usertoken');
+  const isLoggedIn = localStorage.getItem("usertoken") != null;
 
+  const logout = () => {
+    console.log("Logout Request!");
+    localStorage.removeItem("usertoken");
   };
 
   return (
@@ -50,9 +49,21 @@ function App() {
                 }
               )}
               Etamax
-              {isLoggedIn &&
-                <Button onClick={()=> logout()} style={{ background: "rgba(0, 0, 0, 0.85)", color: "white", float:"right", marginRight:"2%", marginTop:"1%" }} icon={<SmileOutlined rotate={180} />}>Logout</Button>
-              }
+              {isLoggedIn && (
+                <Button
+                  onClick={() => logout()}
+                  style={{
+                    background: "rgba(0, 0, 0, 0.85)",
+                    color: "white",
+                    float: "right",
+                    marginRight: "2%",
+                    marginTop: "1%",
+                  }}
+                  icon={<SmileOutlined rotate={180} />}
+                >
+                  Logout
+                </Button>
+              )}
             </Header>
             <Content
               className="site-layout-background"
