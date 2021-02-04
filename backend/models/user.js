@@ -8,67 +8,77 @@ var userSchema = new mongoose.Schema({
     name: {
         type: String,
         validate: /^[a-zA-Z\']{1,50} [a-zA-Z\']{1,50}$/,
-    },
-    email: {
+      },
+      email: {
         type: String,
         required: true,
         unique: true,
         validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error('Email is not valid');
-            }
+          if (!validator.isEmail(value)) {
+            throw new Error('Email is not valid');
+          }
         },
-    },
-    rollNo: {
+      },
+      rollNo: {
         type: String,
         required: true,
         unique: true,
         trim: true,
         validate(value) {
-            const re = /^\d{6,7}$/g;
-            if (!re.test(String(value))) {
-                throw new Error('Rollno is not valid');
-            }
+          const re = /^\d{6,7}$/g;
+          if (!re.test(String(value))) {
+            throw new Error('Rollno is not valid');
+          }
         },
-    },
-    department: {
+      },
+      department: {
         type: String,
         index: true,
         required: true,
         trim: true,
         uppercase: true,
         enum: ['COMPS', 'ELEC', 'EXTC', 'IT', 'MECH', 'OTHER'],
-    },
-    semester: {
+      },
+      semester: {
         type: Number,
         index: true,
         min: 1,
         max: 8,
-    },
-    password: {
+      },
+      password: {
         type: String,
         required: true,
         trim: true,
         minlength: 4,
-    },
-    criteria: {
+      },
+      criteria: {
         1: { type: Boolean, default: false },
         2: { type: Boolean, default: false },
         3: { type: Boolean, default: false },
         C: { type: Boolean, default: false },
         T: { type: Boolean, default: false },
         F: { type: Boolean, default: false },
-    },
-    moneyOwed: {
+      },
+      moneyOwed: {
         type: Number,
         default: 0,
-    },
-    hasFilledProfile: {
+      },
+      hasFilledProfile: {
         type: Boolean,
         default: false,
-    },
-    events: [{ type: mongoose.Schema.Types.ObjectId, ref: Event }],
-});
+      },
+      collegeName: {
+        type: String,
+        trim: true,
+        validate: /^.{1,100}$/,
+      },
+      phoneNumber: {
+        type: String,
+        trim: true,
+        validate: /^\d{10}$/,
+      },
+      events: [{ type: mongoose.Schema.Types.ObjectId, ref: Event }],
+    });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
