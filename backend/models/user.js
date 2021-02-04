@@ -45,14 +45,21 @@ var userSchema = new mongoose.Schema({
         minlength: 4,
     },
     criteria: {
-        crit1: { type: Boolean, default: false },
-        crit2: { type: Boolean, default: false },
-        crit3: { type: Boolean, default: false },
+        one: { type: Boolean, default: false },
+        two: { type: Boolean, default: false },
+        three: { type: Boolean, default: false },
+        c: { type: Boolean, default: false },
+        t: { type: Boolean, default: false },
+        f: { type: Boolean, default: false }
     },
     moneyOwed: {
         type: Number,
         default: 0,
         trim: true,
+    },
+    hasFilledProfile: {
+        type: Boolean,
+        default: false
     },
     events: [{ type: mongoose.Schema.Types.ObjectId, ref: Event }]
     // tokens: [
