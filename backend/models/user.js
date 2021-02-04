@@ -7,9 +7,7 @@ const Event = require('./event')
 var userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
-        validate(value) {
-        },
+        validate: /^[a-zA-Z\']{1,50} [a-zA-Z\']{1,50}$/,
     },
     email: {
         type: String,
@@ -26,7 +24,6 @@ var userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true,
-        minlength: 6,
         validate(value) {
             const re = /^\d{6,7}$/g;
             if (!re.test(String(value))) {
@@ -36,7 +33,17 @@ var userSchema = new mongoose.Schema({
     },
     department: {
         type: String,
+        index: true,
         required: true,
+        trim: true,
+        uppercase: true,
+        enum: ['COMPS', 'ELEC', 'EXTC', 'IT', 'MECH', 'OTHER'],
+    },
+    semester: {
+        type: Number,
+        index: true,
+        min: 1,
+        max: 8,
     },
     password: {
         type: String,
@@ -50,27 +57,17 @@ var userSchema = new mongoose.Schema({
         3: { type: Boolean, default: false },
         C: { type: Boolean, default: false },
         T: { type: Boolean, default: false },
-        F: { type: Boolean, default: false }
+        F: { type: Boolean, default: false },
     },
     moneyOwed: {
         type: Number,
         default: 0,
-        trim: true,
     },
     hasFilledProfile: {
         type: Boolean,
-        default: false
+        default: false,
     },
-    events: [
-        { type: mongoose.Schema.Types.ObjectId, ref: Event }
-    ]
-    // tokens: [
-    //     {
-    //         token: {
-    //             type: String,
-    //         },
-    //     },
-    // ]
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: Event }],
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });

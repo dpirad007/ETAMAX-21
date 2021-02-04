@@ -36,12 +36,12 @@ router.get('/my-events', authenticate.verifyUser, async (req, res) => {
     }
 })
 
-//URL: /api/events/my-criteria
+//URL: /api/events/my-status
 router.get('/my-status', authenticate.verifyUser, async (req, res) => {
     try {
         let crit = await User.findOne({ _id: req.user._id }, { criteria: 1, moneyOwed: 1 })
-        let payment_status = Object.values(crit.criteria).every(v => v) && moneyOwed === 0
-        res.status(200).send([crit, { payment_status }])
+        let paid = Object.values(crit.criteria).every(v => v) && moneyOwed === 0
+        res.status(200).send([crit, { paid }])
     } catch (e) {
 
     }

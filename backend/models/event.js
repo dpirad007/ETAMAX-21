@@ -44,7 +44,7 @@ const eventSchema = new mongoose.Schema({
   seats: {
     type: Number,
     required: true,
-    min: 1,
+    default: 0,
   },
   maxSeats: {
     type: Number,
