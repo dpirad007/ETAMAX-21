@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Layout, Button } from "antd";
-import { SmileOutlined } from "@ant-design/icons";
+import { Layout } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import axios from "axios";
 import "./App.css";
 
 //Pages
@@ -22,15 +22,24 @@ const { Header, Content } = Layout;
 
 function App() {
   const [collapse, setCollapse] = useState(false);
+  const [completedProfile, setCompletedProfile] = useState(false);
   const toggle = () => {
     setCollapse(!collapse);
   };
-  const isLoggedIn = localStorage.getItem("usertoken") != null;
 
-  const logout = () => {
-    console.log("Logout Request!");
-    localStorage.removeItem("usertoken");
-  };
+  useEffect(() => {
+    var token = window.localStorage.getItem("usertoken");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    axios
+      .get("http://localhost:5000/api/users/details", config)
+      .then((res) => {
+        setCompletedProfile(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="App">
@@ -50,21 +59,6 @@ function App() {
                 }
               )}
               Etamax
-              {isLoggedIn && (
-                <Button
-                  onClick={() => logout()}
-                  style={{
-                    background: "rgba(0, 0, 0, 0.85)",
-                    color: "white",
-                    float: "right",
-                    marginRight: "2%",
-                    marginTop: "1%",
-                  }}
-                  icon={<SmileOutlined rotate={180} />}
-                >
-                  Logout
-                </Button>
-              )}
             </Header>
             <Content
               className="site-layout-background"
@@ -75,11 +69,26 @@ function App() {
               }}
             >
               <Switch>
-                <PrivateRoute exact path="/" component={Home} />
-                <PrivateRoute exact path="/profile" component={Profile} />
+                <PrivateRoute
+                  exact
+                  path="/"
+                  component={Home}
+                  completedProfile={completedProfile}
+                />
+                <PrivateRoute
+                  exact
+                  path="/profile"
+                  component={Profile}
+                  completedProfile={completedProfile}
+                />
                 <Route exact path="/login" component={Login} />
                 {/*<Route exact path="/register" component={Register} />*/}
-                <PrivateRoute exact path="/events" component={Events} />
+                <PrivateRoute
+                  exact
+                  path="/events"
+                  component={Events}
+                  completedProfile={completedProfile}
+                />
                 <Route exact path="/details" component={Details} />
               </Switch>
             </Content>
