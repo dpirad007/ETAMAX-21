@@ -67,11 +67,6 @@ const Login = () => {
             placeholder="Password"
           />
         </Form.Item>
-        <Form.Item>
-          <a className="login-form-forgot" href="https://fcrit.ac.in">
-            Forgot password
-          </a>
-        </Form.Item>
 
         <Form.Item>
           <Button
@@ -81,7 +76,6 @@ const Login = () => {
           >
             Log in
           </Button>
-          &nbsp; Or <a href="/register">register now!</a>
         </Form.Item>
       </Form>
     </Fragment>
