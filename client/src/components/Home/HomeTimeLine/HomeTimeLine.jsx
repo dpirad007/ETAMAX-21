@@ -36,7 +36,6 @@ const normalIconStyles = {
 };
 
 const HomeTimeLine = ({ selectedDay }) => {
-  console.log(timeLineDataDay1);
   let finalTimeline = null;
 
   switch (selectedDay) {

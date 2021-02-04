@@ -9,12 +9,13 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
+// import Register from "./pages/Register/Register";
 
 import Events from "./pages/Events/Events";
 
 //components
 import Navbar from "./components/Misc/Navbar/Navbar";
+import PrivateRoute from "./components/Misc/PrivateRoute/PrivateRoute";
 
 const { Header, Content } = Layout;
 
@@ -62,11 +63,11 @@ function App() {
               }}
             >
               <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/profile" component={Profile} />
+                <PrivateRoute exact path="/" component={Home} />
+                <PrivateRoute exact path="/profile" component={Profile} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/events" component={Events} />
+                {/*<Route exact path="/register" component={Register} />*/}
+                <PrivateRoute exact path="/events" component={Events} />
               </Switch>
             </Content>
           </Layout>
