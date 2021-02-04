@@ -1,10 +1,12 @@
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import React, { Fragment } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
 const Login = () => {
+  let history = useHistory();
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
     axios
@@ -17,7 +19,7 @@ const Login = () => {
         // use => localStorage.getItem('usertoken') for accessing usertoken
 
         // code - when login is successful
-        window.location = "/";
+        history.push("/");
       })
       .catch(function (error) {
         console.log(error);
