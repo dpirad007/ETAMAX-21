@@ -1,53 +1,40 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var passport = require('passport');
-require('dotenv').config()
+var passport = require("passport");
+var authenticate = require("../authenticate");
+require("dotenv").config();
 
+const User = require("../models/user");
+var authenticate = require("../authenticate");
 
-var User = require('../models/user');
-var authenticate = require('../authenticate');
-
-router.get('/', authenticate.verifyUser, async (req, res) => {
-  try {
-    let users = await User.find({})
-    res.send(users)
-  } catch (e) {
-    res.status(400).send(e)
-  } 
-});
-
-//This route WILL NOT be used in the final app. Only for testing api 
-router.post('/add-user', async (req, res) => {
-  let user = new User(req.body)
-
-  try {
-    await User.register(user, req.body.password);
-
-    passport.authenticate('local')(req, res, () => {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/json');
-      res.json({ success: true, status: 'Registration Successful !' });
-    });
-  } catch (e) {
-    res.status(500).send(e)
-  }
-
-});
-
-
-router.post('/login', passport.authenticate('local'), (req, res, next) => {
-
+router.post("/login", passport.authenticate("local"), (req, res, next) => {
   var jtoken = authenticate.getToken({ _id: req.user._id });
 
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'application/json');
-  res.json({ success: true, token: jtoken, status: 'Login  Successful !' });
-
+  res.setHeader("Content-Type", "application/json");
+  res.json({ success: true, token: jtoken, status: "Login  Successful !" });
 });
 
-//Logout done on the client side using JWT
-router.get('/logout', (req, res, next) => {
+router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
+  try {
+    await User.findOneAndUpdate({ _id: req.user._id }, req.body);
 
+    await User.findOneAndUpdate(
+      { _id: req.user._id },
+      {
+        hasFilledProfile: true,
+      }
+    );
+    res.status(200).send({ message: "Profile updated successfully!" });
+  } catch (e) {
+    console.log(e);
+    res.status(400).send(e);
+  }
+});
+
+//User details
+router.get("/details", authenticate.verifyUser, (req, res) => {
+  res.send(req.user.hasFilledProfile);
 });
 
 module.exports = router;
