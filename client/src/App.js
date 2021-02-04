@@ -78,8 +78,6 @@ function App() {
               }}
             >
               <Switch>
-                <PrivateRoute exact path="/" component={Home} />
-                <PrivateRoute exact path="/profile" component={Profile} />
                 <Route
                   exact
                   path="/login"
