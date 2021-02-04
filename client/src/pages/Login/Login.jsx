@@ -43,13 +43,13 @@ const Login = () => {
           rules={[
             {
               required: true,
-              message: "Please input your Username!",
+              message: "Please input your Rollnumber!",
             },
           ]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
+            placeholder="FCRIT Rollnumber"
           />
         </Form.Item>
         <Form.Item
