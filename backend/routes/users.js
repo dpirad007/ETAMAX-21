@@ -33,8 +33,8 @@ router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
 });
 
 //User details
-router.get("/me", authenticate.verifyUser, (req, res) => {
-  res.send(req.user);
+router.get("/details", authenticate.verifyUser, (req, res) => {
+  res.send(req.user.hasFilledProfile);
 });
 
 module.exports = router;
