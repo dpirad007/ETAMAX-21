@@ -22,7 +22,7 @@ const { Header, Content } = Layout;
 
 function App() {
   const [collapse, setCollapse] = useState(false);
-  const [completedProfile, setCompletedProfile] = useState(false);
+  const [completedProfile, setCompletedProfile] = useState();
   const toggle = () => {
     setCollapse(!collapse);
   };
@@ -38,10 +38,13 @@ function App() {
       .then((res) => {
         setCompletedProfile(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setCompletedProfile("NO-DATA");
+      });
   }, []);
 
-  return (
+  return completedProfile !== undefined ? (
     <div className="App">
       <Router>
         <Layout style={{ minHeight: "100vh" }}>
@@ -96,7 +99,7 @@ function App() {
         </Layout>
       </Router>
     </div>
-  );
+  ) : null;
 }
 
 export default App;

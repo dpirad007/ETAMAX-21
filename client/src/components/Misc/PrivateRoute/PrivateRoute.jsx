@@ -12,7 +12,7 @@ const PrivateRoute = ({ completedProfile, component: Component, ...rest }) => {
           return <Component {...props} />;
         } else if (completedProfile === false && isAuthenticated) {
           return <Redirect to="/details" />;
-        } else {
+        } else if (completedProfile === "NO-DATA") {
           return <Redirect to="/login" />;
         }
       }}
