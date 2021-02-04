@@ -26,7 +26,7 @@ router.get('/my-events', authenticate.verifyUser, async (req, res) => {
     try {
         let my_events = []
         for (let i = 0; i < req.user.events.length; i++) {
-            let event = await Event.findOne({ _id: req.user.events[i] }, { title: 1 })
+            let event = await Event.findOne({ _id: req.user.events[i] }, { title: 1, description: 1 })
             my_events += event
         }
         res.send(my_events)
@@ -37,10 +37,11 @@ router.get('/my-events', authenticate.verifyUser, async (req, res) => {
 })
 
 //URL: /api/events/my-criteria
-router.get('/my-criteria', authenticate.verifyUser, async (req, res) => {
+router.get('/my-status', authenticate.verifyUser, async (req, res) => {
     try {
-        let crit = await User.findOne({ _id: req.user._id }, { criteria: 1 })
-        res.status(200).send(crit)
+        let crit = await User.findOne({ _id: req.user._id }, { criteria: 1, moneyOwed: 1 })
+        let payment_status = Object.values(crit.criteria).every(v => v) && moneyOwed === 0
+        res.status(200).send([crit, { payment_status }])
     } catch (e) {
 
     }
