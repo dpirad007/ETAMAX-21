@@ -4,14 +4,22 @@ import {
   CalendarOutlined,
   UserOutlined,
   HomeOutlined,
+  LogoutOutlined
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Button } from "antd";
 
 import "./Navbar.css";
 
 const { Sider } = Layout;
 
-const Navbar = ({ collapse, setCollapse }) => {
+const Navbar = ({ collapse, isLoggedIn,loginupdater }) => {
+
+  const logout = () => {
+    console.log("Logout Request!");
+    localStorage.removeItem("usertoken");
+    loginupdater(false);
+  };
+
   return (
     <div>
       <Sider
@@ -33,6 +41,17 @@ const Navbar = ({ collapse, setCollapse }) => {
           <Menu.Item key="3" icon={<UserOutlined />}>
             <Link to="/profile">Profile</Link>
           </Menu.Item>
+          {isLoggedIn && (
+          <Menu.Item isSelected="false" key="4" icon={<LogoutOutlined />}>
+            <Button onClick={()=>logout()} style={{ 
+              backgroundColor: "transparent" , 
+              backgroundRepeat: "no-repeat", 
+              border: "none",
+              color: "white", 
+              textAlign:"left", 
+              paddingLeft:"0px"}}>Logout</Button>
+          </Menu.Item>
+          )}
         </Menu>
       </Sider>
     </div>
