@@ -47,7 +47,7 @@ const HomeTimeLine = ({ selectedDay }) => {
             className="vertical-timeline-element--work"
             contentStyle={headerContentStyles}
             contentArrowStyle={rightArrow}
-            date="2011 - present"
+            date="Feb 18, 2021"
             iconStyle={normalIconStyles}
             icon={<ClockCircleOutlined />}
           >
@@ -89,7 +89,7 @@ const HomeTimeLine = ({ selectedDay }) => {
             className="vertical-timeline-element--work"
             contentStyle={headerContentStyles}
             contentArrowStyle={rightArrow}
-            date="2011 - present"
+            date="Feb 19, 2021"
             iconStyle={normalIconStyles}
             icon={<ClockCircleOutlined />}
           >
@@ -131,7 +131,7 @@ const HomeTimeLine = ({ selectedDay }) => {
             className="vertical-timeline-element--work"
             contentStyle={headerContentStyles}
             contentArrowStyle={rightArrow}
-            date="2011 - present"
+            date="Feb 20, 2021"
             iconStyle={normalIconStyles}
             icon={<ClockCircleOutlined />}
           >
