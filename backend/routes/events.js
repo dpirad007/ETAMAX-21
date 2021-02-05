@@ -9,11 +9,16 @@ var Event = require('../models/event');
 var User = require('../models/user');
 var authenticate = require('../authenticate');
 
-//URL: /api/events?day=n
+//URL: /api/events?day=n&category='C/T/F'
 router.get('/', authenticate.verifyUser, async (req, res) => {
     const urlObj = url.parse(req.originalUrl, true)
     try {
-        let events = await Event.find({ day: urlObj.query.day })
+        let events = await Event.find({
+            $and: [
+                { day: urlObj.query.day },
+                { category: urlObj.query.category }
+            ]
+        })
         res.send(events)
     } catch (e) {
         res.status(401).send(e)

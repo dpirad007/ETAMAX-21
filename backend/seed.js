@@ -67,7 +67,7 @@ const generateTimes = (day) => {
     end: `${day}-${(startHour + 1).toString()}:30`,
   };
 };
-const generateCategory = () => ["C", "T", "F"][randomNumber(0, 2)];
+const generateCategory = () => ["C", "T", "F"][randomNumber(0, 3)];
 const generatePrizeMoney = () => {
   const prizeMoney = [randomNumber(10, 15) * 100];
   for (let i = 0; i < randomNumber(0, 2); ++i) {
@@ -108,5 +108,5 @@ const addEvents = async () => {
 
 (async () => {
   await addUsers();
-  // await addEvents();
+  //await addEvents();
 })();
