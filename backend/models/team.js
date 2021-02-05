@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const User = require('./user');
 
 const teamSchema = new mongoose.Schema({
   memberRollNos: [String],
-  name: {
+  teamName: {
     type: String,
     required: true,
     trim: true,
