@@ -7,6 +7,7 @@ require("dotenv").config();
 const User = require("../models/user");
 var authenticate = require("../authenticate");
 
+//URL - /api/users/login
 router.post("/login", passport.authenticate("local"), (req, res, next) => {
   var jtoken = authenticate.getToken({ _id: req.user._id });
 
@@ -15,6 +16,7 @@ router.post("/login", passport.authenticate("local"), (req, res, next) => {
   res.json({ success: true, token: jtoken, status: "Login  Successful !" });
 });
 
+//URL - /api/users/update-profile
 router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
   try {
     await User.findOneAndUpdate({ _id: req.user._id }, req.body);
@@ -32,7 +34,7 @@ router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
   }
 });
 
-//User details
+///URL - /api/users/details
 router.get("/details", authenticate.verifyUser, (req, res) => {
   res.send(req.user.hasFilledProfile);
 });

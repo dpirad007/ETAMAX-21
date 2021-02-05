@@ -45,12 +45,13 @@ var userSchema = new mongoose.Schema({
         min: 1,
         max: 8,
       },
-      password: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 4,
-      },
+      //PASSWORD WILL BE ADDED BY PASSPORT
+      // password: { 
+      //   type: String,
+      //   required: true,
+      //   trim: true,
+      //   minlength: 4,
+      // },
       criteria: {
         1: { type: Boolean, default: false },
         2: { type: Boolean, default: false },
