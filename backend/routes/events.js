@@ -53,6 +53,22 @@ router.get('/my-status', authenticate.verifyUser, async (req, res) => {
 })
 
 //URL: /api/events/register-event
+/*
+Request Body - 
+Individual Event - {
+    eventCode
+} 
+
+Team Event - {
+    eventCode,
+    teamName,
+    member1,
+    .
+    .
+    .
+    memberN
+}
+*/
 router.post('/register-event', authenticate.verifyUser, async (req, res) => {
     try {
         let event = await Event.findOne({ eventCode: req.body.eventCode })
