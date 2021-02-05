@@ -1,0 +1,45 @@
+.dm-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.dm-title {
+  padding: 0.25rem;
+  font-weight: 600;
+  font-size: x-large;
+}
+.dm-cat {
+  padding: 0.25rem 0;
+  font-weight: 500;
+  font-size: medium;
+}
+.dm-desc {
+  padding: 0.25rem 0;
+  font-size: small;
+}
+.dm-prize {
+  margin: 0.5rem 0;
+  padding: 0.25rem 1rem;
+  align-self: flex-start;
+  font-size: medium;
+  border-radius: 0.25rem;
+  background: rgba(56, 235, 181, 0.7);
+}
+
+.dm-seats {
+  margin: 0.5rem 0;
+  padding: 0.25rem 1rem;
+  align-self: flex-start;
+  font-size: medium;
+  border-radius: 0.25rem;
+  background: rgb(255, 0, 0, 0.7);
+}
+
+.dm-entryfee {
+  margin: 0.5rem 0;
+  padding: 0.25rem 1rem;
+  align-self: flex-start;
+  font-size: medium;
+  border-radius: 0.25rem;
+  background: rgba(119, 35, 255, 0.7);
+}

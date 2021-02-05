@@ -11,7 +11,12 @@ const openNotification = () => {
   });
 };
 
-const ModalView = ({ changeModal, modalVisible }) => {
+const ModalView = ({ changeModal, modalVisible, teamSize }) => {
+  const items = [];
+  for (let i = 0; i < teamSize; i++) {
+    items.push(<Input className="m-input" placeholder="Team Mate" />);
+  }
+
   return (
     <div>
       <Modal
@@ -24,9 +29,7 @@ const ModalView = ({ changeModal, modalVisible }) => {
         }}
         onCancel={() => changeModal(false)}
       >
-        <Input className="m-input" placeholder="Team Mate 1" />
-        <Input className="m-input" placeholder="Team Mate 2" />
-        <Input className="m-input" placeholder="Team Mate 3" />
+        {items}
       </Modal>
     </div>
   );

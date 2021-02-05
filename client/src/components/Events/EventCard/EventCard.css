@@ -26,6 +26,7 @@
 }
 
 .ec-cat {
+  width: 60%;
   padding: 0 1rem;
   margin: 0 1rem;
   align-self: flex-start;
@@ -36,6 +37,7 @@
 }
 
 .ec-cat-in {
+  width: 60%;
   padding: 0 1rem;
   margin: 0 1rem;
   align-self: flex-start;
@@ -62,6 +64,10 @@
 .ec-add-btn:hover {
   cursor: pointer;
   color: rgb(32, 139, 226);
+}
+
+.ec-main-add {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 576px) {
