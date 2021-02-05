@@ -8,11 +8,11 @@ const PrivateRoute = ({ completedProfile, component: Component, ...rest }) => {
     <Route
       {...rest}
       component={(props) => {
-        if (isAuthenticated && completedProfile) {
+        if (isAuthenticated /*&& completedProfile*/) {
           return <Component {...props} />;
-        } else if (completedProfile === false && isAuthenticated) {
+        } /*else if (completedProfile === false && isAuthenticated) {
           return <Redirect to="/details" />;
-        } else {
+        }*/ else {
           return <Redirect to="/login" />;
         }
       }}
