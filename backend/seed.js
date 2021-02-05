@@ -22,11 +22,10 @@ const semesterMap = {
 };
 const generateUser = (rollNo) => ({
   name: faker.name.firstName() + " " + faker.name.lastName(),
-  email: faker.internet.email(),
+  email: rollNo + '@gmail.com',
   rollNo,
   department: departmentMap[rollNo[0]],
   semester: semesterMap[rollNo.slice(2, 4)],
-  password: "12345", //faker.internet.password(),
   collegeName: faker.company.companyName(),
   phoneNumber: faker.phone.phoneNumber("##########"),
   hasFilledProfile: true,
@@ -50,7 +49,7 @@ const addUsers = async () => {
     }
     for (let i = 0; i < depUsers.length; i++) {
       try {
-        await User.register(depUsers[i], depUsers[i].password);
+        await User.register(depUsers[i], '12345' /*faker.internet.password()*/);
       } catch (e) {
         console.log(e);
       }
@@ -67,7 +66,7 @@ const generateTimes = (day) => {
     end: `${day}-${(startHour + 1).toString()}:30`,
   };
 };
-const generateCategory = () => ["C", "T", "F"][randomNumber(0, 3)];
+const generateCategory = () => ["C", "T", "F"][randomNumber(0, 2)];
 const generatePrizeMoney = () => {
   const prizeMoney = [randomNumber(10, 15) * 100];
   for (let i = 0; i < randomNumber(0, 2); ++i) {
@@ -107,6 +106,6 @@ const addEvents = async () => {
 };
 
 (async () => {
-  await addUsers();
-  //await addEvents();
+  //await addUsers();
+  await addEvents();
 })();
