@@ -26,7 +26,7 @@ const generateUser = rollNo => ({
     rollNo,
     department: departmentMap[rollNo[0]],
     semester: semesterMap[rollNo.slice(2, 4)],
-    password: faker.internet.password(),
+    password: '12345',//faker.internet.password(),
     collegeName: faker.company.companyName(),
     phoneNumber: faker.phone.phoneNumber('##########'),
     hasFilledProfile: true,
