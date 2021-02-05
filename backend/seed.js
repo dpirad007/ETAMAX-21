@@ -28,7 +28,7 @@ const generateUser = rollNo => ({
     semester: semesterMap[rollNo.slice(2, 4)],
     password: faker.internet.password(),
     collegeName: faker.company.companyName(),
-    phoneNo: faker.phone.phoneNumber('##########'),
+    phoneNumber: faker.phone.phoneNumber('##########'),
     hasFilledProfile: true,
 });
 const addUsers = async () => {
