@@ -31,7 +31,7 @@ function App() {
   );
 
   useEffect(() => {
-    var token = window.localStorage.getItem("usertoken");
+    const token = window.localStorage.getItem("usertoken");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };

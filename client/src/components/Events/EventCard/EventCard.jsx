@@ -4,7 +4,13 @@ import ModalView from "../../Misc/Modal/Modal";
 
 import "./EventCard.css";
 
-const EventCard = () => {
+const EventCard = ({
+  data: { title, description, image, teamSize, category },
+}) => {
+  const truncate = (str, n) => {
+    return str.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const changeModal = (bool) => {
@@ -12,15 +18,15 @@ const EventCard = () => {
   };
   return (
     <div className="ec-main">
-      <img
-        src="https://cdn.pixabay.com/photo/2018/04/16/16/16/sunset-3325080_1280.jpg"
-        alt="Img"
-      />
-      <div className="ec-title">Solo Dance</div>
-      <div className="ec-cat">Team Size: 10</div>
-      <div className="ec-desc">
-        This is singing dummies just sing along, and sing and sing!!
-      </div>
+      <img src={image} alt="Img" />
+      <div className="ec-title">{title}</div>
+      {teamSize === 1 ? (
+        <div className="ec-cat-in">Individual</div>
+      ) : (
+        <div className="ec-cat">Team Size: {teamSize}</div>
+      )}
+
+      <div className="ec-desc">{truncate(description, 50)}</div>
       <div
         className="ec-add-btn"
         onClick={() => {
