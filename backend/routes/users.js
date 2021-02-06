@@ -16,27 +16,47 @@ router.post("/login", passport.authenticate("local"), (req, res, next) => {
   res.json({ success: true, token: jtoken, status: "Login  Successful !" });
 });
 
-//URL - /api/users/update-profile
-router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
+//URL - /api/users/update-profile 👨‍💻
+router.post("/update-profile",authenticate.verifyUser, async (req, res) => {
   try {
-    await User.findOneAndUpdate({ _id: req.user._id }, req.body);
-
-    await User.findOneAndUpdate(
-      { _id: req.user._id },
-      {
-        hasFilledProfile: true,
-      }
-    );
-    res.status(200).send({ message: "Profile updated successfully!" });
+    // Check if the update is allowed on given fields 
+    const allowedFields=[ 'name', 'semester', 'collegeName', 'phoneNumber' ]
+    let isValidObject=Object.keys(req.body).every((field)=>{
+      return allowedFields.includes(field)
+    });
+    if(!isValidObject){
+      throw new Error('Update not allowed for such fields')
+    }
+    // find and update current user data
+    await User.findOneAndUpdate({ _id: req.user._id }, {...req.body,hasFilledProfile:true});
+    return res.status(200).send({ message: "Profile updated successfully!" });
   } catch (e) {
-    console.log(e);
-    res.status(400).send(e);
+    return res.status(400).send({error:e.message});
   }
 });
 
 ///URL - /api/users/details
 router.get("/details", authenticate.verifyUser, (req, res) => {
-  res.send(req.user.hasFilledProfile);
+  return res.status(200).send(req.user.hasFilledProfile);
+});
+
+//URL - /api/users/profile-details
+router.get("/profile-details", authenticate.verifyUser, async(req, res) => {
+  try{
+    console.log('here')
+    await User.findById(req.user._id).populate('events').exec((err, events) => {
+      console.log("Populated User " + events);
+    })
+    return res.status(200).send({
+      criteria: req.user.criteria,
+      moneyOwed:req.user.moneyOwed,
+      hasFilledProfile: req.user.hasFilledProfile
+    });
+  }
+  catch(e){
+    return res.status(400).send({error:e.message})
+  }
+  
 });
 
 module.exports = router;
