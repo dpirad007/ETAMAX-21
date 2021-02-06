@@ -10,7 +10,7 @@ var Team = require('../models/team');
 var authenticate = require('../authenticate');
 
 //URL: /api/events?day=n&category='C/T/F'
-router.get('/', authenticate.verifyUser, async (req, res) => {
+router.get('/', async (req, res) => {
     const urlObj = url.parse(req.originalUrl, true)
     try {
         let events = await Event.find({
@@ -177,7 +177,5 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
 let hasDuplicates = (array) => {
     return (new Set(array)).size !== array.length;
 }
-
-
 
 module.exports = router;
