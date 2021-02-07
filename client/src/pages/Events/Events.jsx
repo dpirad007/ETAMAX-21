@@ -38,7 +38,6 @@ const Events = () => {
       )
       .then((res) => {
         setEvents(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
