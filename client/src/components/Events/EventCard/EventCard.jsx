@@ -41,7 +41,7 @@ const EventCard = ({
           <div className="ec-cat">Team Size: {teamSize}</div>
         )}
 
-        <div className="ec-desc">{truncate(description, 50)}</div>
+        <div className="ec-desc">{truncate(description, 40)}</div>
       </div>
       {teamSize === 1 ? (
         <Fragment>

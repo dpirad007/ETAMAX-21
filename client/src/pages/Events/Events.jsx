@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import Dropdown from "react-dropdown";
-import { Spin, Space } from "antd";
+import { Spin, Space, Radio } from "antd";
 
 //components
 import EventCard from "../../components/Events/EventCard/EventCard";
@@ -14,9 +14,16 @@ const menu = [
   { value: 3, label: "Third Day" },
 ];
 
+const options = [
+  { label: "Techical", value: "T" },
+  { label: "Cultural", value: "C" },
+  { label: "Fun", value: "F" },
+];
+
 const Events = () => {
   const [events, setEvents] = useState([]);
   const [selectedDay, setSelectedDay] = useState(1);
+  const [selectedCat, setSelectedCat] = useState("T");
 
   useEffect(() => {
     const token = window.localStorage.getItem("usertoken");
@@ -26,7 +33,7 @@ const Events = () => {
 
     axios
       .get(
-        `http://localhost:5000/api/events?day=${selectedDay}&category=C`,
+        `http://localhost:5000/api/events?day=${selectedDay}&category=${selectedCat}`,
         config
       )
       .then((res) => {
@@ -36,18 +43,31 @@ const Events = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [selectedDay]);
+  }, [selectedDay, selectedCat]);
 
   return (
     <Fragment>
-      <div className="e-dropdown">
-        <Dropdown
-          className="e-dropdown-item"
-          options={menu}
-          onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
-          placeholder="Select Day"
-        />
+      <div className="e-top-main">
+        <div className="e-dropdown">
+          <Dropdown
+            className="e-dropdown-item"
+            options={menu}
+            onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
+            placeholder="Select Day"
+          />
+        </div>
+        <div className="e-radio">
+          <Radio.Group
+            size="large"
+            options={options}
+            onChange={(e) => setSelectedCat(e.target.value)}
+            value={selectedCat}
+            optionType="button"
+            buttonStyle="solid"
+          />
+        </div>
       </div>
+
       <div className="e-main">
         {events.length ? (
           events.map((obj, i) => {
