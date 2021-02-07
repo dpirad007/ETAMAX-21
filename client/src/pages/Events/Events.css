@@ -4,6 +4,7 @@
   grid-template-rows: 1fr;
   align-items: center;
   justify-content: space-between;
+  padding: 0.25rem;
 }
 
 .e-main-item {
@@ -11,10 +12,6 @@
   margin: 0.5rem;
   height: 100%;
   width: max-content;
-}
-
-.e-main {
-  padding: 0.25rem;
 }
 
 .e-dropdown-item {
@@ -85,7 +82,7 @@
     grid-area: dropdown;
     align-self: center;
     justify-self: center;
-    width: 70%;
+    width: 100%;
     padding: 0.25rem;
     font-weight: 500;
   }
@@ -93,7 +90,7 @@
   .e-radio {
     padding: 0.25rem;
     grid-area: radio;
-    width: 70%;
+    width: 100%;
   }
 }
 

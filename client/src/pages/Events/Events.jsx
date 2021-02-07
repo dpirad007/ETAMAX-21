@@ -58,7 +58,7 @@ const Events = () => {
         </div>
         <div className="e-radio">
           <Radio.Group
-            size="large"
+            size="medium"
             options={options}
             onChange={(e) => setSelectedCat(e.target.value)}
             value={selectedCat}
