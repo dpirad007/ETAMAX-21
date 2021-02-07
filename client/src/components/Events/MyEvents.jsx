@@ -30,6 +30,7 @@ function MyEvents() {
                                 teamSize: event.teamSize,
                                 title: event.title
                             }}
+                            displayAdd={false}
                         />
                     </div>
                 })
