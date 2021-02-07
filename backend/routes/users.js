@@ -46,7 +46,8 @@ router.get("/profile-details", authenticate.verifyUser, async(req, res) => {
     return res.status(200).send({
       criteria: req.user.criteria,
       moneyOwed:req.user.moneyOwed,
-      hasFilledProfile: req.user.hasFilledProfile
+      hasFilledProfile: req.user.hasFilledProfile,
+      moneyOwed:req.user.moneyOwed
     });
   }
   catch(e){
