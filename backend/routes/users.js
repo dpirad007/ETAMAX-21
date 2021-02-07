@@ -13,7 +13,7 @@ router.post("/login", passport.authenticate("local"), (req, res, next) => {
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
-  res.json({ success: true, token: jtoken, status: "Login  Successful !" });
+  res.json({ name: req.user.name, success: true, token: jtoken, status: "Login  Successful !" });
 });
 
 //URL - /api/users/update-profile 👨‍💻
