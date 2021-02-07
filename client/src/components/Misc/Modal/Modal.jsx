@@ -25,14 +25,11 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
     axios
       .post("http://localhost:5000/api/events/register-event", body, config)
       .then(function (response) {
-        console.log(response.data);
         changeModal(false);
         openNotification("Event Added!");
       })
       .catch(function (error) {
-        console.log(error);
         if (error.response) {
-          console.log(error.response.data.message);
           error.response.data.message
             ? openNotification(error.response.data.message)
             : openNotification("Error");
