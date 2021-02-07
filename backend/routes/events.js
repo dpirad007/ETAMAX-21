@@ -130,15 +130,25 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
             }
 
             //Have any of the members in the input already registered for this event?
-            let already_registered = []
+            let already_registered = [], invalid_roll = []
             for (let i = 0; i < team.length; i++) {
                 let user_events = await User.findOne({ rollNo: team[i] }, { events: 1 })
+                if(!user_events) {
+                    invalid_roll.push(team[i])
+                    continue
+                }
+                
                 if (user_events.events.includes(event._id)) {
                     already_registered.push(team[i])
                 }
             }
+
             if (already_registered.length !== 0) {
                 return res.status(400).send([{ 'message': 'Your team member(s) have already registered for this event!' }, already_registered])
+            }
+
+            if (invalid_roll.length !== 0) {
+                return res.status(400).send([{ 'message': 'The following roll number(s) are invalid or do not exist!' }, invalid_roll])
             }
 
             //Create a new team
