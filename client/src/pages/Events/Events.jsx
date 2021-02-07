@@ -25,7 +25,10 @@ const Events = () => {
     };
 
     axios
-      .get(`http://localhost:5000/api/events?day=${selectedDay}`, config)
+      .get(
+        `http://localhost:5000/api/events?day=${selectedDay}&category=C`,
+        config
+      )
       .then((res) => {
         setEvents(res.data);
         console.log(res.data);
