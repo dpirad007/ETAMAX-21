@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Spin, Space } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import axios from "axios";
 import "./App.css";
@@ -22,7 +22,11 @@ const { Header, Content } = Layout;
 
 function App() {
   const [collapse, setCollapse] = useState(false);
-  const [completedProfile, setCompletedProfile] = useState();
+  const [profileCheck, setProfileCheck] = useState({
+    loading: true,
+    auth: false,
+    tok: false,
+  });
   const toggle = () => {
     setCollapse(!collapse);
   };
@@ -30,23 +34,26 @@ function App() {
     localStorage.getItem("usertoken") != null
   );
 
+  const token = window.localStorage.getItem("usertoken");
+
   useEffect(() => {
-    const token = window.localStorage.getItem("usertoken");
+    console.log("effect ran");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
+    token
+      ? axios
+          .get("http://localhost:5000/api/users/details", config)
+          .then((res) => {
+            setProfileCheck({ auth: res.data, loading: false, tok: true });
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      : setProfileCheck({ auth: false, tok: false, loading: false });
+  }, [token]);
 
-    axios
-      .get("http://localhost:5000/api/users/details", config)
-      .then((res) => {
-        setCompletedProfile(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  return (
+  return profileCheck.loading === false ? (
     <div className="App">
       <Router>
         <Layout style={{ minHeight: "100vh" }}>
@@ -54,6 +61,8 @@ function App() {
             collapse={collapse}
             isLoggedIn={isLoggedIn}
             loginupdater={loginupdater}
+            setProfileCheck={setProfileCheck}
+            profileCheck={profileCheck}
           />
           <Layout className="site-layout">
             <Header
@@ -85,6 +94,19 @@ function App() {
                     <Login
                       isLoggedIn={isLoggedIn}
                       loginupdater={loginupdater}
+                      setProfileCheck={setProfileCheck}
+                      profileCheck={profileCheck}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/details"
+                  render={(props) => (
+                    <Details
+                      setProfileCheck={setProfileCheck}
+                      profileCheck={profileCheck}
                       {...props}
                     />
                   )}
@@ -93,28 +115,42 @@ function App() {
                   exact
                   path="/"
                   component={Home}
-                  completedProfile={completedProfile}
+                  auth={profileCheck.auth}
+                  tok={profileCheck.tok}
                 />
                 <PrivateRoute
                   exact
                   path="/profile"
                   component={Profile}
-                  completedProfile={completedProfile}
+                  auth={profileCheck.auth}
+                  tok={profileCheck.tok}
                 />
                 {/*<Route exact path="/register" component={Register} />*/}
                 <PrivateRoute
                   exact
                   path="/events"
                   component={Events}
-                  completedProfile={completedProfile}
+                  auth={profileCheck.auth}
+                  tok={profileCheck.tok}
                 />
-                <Route exact path="/details" component={Details} />
               </Switch>
             </Content>
           </Layout>
         </Layout>
       </Router>
     </div>
+  ) : (
+    <Space
+      size="middle"
+      style={{
+        height: "100vh",
+        width: "100vw",
+        display: "Grid",
+        justifyContent: "center",
+      }}
+    >
+      <Spin size="large" />
+    </Space>
   );
 }
 

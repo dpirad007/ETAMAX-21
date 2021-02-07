@@ -5,8 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
-
-const Login = (props) => {
+const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
   let history = useHistory();
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
@@ -20,8 +19,9 @@ const Login = (props) => {
         // use => localStorage.getItem('usertoken') for accessing usertoken
 
         // code - when login is successful
-        history.push("/");
-        props.loginupdater(true);
+        loginupdater(true);
+        setProfileCheck({ ...profileCheck, tok: true });
+        history.push("/details");
       })
       .catch(function (error) {
         console.log(error);
