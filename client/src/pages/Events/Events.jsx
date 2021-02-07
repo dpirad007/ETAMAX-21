@@ -72,7 +72,7 @@ const Events = () => {
           events.map((obj, i) => {
             return (
               <div className="e-main-item">
-                <EventCard key={i} data={obj} />
+                <EventCard key={i} data={obj} displayAdd={true}/>
               </div>
             );
           })
