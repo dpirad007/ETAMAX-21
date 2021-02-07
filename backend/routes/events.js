@@ -79,12 +79,12 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
         let event = await Event.findOne({ eventCode: req.body.eventCode })
         //Does the event have seats left?
         if (event.maxSeats - event.seats === 0) {
-            return res.status(400).send({ 'message': 'This event has no seats left!' })
+            return res.status(400).send([{ 'message': 'This event has no seats left!' }])
         }
         if (event.teamSize === 1) {
             //Has the user already registered for this event?
             if (req.user.events.includes(event._id)) {
-                return res.status(400).send({ 'message': 'You have already registered for event!' })
+                return res.status(400).send([{ 'message': 'You have already registered for event!' }])
             }
 
             //Update User: Update criteria, increase moneyOwed and push event id into events array
@@ -104,12 +104,12 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
             }
             await Event.findOneAndUpdate({ eventCode: req.body.eventCode }, event_update)
 
-            res.status(201).send({ 'message': 'Criteria and Seats updated!' })
+            res.status(201).send([{ 'message': 'Criteria and Seats updated!' }])
 
         } else {
             //Has the current user (leader) already registered for this event?
             if (req.user.events.includes(event._id)) {
-                return res.status(400).send({ 'message': 'You have already registered for event!' })
+                return res.status(400).send([{ 'message': 'You have already registered for event!' }])
             }
 
             //Make an array of all team member Roll Numbers
@@ -121,24 +121,34 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
 
             //Is the team size correct?
             if (event.isTeamSizeStrict && team.length !== event.teamSize) {
-                return res.status(400).send({ 'message': 'This event has a strict team size! Please add more members!' })
+                return res.status(400).send([{ 'message': 'This event has a strict team size! Please add more members!' }])
             }
 
             //Are any of the input roll numbers duplicates?
             if (hasDuplicates(team)) {
-                return res.status(400).send({ 'message': 'Team members have been repeated! Please ensure they are unique!' })
+                return res.status(400).send([{ 'message': 'Team members have been repeated! Please ensure they are unique!' }])
             }
 
             //Have any of the members in the input already registered for this event?
-            let already_registered = []
+            let already_registered = [], invalid_roll = []
             for (let i = 0; i < team.length; i++) {
                 let user_events = await User.findOne({ rollNo: team[i] }, { events: 1 })
+                if(!user_events) {
+                    invalid_roll.push(team[i])
+                    continue
+                }
+                
                 if (user_events.events.includes(event._id)) {
                     already_registered.push(team[i])
                 }
             }
+
             if (already_registered.length !== 0) {
                 return res.status(400).send([{ 'message': 'Your team member(s) have already registered for this event!' }, already_registered])
+            }
+
+            if (invalid_roll.length !== 0) {
+                return res.status(400).send([{ 'message': 'The following roll number(s) are invalid or do not exist!' }, invalid_roll])
             }
 
             //Create a new team
@@ -171,10 +181,10 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
                 await User.findOneAndUpdate({ rollNo: team[i] }, user_update)
             }
 
-            res.status(200).send({ 'message': 'Criteria and Seats updated!' })
+            res.status(200).send([{ 'message': 'Criteria and Seats updated!' }])
         }
     } catch (e) {
-        res.status(400).send({error:e.message})
+        res.status(400).send([{error:e.message}])
     }
 })
 
