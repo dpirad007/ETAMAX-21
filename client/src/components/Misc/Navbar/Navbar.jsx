@@ -4,7 +4,7 @@ import {
   CalendarOutlined,
   UserOutlined,
   HomeOutlined,
-  LogoutOutlined
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button } from "antd";
 
@@ -12,12 +12,18 @@ import "./Navbar.css";
 
 const { Sider } = Layout;
 
-const Navbar = ({ collapse, isLoggedIn,loginupdater }) => {
-
+const Navbar = ({
+  collapse,
+  isLoggedIn,
+  loginupdater,
+  setProfileCheck,
+  profileCheck,
+}) => {
   const logout = () => {
     console.log("Logout Request!");
     localStorage.removeItem("usertoken");
     loginupdater(false);
+    setProfileCheck({ ...profileCheck, tok: false });
   };
 
   return (
@@ -42,15 +48,21 @@ const Navbar = ({ collapse, isLoggedIn,loginupdater }) => {
             <Link to="/profile">Profile</Link>
           </Menu.Item>
           {isLoggedIn && (
-          <Menu.Item isSelected="false" key="4" icon={<LogoutOutlined />}>
-            <Button onClick={()=>logout()} style={{ 
-              backgroundColor: "transparent" , 
-              backgroundRepeat: "no-repeat", 
-              border: "none",
-              color: "white", 
-              textAlign:"left", 
-              paddingLeft:"0px"}}>Logout</Button>
-          </Menu.Item>
+            <Menu.Item isSelected="false" key="4" icon={<LogoutOutlined />}>
+              <Button
+                onClick={() => logout()}
+                style={{
+                  backgroundColor: "transparent",
+                  backgroundRepeat: "no-repeat",
+                  border: "none",
+                  color: "white",
+                  textAlign: "left",
+                  paddingLeft: "0px",
+                }}
+              >
+                Logout
+              </Button>
+            </Menu.Item>
           )}
         </Menu>
       </Sider>

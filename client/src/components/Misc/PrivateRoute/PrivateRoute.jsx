@@ -1,18 +1,16 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
-const PrivateRoute = ({ completedProfile, component: Component, ...rest }) => {
-  const isAuthenticated = localStorage.getItem("usertoken");
-  console.log(completedProfile);
+const PrivateRoute = ({ auth, tok, component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       component={(props) => {
-        if (isAuthenticated /*&& completedProfile*/) {
+        if (auth && tok) {
           return <Component {...props} />;
-        } /*else if (completedProfile === false && isAuthenticated) {
+        } else if (!auth && tok) {
           return <Redirect to="/details" />;
-        }*/ else {
+        } else {
           return <Redirect to="/login" />;
         }
       }}

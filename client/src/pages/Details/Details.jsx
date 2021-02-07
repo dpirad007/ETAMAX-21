@@ -1,10 +1,42 @@
 import React, { Fragment } from "react";
+import axios from "axios";
 import { Form, Input, Button, Select } from "antd";
+import { useHistory } from "react-router-dom";
 
 const { Option } = Select;
-const Details = () => {
+
+const Details = ({ setProfileCheck, profileCheck }) => {
+  let history = useHistory();
+  if (profileCheck.auth) {
+    console.log("details: ", profileCheck.auth);
+    history.push("/");
+  }
+
   const onFinish = (values) => {
     console.log(values);
+    const token = window.localStorage.getItem("usertoken");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    axios
+      .post(
+        "http://localhost:5000/api/users/update-profile",
+        {
+          name: values.userName,
+          collegeName: values.college,
+          department: values.department,
+          phoneNumber: values.phoneNo,
+          semester: values.sem,
+        },
+        config
+      )
+      .then(function (response) {
+        setProfileCheck({ ...profileCheck, auth: true });
+        history.push("/");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
