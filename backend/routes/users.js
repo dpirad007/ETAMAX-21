@@ -43,10 +43,6 @@ router.get("/details", authenticate.verifyUser, (req, res) => {
 //URL - /api/users/profile-details
 router.get("/profile-details", authenticate.verifyUser, async(req, res) => {
   try{
-    console.log('here')
-    await User.findById(req.user._id).populate('events').exec((err, events) => {
-      console.log("Populated User " + events);
-    })
     return res.status(200).send({
       criteria: req.user.criteria,
       moneyOwed:req.user.moneyOwed,
@@ -55,8 +51,8 @@ router.get("/profile-details", authenticate.verifyUser, async(req, res) => {
   }
   catch(e){
     return res.status(400).send({error:e.message})
-  }
-  
+  }  
 });
+
 
 module.exports = router;

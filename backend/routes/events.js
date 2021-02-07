@@ -21,36 +21,41 @@ router.get('/', async (req, res) => {
         })
         res.send(events)
     } catch (e) {
-        res.status(401).send(e)
-        console.log(e)
+        res.status(401).send({error:e.message})
     }
 })
 
-//URL: /api/events/my-events
+// URL: /api/events/my-events'
 router.get('/my-events', authenticate.verifyUser, async (req, res) => {
+    const urlObj = url.parse(req.originalUrl, true)
     try {
-        let my_events = []
-        for (let i = 0; i < req.user.events.length; i++) {
-            let event = await Event.findOne({ _id: req.user.events[i] }, { title: 1, description: 1 })
-            my_events += event
-        }
-        res.send(my_events)
+        await User.findById(req.user._id).populate('events',{
+            registered:0,
+            eventCode:0,
+            isSeminar:0,
+        }).exec((err, user) => {
+            if(err){
+                throw new Error('Somithing went wrong') 
+            }
+            return res.status(200).send(user.events)
+        })
+        
     } catch (e) {
-        console.log(e)
-        res.status(400).send(e)
+        res.status(400).send({error:e.message})
     }
+    
 })
 
-//URL: /api/events/my-status
-router.get('/my-status', authenticate.verifyUser, async (req, res) => {
-    try {
-        let crit = await User.findOne({ _id: req.user._id }, { criteria: 1, moneyOwed: 1 })
-        let paid = Object.values(crit.criteria).every(v => v) && moneyOwed === 0
-        res.status(200).send([crit, { paid }])
-    } catch (e) {
+// //URL: /api/events/my-status
+// router.get('/my-status', authenticate.verifyUser, async (req, res) => {
+//     try {
+//         let crit = await User.findOne({ _id: req.user._id }, { criteria: 1, moneyOwed: 1 })
+//         let paid = Object.values(crit.criteria).every(v => v) && moneyOwed === 0
+//         res.status(200).send([crit, { paid }])
+//     } catch (e) {
 
-    }
-})
+//     }
+// })
 
 //URL: /api/events/register-event
 /*
@@ -99,7 +104,7 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
             }
             await Event.findOneAndUpdate({ eventCode: req.body.eventCode }, event_update)
 
-            res.status(200).send({ 'message': 'Criteria and Seats updated!' })
+            res.status(201).send({ 'message': 'Criteria and Seats updated!' })
 
         } else {
             //Has the current user (leader) already registered for this event?
@@ -169,8 +174,7 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
             res.status(200).send({ 'message': 'Criteria and Seats updated!' })
         }
     } catch (e) {
-        console.log(e)
-        res.status(400).send(e)
+        res.status(400).send({error:e.message})
     }
 })
 

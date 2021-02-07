@@ -1,44 +1,56 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Progress, Steps } from "antd";
+import { Progress, Steps,Spin,Space } from "antd";
 import axios from 'axios'
-
+import MyEvents from '../../components/Events/MyEvents'
 import "./Profile.css";
 
 const { Step } = Steps;
 
 const Profile = () => {
   const [currentCompletion, setCurrent] = useState(0)
+  const [err, setErr] = useState(0)
   useEffect(() => {
     axios.get('http://localhost:5000/api/users/profile-details', {
       headers: { Authorization: `bearer ${localStorage.getItem('usertoken')}` }
     }).then((response) => {
-        let isCriteria = Object.values(response.data.criteria).every(val => val === true)
-        if (response.data.hasFilledProfile) {
-          setCurrent(1)
-          if (isCriteria) {
-            setCurrent(2)
-            if (response.data.moneyOwed === 0) {
-              setCurrent(3)
-            }
+      let isCriteria = Object.values(response.data.criteria).every(val => val === true)
+      if (response.data.hasFilledProfile) {
+        setCurrent(1)
+        if (isCriteria) {
+          setCurrent(2)
+          if (response.data.moneyOwed === 0) {
+            setCurrent(3)
           }
         }
-      })
-      .catch(e=>console.log(e));
+      }
+    })
+      .catch(e => setErr(1));
   }, []);
   return (
+
     <Fragment>
-      <div className="p-main">
-        <div className="p-circBar">
-          <Progress type="circle" percent={currentCompletion * 33.33} />
-        </div>
-        <div className="p-steps">
-          <Steps current={currentCompletion} responsive={true}>
-            <Step title="Update Profile" description="Fill the form to update your name and phone no." />
-            <Step title="Meet Criterion" description="Register for events! Criteria is not yet satisfied" />
-            <Step title="Paid" description="Pay whole amount you got on your profile" />
-          </Steps>
-        </div>
-      </div>
+      {err? (
+        <Space size="middle" style={{ height: "50vh",marginLeft:"46%"}}>
+          <Spin size="large" />
+        </Space>
+      ) : (
+          <div>
+            <div className="p-main">
+              <div className="p-circBar">
+                <Progress type="circle" percent={currentCompletion * 33.33} />
+              </div>
+              <div className="p-steps">
+                <Steps current={currentCompletion} responsive={true} direction={"vertical"}>
+                  <Step title="Update Profile" description="Fill the form to update your name and phone no." />
+                  <Step title="Meet Criterion" description="Register for events! Criteria is not yet satisfied" />
+                  <Step title="Paid" description="Pay whole amount you got on your profile" />
+                </Steps>
+              </div>
+            </div>
+          </div>
+        )}
+
+      <MyEvents />
     </Fragment>
   );
 };
