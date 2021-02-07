@@ -1,20 +1,60 @@
 import React from "react";
-import { Modal, notification, Input } from "antd";
+import { Modal, notification, Input, Form, Button } from "antd";
+import axios from "axios";
 
 import "./Modal.css";
 
-const openNotification = () => {
+const openNotification = (message) => {
   notification.open({
-    message: "Added your lame event",
-    description: "Waasup",
+    message: message,
     duration: 2,
   });
 };
 
-const ModalView = ({ changeModal, modalVisible, teamSize }) => {
+const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
+  const onFinish = (values) => {
+    console.log(values);
+    const token = window.localStorage.getItem("usertoken");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    const body = { ...values, eventCode: eventCode };
+    console.log(body);
+
+    axios
+      .post("http://localhost:5000/api/events/register-event", body, config)
+      .then(function (response) {
+        console.log(response.data);
+        changeModal(false);
+        openNotification("Event Added!");
+      })
+      .catch(function (error) {
+        console.log(error);
+        if (error.response) {
+          console.log(error.response.data.message);
+          error.response.data.message
+            ? openNotification(error.response.data.message)
+            : openNotification("Error");
+        }
+      });
+  };
+
   const items = [];
-  for (let i = 0; i < teamSize; i++) {
-    items.push(<Input className="m-input" placeholder="Team Mate" />);
+  for (let i = 1; i < teamSize; i++) {
+    items.push(
+      <Form.Item
+        name={`member${i}`}
+        rules={[
+          {
+            required: true,
+            min: 6,
+          },
+        ]}
+      >
+        <Input className="m-input" placeholder={`Team Mate ${i} Rollno`} />
+      </Form.Item>
+    );
   }
 
   return (
@@ -23,13 +63,34 @@ const ModalView = ({ changeModal, modalVisible, teamSize }) => {
         title="Additional Details"
         centered
         visible={modalVisible}
-        onOk={() => {
-          changeModal(false);
-          openNotification();
-        }}
         onCancel={() => changeModal(false)}
+        footer={[
+          <Button form="register" key="submit" htmlType="submit">
+            Submit
+          </Button>,
+        ]}
       >
-        {items}
+        <Form
+          name="register"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name="teamName"
+            rules={[
+              {
+                required: true,
+                max: 100,
+              },
+            ]}
+          >
+            <Input className="m-input" placeholder="Enter Team Name" />
+          </Form.Item>
+
+          {items}
+        </Form>
       </Modal>
     </div>
   );

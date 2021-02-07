@@ -1,13 +1,21 @@
 import React, { Fragment, useState } from "react";
-import { Popconfirm } from "antd";
+import { Popconfirm, notification } from "antd";
+import axios from "axios";
 
 import ModalView from "../../Misc/Modal/Modal";
 import DetailsModal from "../../Misc/DetailsModal/DetailsModal";
 
 import "./EventCard.css";
 
+const openNotification = (message) => {
+  notification.open({
+    message: message,
+    duration: 2,
+  });
+};
+
 const EventCard = ({
-  data: { title, description, image, teamSize, category },
+  data: { title, description, image, teamSize, category, eventCode },
   data,
 }) => {
   const truncate = (str, n) => {
@@ -23,6 +31,33 @@ const EventCard = ({
 
   const changeAddModal = (bool) => {
     setAddModalVisible(bool);
+  };
+
+  const addEvent = () => {
+    const token = window.localStorage.getItem("usertoken");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    const body = { eventCode: eventCode };
+    console.log(body);
+
+    axios
+      .post("http://localhost:5000/api/events/register-event", body, config)
+      .then(function (response) {
+        console.log(response.data);
+        changeModal(false);
+        openNotification("Event Added!");
+      })
+      .catch(function (error) {
+        console.log(error);
+        if (error.response) {
+          console.log(error.response.data.message);
+          error.response.data.message
+            ? openNotification(error.response.data.message)
+            : openNotification("Error");
+        }
+      });
   };
 
   return (
@@ -49,9 +84,7 @@ const EventCard = ({
             title="Are you sure you want to Add this Event?"
             okText="Yes"
             cancelText="No"
-            onConfirm={() => {
-              console.log("poppy");
-            }}
+            onConfirm={addEvent}
           >
             <div className="ec-add-btn">+</div>
           </Popconfirm>
@@ -70,6 +103,7 @@ const EventCard = ({
             modalVisible={modalVisible}
             changeModal={changeModal}
             teamSize={teamSize}
+            eventCode={eventCode}
           />
         </Fragment>
       )}
