@@ -1,4 +1,4 @@
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
@@ -22,13 +22,33 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
         loginupdater(true);
         setProfileCheck({ ...profileCheck, tok: true });
         history.push("/details");
+        var name = "Welcome " + response.data.name;
+        openSuccessNotification({"message":name});
       })
       .catch(function (error) {
-        console.log(error);
-
+        openErrorNotification({"message":"Username or Password is Incorrect"});
         // code - display error on screen when error occurs
       });
   };
+
+  const openSuccessNotification = (error) => {
+    const args = {
+      message: error.message,
+
+      duration: 5,
+    };
+    notification.success(args);
+  };
+
+  const openErrorNotification = (error) => {
+    const args = {
+      message: error.message,
+
+      duration: 5,
+    };
+    notification.warning(args);
+  };
+
 
   return (
     <Fragment>
