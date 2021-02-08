@@ -72,12 +72,17 @@ const Events = () => {
           events.map((obj, i) => {
             return (
               <div className="e-main-item">
-                <EventCard key={i} data={obj} displayAdd={true}/>
+                <EventCard key={i} data={obj} displayAdd={true} />
               </div>
             );
           })
         ) : (
-          <Space size="middle" style={{ height: "50vh" }}>
+          <Space
+            size="middle"
+            style={{
+              height: "50vh",
+            }}
+          >
             <Spin size="large" />
           </Space>
         )}
