@@ -26,7 +26,7 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
       .post("http://localhost:5000/api/events/register-event", body, config)
       .then(function (response) {
         changeModal(false);
-        openNotification("Event Added!");
+        openNotification("Registered for Event!");
       })
       .catch(function (error) {
         if (error.response) {
