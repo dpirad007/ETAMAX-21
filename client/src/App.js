@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { Layout, Spin, Space } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import axios from "axios";
@@ -47,7 +52,8 @@ function App() {
             setProfileCheck({ auth: res.data, loading: false, tok: true });
           })
           .catch((err) => {
-            console.log(err);
+            setProfileCheck({ auth: false, loading: false, tok: false });
+            <Redirect to="/login" />;
           })
       : setProfileCheck({ auth: false, tok: false, loading: false });
   }, [token]);
