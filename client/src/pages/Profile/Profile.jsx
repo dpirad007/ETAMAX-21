@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Progress, Steps,Spin,Space } from "antd";
 import axios from 'axios'
-import MyEvents from '../../components/Events/MyEvents'
+import MyEvents from '../../components/Profile/MyEvents'
 import "./Profile.css";
 
 const { Step } = Steps;

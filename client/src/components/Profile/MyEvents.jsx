@@ -1,5 +1,5 @@
 import { Fragment, React, useEffect, useState } from "react";
-import EventCard from "./EventCard/EventCard";
+import EventCard from "../Events/EventCard/EventCard";
 import axios from "axios";
 import { Spin, Space } from "antd";
 import "./MyEvents.css";
