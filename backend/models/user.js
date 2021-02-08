@@ -73,6 +73,6 @@ var userSchema = new mongoose.Schema({
   events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]
 });
 
-userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+userSchema.plugin(passportLocalMongoose, { usernameField: 'rollNo' });
 
 module.exports = mongoose.model('User', userSchema);

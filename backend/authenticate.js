@@ -9,7 +9,7 @@ var ExtractJwt = require('passport-jwt').ExtractJwt;
 var User = require('./models/user');
 
 exports.local = passport.use(new LocalStrategy({
-    usernameField: 'email'
+    usernameField: 'rollNo'
 }, User.authenticate()));
 
 passport.serializeUser(User.serializeUser());

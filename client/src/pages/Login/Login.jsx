@@ -11,7 +11,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
     // console.log('Received values of form: ', values);
     axios
       .post("http://localhost:5000/api/users/login", {
-        email: values.username,
+        rollNo: values.username,
         password: values.password,
       })
       .then(function (response) {
