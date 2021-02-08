@@ -7,7 +7,7 @@ import "./Modal.css";
 const openNotification = (message) => {
   notification.open({
     message: message,
-    duration: 2,
+    duration: 3,
   });
 };
 

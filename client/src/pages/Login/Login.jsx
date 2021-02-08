@@ -23,10 +23,10 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
         setProfileCheck({ ...profileCheck, tok: true });
         history.push("/details");
         var name = "Welcome " + response.data.name;
-        openSuccessNotification({"message":name});
+        openSuccessNotification({ message: name });
       })
       .catch(function (error) {
-        openErrorNotification({"message":"Username or Password is Incorrect"});
+        openErrorNotification({ message: "Username or Password is Incorrect" });
         // code - display error on screen when error occurs
       });
   };
@@ -35,7 +35,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
     const args = {
       message: error.message,
 
-      duration: 5,
+      duration: 3,
     };
     notification.success(args);
   };
@@ -44,11 +44,10 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
     const args = {
       message: error.message,
 
-      duration: 5,
+      duration: 3,
     };
     notification.warning(args);
   };
-
 
   return (
     <Fragment>
