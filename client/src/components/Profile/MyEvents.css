@@ -10,6 +10,6 @@
 .me-main-item {
   padding: 0.5rem 0;
   height: 100%;
-  width: max-content;
+  width: 250px;
   justify-self: center;
 }
