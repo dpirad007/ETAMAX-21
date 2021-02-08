@@ -77,12 +77,7 @@ const Events = () => {
             );
           })
         ) : (
-          <Space
-            size="middle"
-            style={{
-              height: "50vh",
-            }}
-          >
+          <Space size="middle" className="e-loader">
             <Spin size="large" />
           </Space>
         )}
