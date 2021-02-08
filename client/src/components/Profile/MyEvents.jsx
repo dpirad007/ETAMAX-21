@@ -18,7 +18,7 @@ function MyEvents() {
         setEventsArr(
           response.data.map((event, i) => {
             return (
-              <div className="e-main-item">
+              <div className="me-main-item">
                 <EventCard
                   key={i}
                   data={{
@@ -52,7 +52,7 @@ function MyEvents() {
           <Spin size="large" />
         </Space>
       ) : (
-        <div className="e-main">{events}</div>
+        <div className="me-main">{events}</div>
       )}
     </Fragment>
   );

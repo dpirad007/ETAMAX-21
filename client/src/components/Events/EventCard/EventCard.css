@@ -12,7 +12,7 @@
 
 .ec-main img {
   width: 100%;
-  height: 100px;
+  height: 125px;
   border-radius: 0.5rem 0.5rem 0 0;
   object-fit: cover;
 }
@@ -27,6 +27,17 @@
 
 .ec-cat {
   width: 60%;
+  padding: 0 1rem;
+  margin: 0 1rem;
+  align-self: flex-start;
+  font-size: medium;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  background: rgb(255, 0, 0, 0.7);
+}
+
+.ep-cat {
+  width: 40%;
   padding: 0 1rem;
   margin: 0 1rem;
   align-self: flex-start;
@@ -68,6 +79,10 @@
 
 .ec-main-add {
   cursor: pointer;
+}
+
+.ep-main-add {
+  cursor: default;
 }
 
 @media only screen and (max-width: 576px) {
