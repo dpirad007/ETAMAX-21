@@ -18,7 +18,7 @@ const ProfileCard = ({
   return (
     <div className="ec-main">
       <div className="ep-main-add">
-        <div className="ec-title">{title}</div>
+        <div className="ec-title">{truncate(title, 20)}</div>
 
         <div className="ep-cat">Fee: {entryFee}</div>
 
@@ -54,7 +54,7 @@ const EventCard = ({
         }}
       >
         <img src={image} alt="Img" />
-        <div className="ec-title">{title}</div>
+        <div className="ec-title">{truncate(title, 15)}</div>
         {teamSize === 1 ? (
           <div className="ec-cat-in">Individual</div>
         ) : (
