@@ -47,6 +47,7 @@ const Details = ({ setProfileCheck, profileCheck }) => {
           remember: true,
         }}
         onFinish={onFinish}
+        style={{ padding: "1rem" }}
       >
         <Form.Item
           name="userName"

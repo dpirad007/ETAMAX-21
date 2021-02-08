@@ -54,7 +54,7 @@ const HomeTimeLine = ({ selectedDay }) => {
               Events of Day One
             </h3>
             <h4 className="vertical-timeline-element-subtitle">Etamax</h4>
-            <p>Timeline Day 1</p>
+            <p>Timeline</p>
           </VerticalTimelineElement>
           {timeLineDataDay1
             ? timeLineDataDay1.map((obj) => {
@@ -96,7 +96,7 @@ const HomeTimeLine = ({ selectedDay }) => {
               Events of Day Two
             </h3>
             <h4 className="vertical-timeline-element-subtitle">Etamax</h4>
-            <p>Timeline Day 2</p>
+            <p>Timeline</p>
           </VerticalTimelineElement>
           {timeLineDataDay2
             ? timeLineDataDay2.map((obj) => {
@@ -138,7 +138,7 @@ const HomeTimeLine = ({ selectedDay }) => {
               Events of Day Three
             </h3>
             <h4 className="vertical-timeline-element-subtitle">Etamax</h4>
-            <p>Timeline Day 3</p>
+            <p>Timeline</p>
           </VerticalTimelineElement>
           {timeLineDataDay3
             ? timeLineDataDay3.map((obj) => {

@@ -58,6 +58,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
           remember: true,
         }}
         onFinish={onFinish}
+        style={{ padding: "1rem" }}
       >
         <Form.Item
           name="username"

@@ -33,7 +33,7 @@ const Navbar = ({
         trigger={null}
         collapsible
         collapsed={collapse}
-        collapsedWidth="60"
+        collapsedWidth="50"
         width="150"
       >
         <div className="logo">η</div>
