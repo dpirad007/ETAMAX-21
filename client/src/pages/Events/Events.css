@@ -28,6 +28,7 @@
 }
 
 .e-radio {
+  text-align: center;
   padding: 0.25rem;
   grid-area: radio;
   justify-self: center;
