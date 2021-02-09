@@ -9,7 +9,6 @@ var authenticate = require("../authenticate");
 
 //URL - /api/users/login
 router.post("/login", passport.authenticate("local"), (req, res, next) => {
-  console.log("*************")
   var jtoken = authenticate.getToken({ _id: req.user._id });
 
   res.statusCode = 200;

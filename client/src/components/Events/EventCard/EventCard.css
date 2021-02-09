@@ -80,6 +80,25 @@
   background: rgba(24, 144, 255, 0.3);
 }
 
+/* prithviraj added this */
+.ec-team {
+  width: 80%;
+  padding: 0.25rem 1rem;
+  margin: 0 1rem;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+  font-size: medium;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  background: rgba(197, 177, 177, 0.7);
+  overflow-wrap: break-word;
+}
+
+/* prithviraj added this */
+.ec-main::-webkit-scrollbar {
+  display: none;
+}
+
 .ec-add-btn {
   border-top: lightgray 1px solid;
   padding: 0.25rem;
