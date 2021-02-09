@@ -6,7 +6,7 @@ import {
   HomeOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Button } from "antd";
+import { Drawer, Layout, Menu, Button } from "antd";
 
 import "./Navbar.css";
 
@@ -14,6 +14,7 @@ const { Sider } = Layout;
 
 const Navbar = ({
   collapse,
+  setCollapse,
   isLoggedIn,
   loginupdater,
   setProfileCheck,
@@ -28,16 +29,15 @@ const Navbar = ({
 
   return (
     <div>
-      <Sider
-        style={{ height: "100%" }}
-        trigger={null}
-        collapsible
-        collapsed={collapse}
-        collapsedWidth="50"
-        width="150"
+      <Drawer
+        theme="dark"
+        placement="left"
+        onClick={() => setCollapse(false)}
+        onClose={() => setCollapse(false)}
+        visible={collapse}
       >
         <div className="logo">η</div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+        <Menu mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
@@ -55,7 +55,6 @@ const Navbar = ({
                   backgroundColor: "transparent",
                   backgroundRepeat: "no-repeat",
                   border: "none",
-                  color: "white",
                   textAlign: "left",
                   paddingLeft: "0px",
                 }}
@@ -65,7 +64,7 @@ const Navbar = ({
             </Menu.Item>
           )}
         </Menu>
-      </Sider>
+      </Drawer>
     </div>
   );
 };

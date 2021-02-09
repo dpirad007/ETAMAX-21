@@ -68,6 +68,7 @@ function App() {
             loginupdater={loginupdater}
             setProfileCheck={setProfileCheck}
             profileCheck={profileCheck}
+            setCollapse={setCollapse}
           />
           <Layout className="site-layout">
             <Header
