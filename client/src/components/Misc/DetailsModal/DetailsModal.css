@@ -4,7 +4,7 @@
 }
 
 .dm-title {
-  padding: 0.25rem;
+  padding: 0.25rem 0;
   font-weight: 600;
   font-size: x-large;
 }
@@ -32,7 +32,7 @@
   align-self: flex-start;
   font-size: medium;
   border-radius: 0.25rem;
-  background: rgb(255, 0, 0, 0.7);
+  background: rgb(245, 185, 113);
 }
 
 .dm-entryfee {
@@ -41,5 +41,5 @@
   align-self: flex-start;
   font-size: medium;
   border-radius: 0.25rem;
-  background: rgba(119, 35, 255, 0.7);
+  background: rgba(119, 35, 255, 0.4);
 }

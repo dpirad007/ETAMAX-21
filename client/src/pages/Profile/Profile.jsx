@@ -64,7 +64,7 @@ const Profile = () => {
                   title="Meet Criterion"
                   description="Cultural Technical Fun | Day 1-2-3 (any)"
                 />
-                <Step title={`${totalAmt} ₹`} description={paidDescription} />
+                <Step title={`₹ ${totalAmt}`} description={paidDescription} />
               </Steps>
             </div>
           </div>

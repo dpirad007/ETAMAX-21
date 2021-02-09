@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ClockCircleOutlined, UserOutlined } from "@ant-design/icons";
 
 import DetailsModal from "../../Misc/DetailsModal/DetailsModal";
 
@@ -19,17 +20,25 @@ const ProfileCard = ({
     <div className="ec-main">
       <div className="ep-main-add">
         <div className="ec-title">{truncate(title, 20)}</div>
-
         <div className="ep-cat">Fee: {entryFee}</div>
-
-        <div className="ec-desc">{truncate(description, 40)}</div>
       </div>
     </div>
   );
 };
 
 const EventCard = ({
-  data: { title, description, image, teamSize, category, eventCode },
+  data: {
+    title,
+    image,
+    teamSize,
+    category,
+    eventCode,
+    start,
+    end,
+    seats,
+    maxSeats,
+    entryFee,
+  },
   data,
   displayAdd,
 }) => {
@@ -55,13 +64,22 @@ const EventCard = ({
       >
         <img src={image} alt="Img" />
         <div className="ec-title">{truncate(title, 15)}</div>
-        {teamSize === 1 ? (
-          <div className="ec-cat-in">Individual</div>
-        ) : (
-          <div className="ec-cat">Team Size: {teamSize}</div>
-        )}
+        <div className="ec-chips-main">
+          {teamSize === 1 ? (
+            <div className="ec-cat-in">Individual</div>
+          ) : (
+            <div className="ec-cat">Team Size: {teamSize}</div>
+          )}
 
-        <div className="ec-desc">{truncate(description, 40)}</div>
+          <div className="ec-cat-se">
+            <UserOutlined style={{ color: "#4b4b4b" }} /> {seats}/{maxSeats}
+          </div>
+          <div className="ec-cat-ti">
+            <ClockCircleOutlined style={{ color: "#4b4b4b" }} />{" "}
+            {start.slice(2)} - {end.slice(2)}
+          </div>
+          <div className="ec-cat-fe">₹ {entryFee}</div>
+        </div>
       </div>
 
       <DetailsModal

@@ -57,7 +57,7 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
   return (
     <div>
       <Modal
-        title="Additional Details"
+        title="Team Details"
         centered
         visible={modalVisible}
         onCancel={() => changeModal(false)}

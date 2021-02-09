@@ -5,14 +5,14 @@
   align-items: center;
   justify-content: center;
   padding: 0.25rem;
+  grid-gap: 1rem;
 }
 
 .e-main-item {
   padding: 0.5rem;
-  margin: 0.5rem;
   height: 100%;
   width: 100%;
-  justify-self: center;
+  margin: 0 auto;
 }
 
 .Dropdown-option:hover {
@@ -52,6 +52,16 @@
 }
 
 @media only screen and (max-width: 576px) {
+  .e-main {
+    display: grid;
+    grid-template-columns: minmax(200px, 350px);
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    grid-gap: 1rem;
+  }
+
   .e-top-main {
     display: grid;
     grid-template-columns: 1fr;

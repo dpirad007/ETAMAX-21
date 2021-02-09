@@ -37,6 +37,7 @@ const DetailsModal = ({
     seats,
     start,
     day,
+    end,
   },
 }) => {
   return (
@@ -61,7 +62,9 @@ const DetailsModal = ({
             Day {day} - {title}
           </div>
           <div className="dm-cat">{catTocat[category]}</div>
-          <div className="dm-cat">Start Time: {tConvert(start.slice(2))}</div>
+          <div className="dm-cat">
+            Time: {start.slice(2)} - {end.slice(2)}
+          </div>
           <div className="dm-desc">{description}</div>
           <div className="dm-prize">Prize: {prizeMoney[0]}</div>
           <div className="dm-seats">Seats: {seats + "/" + maxSeats}</div>

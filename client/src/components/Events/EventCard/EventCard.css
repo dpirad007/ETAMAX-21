@@ -1,13 +1,10 @@
 .ec-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 1px 2px 10px #33333352;
+  display: grid;
+  box-shadow: 1px 2px 5px #33333352;
   border-radius: 0.5rem;
   height: 100%;
   width: 100%;
-  max-height: 350px;
-  max-width: 300px;
+  justify-self: center;
 }
 
 .ec-main img {
@@ -20,52 +17,72 @@
 .ec-title {
   width: 100%;
   padding: 1rem;
-  align-self: flex-start;
   font-size: x-large;
   font-weight: 600;
 }
 
 .ec-cat {
-  width: 60%;
-  padding: 0 1rem;
-  margin: 0 1rem;
-  align-self: flex-start;
+  grid-area: ec-tsize;
+  margin: 0.5rem;
   font-size: medium;
   font-weight: 500;
   border-radius: 0.25rem;
-  background: rgba(167, 197, 235, 0.7);
+  justify-self: left;
 }
 
 .ep-cat {
   width: 45%;
   padding: 0 1rem;
-  margin: 0 1rem;
-  align-self: flex-start;
+  margin: 1rem;
   font-size: medium;
   font-weight: 500;
   border-radius: 0.25rem;
-  background: rgb(255, 0, 0, 0.7);
+  background: rgb(255, 0, 0, 0.4);
 }
 
 .ec-cat-in {
-  width: 60%;
-  padding: 0 1rem;
-  margin: 0 1rem;
-  align-self: flex-start;
+  grid-area: ec-tsize;
+
+  margin: 0.5rem;
   font-size: medium;
   font-weight: 500;
   border-radius: 0.25rem;
-  background: rgba(56, 235, 181, 0.7);
+  justify-self: left;
 }
 
-.ec-desc {
-  padding: 0.25rem 1rem;
-  align-self: flex-start;
+.ec-cat-se {
+  justify-self: right;
+  grid-area: ec-par;
+
+  margin: 0.5rem;
   font-size: medium;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+.ec-cat-ti {
+  grid-area: ec-time;
+
+  margin: 0.5rem;
+  font-size: medium;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  justify-self: left;
+}
+.ec-cat-fe {
+  grid-area: ec-fee;
+  justify-self: right;
+  padding: 0 0.25rem;
+  margin: 0.5rem;
+  font-size: medium;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  background: rgba(24, 144, 255, 0.3);
 }
 
 .ec-add-btn {
-  padding: 1rem;
+  border-top: lightgray 1px solid;
+  padding: 0.25rem;
   text-align: center;
   width: 100%;
   font-size: xx-large;
@@ -83,6 +100,18 @@
 
 .ep-main-add {
   cursor: default;
+}
+
+.ec-icons {
+  color: #4b4b4b;
+}
+
+.ec-chips-main {
+  padding: 0.5rem 0.5rem;
+  display: grid;
+  grid-template-columns: 1 fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "ec-tsize ec-par" "ec-time ec-fee";
 }
 
 @media only screen and (max-width: 576px) {
