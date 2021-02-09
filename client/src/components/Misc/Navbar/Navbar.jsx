@@ -6,11 +6,9 @@ import {
   HomeOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Drawer, Layout, Menu, Button } from "antd";
+import { Drawer, Menu, Button } from "antd";
 
 import "./Navbar.css";
-
-const { Sider } = Layout;
 
 const Navbar = ({
   collapse,
