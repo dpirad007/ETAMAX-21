@@ -51,9 +51,9 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
 
   return (
     <Fragment>
-      <Form
+    <div className="login-form">
+    <Form
         name="normal_login"
-        className="login-form"
         initialValues={{
           remember: true,
         }}
@@ -100,6 +100,8 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
           </Button>
         </Form.Item>
       </Form>
+    </div>
+      
     </Fragment>
   );
 };
