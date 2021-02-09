@@ -9,18 +9,18 @@ import AddEvent from "./AddEvent";
 const truncate = (str, n) =>
   str.length > n ? str.substr(0, n - 1) + "..." : str;
 
-const ProfileCard = ({
-  data: { title, description, entryFee, teamMembers },
-  addModalVisible,
-  changeAddModal,
-  data,
-}) => {
-  const displayTeam = teamMembers.map((member) => <p>🚩 {member}</p>);
+const ProfileCard = ({ data: { title, entryFee, teamMembers } }) => {
+  console.log(teamMembers);
+  let finalTeam = null;
+  if (teamMembers.length) {
+    finalTeam = teamMembers.map((member, i) => <p key={i}>{member}</p>);
+  }
   return (
     <div className="ec-main">
       <div className="ep-main-add">
         <div className="ec-title">{truncate(title, 20)}</div>
         <div className="ep-cat">Fee: {entryFee}</div>
+        {finalTeam ? finalTeam : null}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const semesterMap = {
 };
 const generateUser = (rollNo) => ({
   name: faker.name.firstName() + " " + faker.name.lastName(),
-  email: rollNo + '@gmail.com',
+  email: rollNo + "@gmail.com",
   rollNo,
   department: departmentMap[rollNo[0]],
   semester: semesterMap[rollNo.slice(2, 4)],
@@ -49,7 +49,7 @@ const addUsers = async () => {
     }
     for (let i = 0; i < depUsers.length; i++) {
       try {
-        await User.register(depUsers[i], '12345' /*faker.internet.password()*/);
+        await User.register(depUsers[i], "12345" /*faker.internet.password()*/);
       } catch (e) {
         console.log(e);
       }
@@ -106,6 +106,6 @@ const addEvents = async () => {
 };
 
 (async () => {
-  // await addUsers();
-  await addEvents();
+  await addUsers();
+  // await addEvents();
 })();
