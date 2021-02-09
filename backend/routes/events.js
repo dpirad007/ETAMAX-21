@@ -8,6 +8,7 @@ var Event = require('../models/event');
 var User = require('../models/user');
 var Team = require('../models/team');
 var authenticate = require('../authenticate');
+const user = require('../models/user');
 
 //URL: /api/events?day=n&category='C/T/F'
 router.get('/', async (req, res) => {
@@ -27,16 +28,34 @@ router.get('/', async (req, res) => {
 
 // URL: /api/events/my-events'
 router.get('/my-events', authenticate.verifyUser, async (req, res) => {
-    const urlObj = url.parse(req.originalUrl, true)
     try {
         await User.findById(req.user._id).populate('events', {
             registered: 0,
             eventCode: 0,
             isSeminar: 0,
-        }).exec((err, user) => {
+        }).lean().exec(async(err, user) => {
             if (err) {
                 throw new Error('Somithing went wrong')
             }
+            let myevents=[]
+            for(let i=0;i<user.events.length;i++){
+                let teamMembers=[]
+
+                for(let j=0;j<user.eventTeams.length;j++){
+                    
+                    if(String(user.eventTeams[j].eventid)==String(user.events[i]._id)){
+                        const particularTeam=await Team.findById(user.eventTeams[j].teamid)
+                        if(!particularTeam) break
+                        for(let k=0;k<particularTeam.memberRollNos.length;k++){
+                            const particularUser=await User.findOne({rollNo:particularTeam.memberRollNos[k]})
+                            teamMembers.push(particularUser.name)
+                        }
+                        break
+                    }
+                }
+                user.events[i]={...user.events[i],teamMembers:teamMembers}
+            }
+        
             return res.status(200).send(user.events)
         })
 
@@ -91,7 +110,7 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
             let user_update = {
                 $set: {},
                 $inc: { moneyOwed: event.entryFee },
-                $push: { events: event._id }
+                $push: {events:event._id}
             }
             user_update.$set['criteria.' + event.day] = true
             user_update.$set['criteria.' + event.category] = true
@@ -162,7 +181,8 @@ router.post('/register-event', authenticate.verifyUser, async (req, res) => {
             //Update the criteria and event array for all the team members
             let user_update = {
                 $set: {},
-                $push: { events: event._id }
+                $inc: { moneyOwed: event.entryFee },
+                $push: {events:event._id,eventTeams: {"eventid":event._id,"teamid":new_team._id} }
             }
             user_update.$set['criteria.' + event.day] = true
             user_update.$set['criteria.' + event.category] = true

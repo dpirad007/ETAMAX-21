@@ -5,16 +5,16 @@ import DetailsModal from "../../Misc/DetailsModal/DetailsModal";
 import "./EventCard.css";
 import AddEvent from "./AddEvent";
 
-const truncate = (str, n) => {
-  return str.length > n ? str.substr(0, n - 1) + "..." : str;
-};
+const truncate = (str, n) => str.length > n ? str.substr(0, n - 1) + "..." : str;
+
 
 const ProfileCard = ({
-  data: { title, description, entryFee },
+  data: { title, description, entryFee,teamMembers },
   addModalVisible,
   changeAddModal,
   data,
 }) => {
+  const displayTeam=teamMembers.map((member)=><p>🚩 {member}</p>)
   return (
     <div className="ec-main">
       <div className="ep-main-add">
@@ -23,6 +23,8 @@ const ProfileCard = ({
         <div className="ep-cat">Fee: {entryFee}</div>
 
         <div className="ec-desc">{truncate(description, 40)}</div>
+
+        {teamMembers.length!==0?<div className="ec-team"><p>Team Members</p>{displayTeam}</div>:""}
       </div>
     </div>
   );
