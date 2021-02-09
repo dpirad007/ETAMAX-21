@@ -19,7 +19,6 @@ const Navbar = ({
   profileCheck,
 }) => {
   const logout = () => {
-    console.log("Logout Request!");
     localStorage.removeItem("usertoken");
     loginupdater(false);
     setProfileCheck({ ...profileCheck, tok: false });
