@@ -1,26 +1,35 @@
 import React, { useState } from "react";
 import { ClockCircleOutlined, UserOutlined } from "@ant-design/icons";
+import { Menu } from "antd";
 
 import DetailsModal from "../../Misc/DetailsModal/DetailsModal";
 
 import "./EventCard.css";
 import AddEvent from "./AddEvent";
+const { SubMenu } = Menu;
 
 const truncate = (str, n) =>
   str.length > n ? str.substr(0, n - 1) + "..." : str;
 
 const ProfileCard = ({ data: { title, entryFee, teamMembers } }) => {
-  console.log(teamMembers);
   let finalTeam = null;
   if (teamMembers.length) {
-    finalTeam = teamMembers.map((member, i) => <p key={i}>{member}</p>);
+    finalTeam = teamMembers.map((member, i) => (
+      <Menu.Item key={i}>{member}</Menu.Item>
+    ));
   }
   return (
     <div className="ec-main">
       <div className="ep-main-add">
         <div className="ec-title">{truncate(title, 20)}</div>
         <div className="ep-cat">Fee: {entryFee}</div>
-        {finalTeam ? finalTeam : null}
+        {finalTeam ? (
+          <Menu mode="inline">
+            <SubMenu key="sub2" title="Team Mates">
+              {finalTeam}
+            </SubMenu>
+          </Menu>
+        ) : null}
       </div>
     </div>
   );
