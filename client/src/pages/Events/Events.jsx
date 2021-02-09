@@ -50,6 +50,7 @@ const Events = () => {
         <div className="e-dropdown">
           <Dropdown
             className="e-dropdown-item"
+            value={menu[0].label}
             options={menu}
             onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
             placeholder="Select Day"

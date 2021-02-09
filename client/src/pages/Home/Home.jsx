@@ -22,6 +22,7 @@ const Home = () => {
         <Dropdown
           className="ho-dropdown-item"
           options={options}
+          value={options[0].label}
           onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
           placeholder="Select Day"
         />
