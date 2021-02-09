@@ -35,6 +35,7 @@ function MyEvents() {
                     start: event.start,
                     teamSize: event.teamSize,
                     title: event.title,
+                    teamMembers: event.teamMembers
                   }}
                   displayAdd={false}
                 />
@@ -52,8 +53,8 @@ function MyEvents() {
           <Spin size="large" />
         </Space>
       ) : (
-        <div className="me-main">{events}</div>
-      )}
+          <div className="me-main">{events}</div>
+        )}
     </Fragment>
   );
 }
