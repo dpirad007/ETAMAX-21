@@ -204,16 +204,15 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
         event_update
       );
 
-      // //Increase the current user's (leader's) moneyOwed
-      // await User.findOneAndUpdate(
-      //   { _id: req.user._id },
-      //   { $inc: { moneyOwed: event.entryFee } }
-      // );
+      //Increase the current user's (leader's) moneyOwed
+      await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $inc: { moneyOwed: event.entryFee } }
+      );
 
       //Update the criteria and event array for all the team members
       let user_update = {
         $set: {},
-        $inc: { moneyOwed: event.entryFee },
         $push: {
           events: event._id,
           eventTeams: { eventid: event._id, teamid: new_team._id },
