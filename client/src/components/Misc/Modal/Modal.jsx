@@ -20,10 +20,13 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
     };
 
     const body = { ...values, eventCode: eventCode };
-    console.log(body);
 
     axios
-      .post(process.env.REACT_APP_WEB_URL+"/api/events/register-event", body, config)
+      .post(
+        process.env.REACT_APP_WEB_URL + "/api/events/register-event",
+        body,
+        config
+      )
       .then(function (response) {
         changeModal(false);
         openNotification("Registered for Event!");
