@@ -19,7 +19,7 @@ const ProfileCard = ({ data: { title, entryFee, teamMembers } }) => {
     ));
   }
   return (
-    <div className="ec-main">
+    <div className="ep-main">
       <div className="ep-main-add">
         <div className="ec-title">{truncate(title, 20)}</div>
         <div className="ep-cat">Fee: {entryFee}</div>

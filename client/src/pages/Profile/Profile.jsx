@@ -13,7 +13,9 @@ const Profile = () => {
   });
   const [err, setErr] = useState(0);
   const [totalAmt, settotalAmt] = useState(0);
-  const [criteriaDescription,setDescription]=useState("🔴 day1 🔴 day2 🔴 day3 🔴 Cultural 🔴 Technical 🔴 Fun")
+  const [criteriaDescription, setDescription] = useState(
+    "🔴 day1 🔴 day2 🔴 day3 🔴 Cultural 🔴 Technical 🔴 Fun"
+  );
 
   useEffect(() => {
     axios
@@ -24,25 +26,25 @@ const Profile = () => {
       })
       .then((response) => {
         settotalAmt(response.data.moneyOwed);
-        
+
         // setting up description of criteria
-        let desc=""
+        let desc = "";
         for (var field in response.data.criteria) {
-          desc+=response.data.criteria[field]?" 🟢 ":" 🔴 ";
-          if(field==='1'||field==='2'||field==='3'){
-            desc+="day "+field+"‎‎ "
+          desc += response.data.criteria[field] ? " 🟢 " : " 🔴 ";
+          if (field === "1" || field === "2" || field === "3") {
+            desc += "Day " + field + "‎‎ ";
           }
-          if(field==='C'){
-            desc+="Cultural "
+          if (field === "C") {
+            desc += "Cultural ";
           }
-          if(field==='T'){
-            desc+="Technical "
+          if (field === "T") {
+            desc += "Technical ";
           }
-          if(field==='F'){
-            desc+="Fun "
+          if (field === "F") {
+            desc += "Fun ";
           }
         }
-        setDescription(desc)
+        setDescription(desc);
 
         // checking for criteria
         let isCriteria = Object.values(response.data.criteria).every(
@@ -68,31 +70,31 @@ const Profile = () => {
           <Spin size="large" />
         </Space>
       ) : (
-          <div>
-            <div className="p-main">
-              <div className="p-circBar">
-                <Progress type="circle" percent={currentCompletion.per} />
-              </div>
-              <div className="p-steps">
-                <Steps
-                  current={currentCompletion.cur}
-                  responsive={true}
-                  direction={"vertical"}
-                >
-                  <Step
-                    title="Update Profile"
-                    description="Fill the form to update your name and phone no!"
-                  />
-                  <Step
-                    title="Meet Criterion"
-                    description={criteriaDescription}
-                  />
-                  <Step title={`₹ ${totalAmt}`} description={paidDescription} />
-                </Steps>
-              </div>
+        <div>
+          <div className="p-main">
+            <div className="p-circBar">
+              <Progress type="circle" percent={currentCompletion.per} />
+            </div>
+            <div className="p-steps">
+              <Steps
+                current={currentCompletion.cur}
+                responsive={true}
+                direction={"vertical"}
+              >
+                <Step
+                  title="Update Profile"
+                  description="Fill the form to update your name and phone no!"
+                />
+                <Step
+                  title="Meet Criterion"
+                  description={criteriaDescription}
+                />
+                <Step title={`₹ ${totalAmt}`} description={paidDescription} />
+              </Steps>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
       <MyEvents />
     </Fragment>
