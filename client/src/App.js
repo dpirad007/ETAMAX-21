@@ -47,7 +47,7 @@ function App() {
     };
     token
       ? axios
-          .get("http://localhost:5000/api/users/details", config)
+          .get(process.env.REACT_APP_WEB_URL+"/api/users/details", config)
           .then((res) => {
             setProfileCheck({ auth: res.data, loading: false, tok: true });
           })

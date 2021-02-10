@@ -9,7 +9,7 @@ function MyEvents() {
   const [err, setErr] = useState(0);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/events/my-events", {
+      .get(process.env.REACT_APP_WEB_URL+"/api/events/my-events", {
         headers: {
           Authorization: `bearer ${localStorage.getItem("usertoken")}`,
         },

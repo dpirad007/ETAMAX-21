@@ -10,7 +10,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
     axios
-      .post("http://localhost:5000/api/users/login", {
+      .post(process.env.REACT_APP_WEB_URL+"/api/users/login", {
         rollNo: values.username,
         password: values.password,
       })

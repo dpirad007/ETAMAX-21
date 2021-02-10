@@ -20,7 +20,7 @@ const Details = ({ setProfileCheck, profileCheck }) => {
     };
     axios
       .post(
-        "http://localhost:5000/api/users/update-profile",
+        process.env.REACT_APP_WEB_URL+"/api/users/update-profile",
         {
           name: values.userName,
           collegeName: values.college,

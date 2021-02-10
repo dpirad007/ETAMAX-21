@@ -15,7 +15,7 @@ const Profile = () => {
   const [totalAmt, settotalAmt] = useState(0);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/users/profile-details", {
+      .get(process.env.REACT_APP_WEB_URL+"/api/users/profile-details", {
         headers: {
           Authorization: `bearer ${localStorage.getItem("usertoken")}`,
         },

@@ -33,7 +33,7 @@ const Events = () => {
 
     axios
       .get(
-        `http://localhost:5000/api/events?day=${selectedDay}&category=${selectedCat}`,
+        process.env.REACT_APP_WEB_URL+`/api/events?day=${selectedDay}&category=${selectedCat}`,
         config
       )
       .then((res) => {
