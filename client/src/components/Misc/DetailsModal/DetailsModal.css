@@ -13,6 +13,11 @@
   font-weight: 500;
   font-size: medium;
 }
+
+.dm-ed {
+  padding: 0.25rem 0;
+}
+
 .dm-desc {
   padding: 0.25rem 0;
   font-size: small;

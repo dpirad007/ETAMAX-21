@@ -50,6 +50,12 @@ const DetailsModal = ({
           <div className="dm-cat">
             Time: {start.slice(2)} - {end.slice(2)}
           </div>
+          {start.slice(0, 1) === end.slice(0, 1) ? null : (
+            <div className="dm-cat">
+              Event Span: Day {start.slice(0, 1)} - {end.slice(0, 1)}
+            </div>
+          )}
+
           <div className="dm-desc">{description}</div>
           <div className="dm-prize">Prize: {prizeMoney[0]}</div>
           <div className="dm-seats">Seats: {seats + "/" + maxSeats}</div>

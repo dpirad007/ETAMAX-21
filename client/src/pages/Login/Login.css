@@ -1,22 +1,31 @@
-.login-form{
-    display: flex;
-    width:100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+.login-form {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-form Form {
-    width: 35vw;
-    min-width: 300px;
-    margin-top: 20vh;
+  width: 35vw;
+  min-width: 300px;
+  margin-top: 20vh;
 }
 .login-form-button {
-width: 100%;
+  width: 100%;
+}
+
+.p-condet {
+  text-align: center;
+  font-weight: 500;
+}
+
+.p-condet span {
+  color: #1890ff;
 }
 
 @media only screen and (max-width: 340px) {
-    .login-form Form {
-        min-width: 200px;
-    }
+  .login-form Form {
+    min-width: 200px;
+  }
 }

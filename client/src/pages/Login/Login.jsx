@@ -10,7 +10,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
     axios
-      .post(process.env.REACT_APP_WEB_URL+"/api/users/login", {
+      .post(process.env.REACT_APP_WEB_URL + "/api/users/login", {
         rollNo: values.username,
         password: values.password,
       })
@@ -51,57 +51,64 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
 
   return (
     <Fragment>
-    <div className="login-form">
-    <Form
-        name="normal_login"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        style={{ padding: "1rem" }}
-      >
-        <Form.Item
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Rollnumber!",
-            },
-          ]}
+      <div className="login-form">
+        <Form
+          name="normal_login"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+          style={{ padding: "1rem" }}
         >
-          <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="FCRIT Rollnumber"
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Password!",
-            },
-          ]}
-        >
-          <Input.Password
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="Password"
-          />
-        </Form.Item>
-
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
+          <Form.Item
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Rollnumber!",
+              },
+            ]}
           >
-            Log in
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
-      
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="FCRIT Rollnumber"
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Password!",
+              },
+            ]}
+          >
+            <Input.Password
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Password"
+            />
+          </Form.Item>
+
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              Log in
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+      <div className="p-condet-main">
+        <div className="p-condet">
+          For External Students Contact:{" "}
+          <span>
+            Dylan <a href="tel:7738087256">7738087256</a>
+          </span>
+        </div>
+      </div>
     </Fragment>
   );
 };

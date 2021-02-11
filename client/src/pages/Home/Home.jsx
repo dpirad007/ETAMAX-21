@@ -26,6 +26,9 @@ const Home = () => {
           onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
           placeholder="Select Day"
         />
+        <div className="ho-brochure">
+          <div className="ho-brochure-btn">Brochure</div>
+        </div>
       </div>
       <div className="ho-main">
         <HomeCarousel />

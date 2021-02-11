@@ -25,7 +25,6 @@ const HomeCarousel = () => {
             className="backImg"
             style={{
               ...contentStyle,
-              // backgroundImage: `url('https://cdn.pixabay.com/photo/2018/04/16/16/16/sunset-3325080_1280.jpg')`,
               backgroundImage: `url(${logo1})`,
             }}
           ></div>
@@ -35,7 +34,6 @@ const HomeCarousel = () => {
             className="backImg"
             style={{
               ...contentStyle,
-              // backgroundImage: `url('https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067__340.png')`,
               backgroundImage: `url(${logo2})`,
             }}
           ></div>
@@ -45,7 +43,6 @@ const HomeCarousel = () => {
             className="backImg"
             style={{
               ...contentStyle,
-              // backgroundImage: `url('https://cdn.pixabay.com/photo/2018/04/16/16/16/sunset-3325080_1280.jpg')`,
               backgroundImage: `url(${logo3})`,
             }}
           ></div>
