@@ -78,7 +78,7 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
               padding: "0.25rem",
             }}
           >
-            Note:
+            Note
           </span>{" "}
           Team Leader will pay for all Team Members
         </div>
