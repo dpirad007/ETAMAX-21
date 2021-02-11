@@ -102,11 +102,12 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
         </Form>
       </div>
       <div className="p-condet-main">
+        <div className="p-condet">For External Students Contact</div>
         <div className="p-condet">
-          For External Students Contact:{" "}
-          <span>
-            Dylan <a href="tel:7738087256">7738087256</a>
-          </span>
+          Dylan Pinto: <a href="tel:+917738087256">+91 7738087256</a>
+        </div>
+        <div className="p-condet">
+          Rohan M: <a href="tel:+919867608101">+91 9867608101</a>
         </div>
       </div>
     </Fragment>
