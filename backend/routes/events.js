@@ -54,7 +54,7 @@ router.get("/my-events", authenticate.verifyUser, async (req, res) => {
                 const particularUser = await User.findOne({
                   rollNo: particularTeam.memberRollNos[k],
                 });
-                teamMembers.push(particularUser.name);
+                teamMembers.push(particularUser.rollNo);
               }
               break;
             }
