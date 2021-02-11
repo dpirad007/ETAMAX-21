@@ -5,6 +5,7 @@ import {
   UserOutlined,
   HomeOutlined,
   LogoutOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
 import { Drawer, Menu, Button } from "antd";
 
@@ -44,6 +45,12 @@ const Navbar = ({
           <Menu.Item key="3" icon={<UserOutlined />}>
             <Link to="/profile">Profile</Link>
           </Menu.Item>
+          {!isLoggedIn && (
+            <Menu.Item key="4" icon={<LoginOutlined />}>
+              <Link to="/login">Login</Link>
+            </Menu.Item>
+          )}
+
           {isLoggedIn && (
             <Menu.Item isSelected="false" key="4" icon={<LogoutOutlined />}>
               <Button
