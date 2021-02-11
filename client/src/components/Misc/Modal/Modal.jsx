@@ -52,7 +52,7 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
           },
         ]}
       >
-        <Input className="m-input" placeholder={`Team Mate ${i} Rollno`} />
+        <Input className="m-input" placeholder={`Team Member ${i} Rollno`} />
       </Form.Item>
     );
   }
@@ -70,6 +70,18 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
           </Button>,
         ]}
       >
+        <div style={{ padding: "0.5rem" }}>
+          <span
+            style={{
+              borderRadius: "0.25rem",
+              background: "rgb(255, 0, 0, 0.4)",
+              padding: "0.25rem",
+            }}
+          >
+            Note:
+          </span>{" "}
+          Team Leader will pay for all Team Members
+        </div>
         <Form
           name="register"
           initialValues={{
