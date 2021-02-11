@@ -57,6 +57,7 @@ router.get("/profile-details", authenticate.verifyUser, async (req, res) => {
       hasFilledProfile: req.user.hasFilledProfile,
       moneyOwed: req.user.moneyOwed,
       rollNo: req.user.rollNo,
+      name: req.user.name
     });
   } catch (e) {
     return res.status(400).send({ error: e.message });
