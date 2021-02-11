@@ -30,6 +30,30 @@
   justify-self: center;
   align-self: center;
 }
+
+.pr-block-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.pr-block-gr {
+  align-self: center;
+  margin: 0.2rem;
+  border-radius: 0.25rem;
+  height: 15px;
+  width: 15px;
+  background: rgba(0, 143, 0, 0.7);
+}
+
+.pr-block-rd {
+  align-self: center;
+  margin: 0.2rem;
+  border-radius: 0.25rem;
+  height: 15px;
+  width: 15px;
+  background: rgb(255, 0, 0, 0.4);
+}
+
 @media only screen and (max-width: 980px) {
   .p-main {
     padding: 1rem;

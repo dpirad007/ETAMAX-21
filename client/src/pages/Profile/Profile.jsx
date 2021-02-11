@@ -14,9 +14,7 @@ const Profile = () => {
   const [err, setErr] = useState(0);
   const [totalAmt, settotalAmt] = useState(0);
   const [userName, setUserName] = useState();
-  const [criteriaDescription, setDescription] = useState(
-    "🔴 day1 🔴 day2 🔴 day3 🔴 Cultural 🔴 Technical 🔴 Fun"
-  );
+  const [criteriaDescription, setDescription] = useState();
 
   useEffect(() => {
     axios
@@ -30,24 +28,24 @@ const Profile = () => {
         setUserName(response.data.rollNo);
 
         // setting up description of criteria
-        let desc = "";
-        for (var field in response.data.criteria) {
-          desc += response.data.criteria[field] ? " 🟢 " : " 🔴 ";
-          if (field === "1" || field === "2" || field === "3") {
-            desc += "Day " + field + "‎‎ ";
-          }
-          if (field === "C") {
-            desc += "Cultural ";
-          }
-          if (field === "T") {
-            desc += "Technical ";
-          }
-          if (field === "F") {
-            desc += "Fun ";
-          }
+        let desc = [];
+        for (let field in response.data.criteria) {
+          response.data.criteria[field]
+            ? desc.push(
+                <Fragment>
+                  <span>{field}</span>
+                  <div className="pr-block-gr"></div>
+                </Fragment>
+              )
+            : desc.push(
+                <Fragment>
+                  <span>{field}</span>
+                  <div className="pr-block-rd"></div>
+                </Fragment>
+              );
         }
-        setDescription(desc);
 
+        setDescription(desc);
         // checking for criteria
         let isCriteria = Object.values(response.data.criteria).every(
           (val) => val === true
@@ -90,7 +88,9 @@ const Profile = () => {
                 />
                 <Step
                   title="Meet Criterion"
-                  description={criteriaDescription}
+                  description={
+                    <div className="pr-block-main">{criteriaDescription}</div>
+                  }
                 />
                 <Step title={`₹ ${totalAmt}`} description={paidDescription} />
               </Steps>
