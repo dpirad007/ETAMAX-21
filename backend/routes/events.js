@@ -109,7 +109,7 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
       if (req.user.events.includes(event._id)) {
         return res
           .status(400)
-          .send({ message: "You have already registered for event!" });
+          .send({ message: "You have already registered for this event!" });
       }
 
       //Update User: Update criteria, increase moneyOwed and push event id into events array
@@ -138,7 +138,7 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
       if (req.user.events.includes(event._id)) {
         return res
           .status(400)
-          .send({ message: "You have already registered for event!" });
+          .send({ message: "You have already registered for this event!" });
       }
 
       //Make an array of all team member Roll Numbers
@@ -174,7 +174,7 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
         if (!user_events) {
           return res.status(400).send({
             message:
-              "The following roll number(s) are invalid or do not exist!",
+              "The entered roll number(s) are invalid or do not exist!",
           });
         }
 
