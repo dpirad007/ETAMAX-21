@@ -8,7 +8,6 @@ const { Option } = Select;
 const Details = ({ setProfileCheck, profileCheck }) => {
   let history = useHistory();
   if (profileCheck.auth) {
-    console.log("details: ", profileCheck.auth);
     history.push("/");
   }
 
@@ -20,7 +19,7 @@ const Details = ({ setProfileCheck, profileCheck }) => {
     };
     axios
       .post(
-        process.env.REACT_APP_WEB_URL+"/api/users/update-profile",
+        process.env.REACT_APP_WEB_URL + "/api/users/update-profile",
         {
           name: values.userName,
           collegeName: values.college,
