@@ -25,3 +25,14 @@
 .ant-menu-inline-collapsed {
   width: 100%;
 }
+
+.nav-credits {
+  position: absolute;
+  bottom: 0;
+  padding-left: 24px;
+}
+
+.nav-main {
+  position: relative;
+  height: 90vh;
+}

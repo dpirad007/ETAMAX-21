@@ -34,40 +34,45 @@ const Navbar = ({
         onClose={() => setCollapse(false)}
         visible={collapse}
       >
-        <div className="logo">η</div>
-        <Menu mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1" icon={<HomeOutlined />}>
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="2" icon={<CalendarOutlined />}>
-            <Link to="/events">Events</Link>
-          </Menu.Item>
-          <Menu.Item key="3" icon={<UserOutlined />}>
-            <Link to="/profile">Profile</Link>
-          </Menu.Item>
-          {!isLoggedIn && (
-            <Menu.Item key="4" icon={<LoginOutlined />}>
-              <Link to="/login">Login</Link>
+        <div className="nav-main">
+          <div className="logo" style={{ color: "black" }}>
+            η
+          </div>
+          <Menu mode="inline" defaultSelectedKeys={["1"]}>
+            <Menu.Item key="1" icon={<HomeOutlined />}>
+              <Link to="/">Home</Link>
             </Menu.Item>
-          )}
+            <Menu.Item key="2" icon={<CalendarOutlined />}>
+              <Link to="/events">Events</Link>
+            </Menu.Item>
+            <Menu.Item key="3" icon={<UserOutlined />}>
+              <Link to="/profile">Profile</Link>
+            </Menu.Item>
+            {!isLoggedIn && (
+              <Menu.Item key="4" icon={<LoginOutlined />}>
+                <Link to="/login">Login</Link>
+              </Menu.Item>
+            )}
 
-          {isLoggedIn && (
-            <Menu.Item isSelected="false" key="4" icon={<LogoutOutlined />}>
-              <Button
-                onClick={() => logout()}
-                style={{
-                  backgroundColor: "transparent",
-                  backgroundRepeat: "no-repeat",
-                  border: "none",
-                  textAlign: "left",
-                  paddingLeft: "0px",
-                }}
-              >
-                Logout
-              </Button>
-            </Menu.Item>
-          )}
-        </Menu>
+            {isLoggedIn && (
+              <Menu.Item isSelected="false" key="4" icon={<LogoutOutlined />}>
+                <Button
+                  onClick={() => logout()}
+                  style={{
+                    backgroundColor: "transparent",
+                    backgroundRepeat: "no-repeat",
+                    border: "none",
+                    textAlign: "left",
+                    paddingLeft: "0px",
+                  }}
+                >
+                  Logout
+                </Button>
+              </Menu.Item>
+            )}
+          </Menu>
+          <div className="nav-credits">Made by TCC PR DP</div>
+        </div>
       </Drawer>
     </div>
   );
