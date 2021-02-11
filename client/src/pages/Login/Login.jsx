@@ -22,7 +22,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
         loginupdater(true);
         setProfileCheck({ ...profileCheck, tok: true });
         history.push("/details");
-        var name = "Loged In";
+        var name = "Logged In";
         openSuccessNotification({ message: name });
       })
       .catch(function (error) {

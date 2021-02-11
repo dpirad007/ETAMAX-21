@@ -13,6 +13,7 @@ const Profile = () => {
   });
   const [err, setErr] = useState(0);
   const [totalAmt, settotalAmt] = useState(0);
+  const [userName, setUserName] = useState();
   const [criteriaDescription, setDescription] = useState(
     "🔴 day1 🔴 day2 🔴 day3 🔴 Cultural 🔴 Technical 🔴 Fun"
   );
@@ -26,6 +27,7 @@ const Profile = () => {
       })
       .then((response) => {
         settotalAmt(response.data.moneyOwed);
+        setUserName(response.data.rollNo);
 
         // setting up description of criteria
         let desc = "";
@@ -71,6 +73,7 @@ const Profile = () => {
         </Space>
       ) : (
         <div>
+          <div className="p-title-nam">Welcome, {userName}</div>
           <div className="p-main">
             <div className="p-circBar">
               <Progress type="circle" percent={currentCompletion.per} />

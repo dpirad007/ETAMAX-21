@@ -13,25 +13,33 @@ router.post("/login", passport.authenticate("local"), (req, res, next) => {
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
-  res.json({ name: req.user.name, success: true, token: jtoken, status: "Login  Successful !" });
+  res.json({
+    name: req.user.name,
+    success: true,
+    token: jtoken,
+    status: "Login  Successful !",
+  });
 });
 
 //URL - /api/users/update-profile 👨‍💻
-router.post("/update-profile",authenticate.verifyUser, async (req, res) => {
+router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
   try {
-    // Check if the update is allowed on given fields 
-    const allowedFields=[ 'name', 'semester', 'collegeName', 'phoneNumber' ]
-    let isValidObject=Object.keys(req.body).every((field)=>{
-      return allowedFields.includes(field)
+    // Check if the update is allowed on given fields
+    const allowedFields = ["name", "semester", "collegeName", "phoneNumber"];
+    let isValidObject = Object.keys(req.body).every((field) => {
+      return allowedFields.includes(field);
     });
-    if(!isValidObject){
-      throw new Error('Update not allowed for such fields')
+    if (!isValidObject) {
+      throw new Error("Update not allowed for such fields");
     }
     // find and update current user data
-    await User.findOneAndUpdate({ _id: req.user._id }, {...req.body,hasFilledProfile:true});
+    await User.findOneAndUpdate(
+      { _id: req.user._id },
+      { ...req.body, hasFilledProfile: true }
+    );
     return res.status(200).send({ message: "Profile updated successfully!" });
   } catch (e) {
-    return res.status(400).send({error:e.message});
+    return res.status(400).send({ error: e.message });
   }
 });
 
@@ -41,19 +49,18 @@ router.get("/details", authenticate.verifyUser, (req, res) => {
 });
 
 //URL - /api/users/profile-details
-router.get("/profile-details", authenticate.verifyUser, async(req, res) => {
-  try{
+router.get("/profile-details", authenticate.verifyUser, async (req, res) => {
+  try {
     return res.status(200).send({
       criteria: req.user.criteria,
-      moneyOwed:req.user.moneyOwed,
+      moneyOwed: req.user.moneyOwed,
       hasFilledProfile: req.user.hasFilledProfile,
-      moneyOwed:req.user.moneyOwed
+      moneyOwed: req.user.moneyOwed,
+      rollNo: req.user.rollNo,
     });
+  } catch (e) {
+    return res.status(400).send({ error: e.message });
   }
-  catch(e){
-    return res.status(400).send({error:e.message})
-  }  
 });
-
 
 module.exports = router;

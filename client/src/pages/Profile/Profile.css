@@ -1,8 +1,14 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+.p-title-nam {
+  padding: 1rem;
+  font-weight: 500;
+  font-size: x-large;
+}
+
 .p-main {
   padding: 1rem;
   display: grid;
