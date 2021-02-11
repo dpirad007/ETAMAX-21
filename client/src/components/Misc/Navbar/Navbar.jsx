@@ -36,7 +36,7 @@ const Navbar = ({
       >
         <div className="nav-main">
           <div className="logo" style={{ color: "black" }}>
-            η
+            η max
           </div>
           <Menu mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1" icon={<HomeOutlined />}>
@@ -71,7 +71,7 @@ const Navbar = ({
               </Menu.Item>
             )}
           </Menu>
-          <div className="nav-credits">Made by TCC PR DP</div>
+          <div className="nav-credits">Made by<br/> The Coders' Club</div>
         </div>
       </Drawer>
     </div>

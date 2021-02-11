@@ -75,12 +75,12 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
             style={{
               borderRadius: "0.25rem",
               background: "rgb(255, 0, 0, 0.4)",
-              padding: "0.3rem",
+              padding: "0.25rem",
             }}
           >
             Note
           </span>{" "}
-          Team Leader (you) will make payment for all Team Members
+          Leader (you) will pay for all Members
         </div>
         <Form
           name="register"
