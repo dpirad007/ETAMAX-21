@@ -80,7 +80,7 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
           >
             Note
           </span>{" "}
-          Team Leader (you) will make mayment for all Team Members
+          Team Leader (you) will make payment for all Team Members
         </div>
         <Form
           name="register"
