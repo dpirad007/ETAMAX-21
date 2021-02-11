@@ -102,7 +102,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
         </Form>
       </div>
       <div className="p-condet-main">
-        <div className="p-condet">For External Students Contact</div>
+        <div className="p-condet">For non FCRIT Students please contact:</div>
         <div className="p-condet">
           Dylan Pinto: <a href="tel:+917738087256">+91 7738087256</a>
         </div>

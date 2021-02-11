@@ -25,7 +25,7 @@ const ProfileCard = ({ data: { title, entryFee, teamMembers } }) => {
         <div className="ep-cat">Fee: {entryFee}</div>
         {finalTeam ? (
           <Menu mode="inline">
-            <SubMenu key="sub2" title="Team Mates">
+            <SubMenu key="sub2" title="Team Members">
               {finalTeam}
             </SubMenu>
           </Menu>

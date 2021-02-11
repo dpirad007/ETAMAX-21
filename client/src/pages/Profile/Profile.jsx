@@ -25,7 +25,7 @@ const Profile = () => {
       })
       .then((response) => {
         settotalAmt(response.data.moneyOwed);
-        setUserName(response.data.rollNo);
+        setUserName(response.data.name);
 
         // setting up description of criteria
         let desc = [];
@@ -33,14 +33,14 @@ const Profile = () => {
           response.data.criteria[field]
             ? desc.push(
                 <Fragment>
-                  <span>{field}</span>
-                  <div className="pr-block-gr"></div>
+                  <span>{field}</span>&nbsp;
+                  <div className="pr-block-gr"></div>&emsp;
                 </Fragment>
               )
             : desc.push(
                 <Fragment>
                   <span>{field}</span>
-                  <div className="pr-block-rd"></div>
+                  <div className="pr-block-rd"></div>&emsp;
                 </Fragment>
               );
         }
@@ -84,7 +84,7 @@ const Profile = () => {
               >
                 <Step
                   title="Update Profile"
-                  description="Fill the form to update your name and phone no!"
+                  description="Fill the form to update your Name and Phone No.!"
                 />
                 <Step
                   title="Meet Criterion"
