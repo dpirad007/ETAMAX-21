@@ -33,7 +33,7 @@ function AddEvent(props) {
       )
       .then(function (response) {
         changeModal(false);
-        openNotification("Event Added!");
+        openNotification("Registered for Event!");
       })
       .catch(function (error) {
         console.log(error);
@@ -50,7 +50,7 @@ function AddEvent(props) {
       {props.teamSize === 1 ? (
         <Fragment>
           <Popconfirm
-            title="Are you sure you want to Add this Event?"
+            title="Are you sure you want to Register for this Event?"
             okText="Yes"
             cancelText="No"
             onConfirm={addEvent}
