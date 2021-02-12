@@ -148,8 +148,7 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
           return req.body[key];
         });
 
-        team.unshift(req.user.rollNo)
-        console.log(team)
+      team.unshift(req.user.rollNo);
 
       //Is the team size correct?
       if (event.isTeamSizeStrict && team.length !== event.teamSize) {
@@ -175,8 +174,7 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
         );
         if (!user_events) {
           return res.status(400).send({
-            message:
-              "The entered roll number(s) are invalid or do not exist!",
+            message: "The entered roll number(s) are invalid or do not exist!",
           });
         }
 

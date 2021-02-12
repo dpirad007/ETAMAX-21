@@ -71,7 +71,10 @@ const Navbar = ({
               </Menu.Item>
             )}
           </Menu>
-          <div className="nav-credits">Made by<br/> The Coders' Club</div>
+          <div className="nav-credits">
+            Made by
+            <br /> The Coders' Club
+          </div>
         </div>
       </Drawer>
     </div>
