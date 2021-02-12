@@ -142,12 +142,14 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
       }
 
       //Make an array of all team member Roll Numbers
-      req.body["leader"] = req.user.rollNo;
       let team = Object.keys(req.body)
         .filter((key) => key !== "eventCode" && key !== "teamName")
         .map((key) => {
           return req.body[key];
         });
+
+        team.unshift(req.user.rollNo)
+        console.log(team)
 
       //Is the team size correct?
       if (event.isTeamSizeStrict && team.length !== event.teamSize) {
