@@ -52,6 +52,7 @@ function App() {
             setProfileCheck({ auth: res.data, loading: false, tok: true });
           })
           .catch((err) => {
+            loginupdater(()=>false)
             setProfileCheck({ auth: false, loading: false, tok: false });
             <Redirect to="/login" />;
           })
