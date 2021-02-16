@@ -23,7 +23,6 @@ const Details = ({ setProfileCheck, profileCheck }) => {
         {
           name: values.userName,
           collegeName: values.college,
-          department: values.department,
           phoneNumber: values.phoneNo,
           semester: values.sem,
         },
@@ -94,7 +93,7 @@ const Details = ({ setProfileCheck, profileCheck }) => {
             <Option value={8}>Sem8</Option>
           </Select>
         </Form.Item>
-        <Form.Item
+        {/*<Form.Item
           name="department"
           rules={[
             {
@@ -110,7 +109,7 @@ const Details = ({ setProfileCheck, profileCheck }) => {
             <Option value="EXTC">EXTC</Option>
             <Option value="Other">Other</Option>
           </Select>
-        </Form.Item>
+        </Form.Item>*/}
 
         <Form.Item>
           <Button type="primary" htmlType="submit">
