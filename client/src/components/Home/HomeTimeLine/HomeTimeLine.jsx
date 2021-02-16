@@ -41,7 +41,7 @@ const HomeTimeLine = ({ selectedDay }) => {
   switch (selectedDay) {
     case 1:
       finalTimeline = (
-        <VerticalTimeline>
+        <VerticalTimeline animate={false}>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
             contentStyle={headerContentStyles}
@@ -83,7 +83,7 @@ const HomeTimeLine = ({ selectedDay }) => {
 
     case 2:
       finalTimeline = (
-        <VerticalTimeline>
+        <VerticalTimeline animate={false}>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
             contentStyle={headerContentStyles}
@@ -125,7 +125,7 @@ const HomeTimeLine = ({ selectedDay }) => {
 
     case 3:
       finalTimeline = (
-        <VerticalTimeline>
+        <VerticalTimeline animate={false}>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
             contentStyle={headerContentStyles}
