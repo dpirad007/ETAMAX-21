@@ -29,9 +29,8 @@
 .nav-credits {
   position: absolute;
   bottom: 0;
-  padding-left: 24px;
-  /* margin: 0 auto;
-  text-align: center; */
+  margin: 0 auto;
+  text-align: center;
   width: 100%;
 }
 
