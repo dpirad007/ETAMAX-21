@@ -12,7 +12,6 @@ const Details = ({ setProfileCheck, profileCheck }) => {
   }
 
   const onFinish = (values) => {
-    console.log(values);
     const token = window.localStorage.getItem("usertoken");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
