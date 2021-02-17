@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
-import logo from "../../assets/loginbackground.jpeg";
+import loginbg from "../../assets/etamaxbg.png";
 
 const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
   let history = useHistory();
@@ -52,7 +52,7 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
 
   return (
     <Fragment>
-      <div className="login-container" style={{ backgroundImage: `url(${logo})` }}>
+      <div className="login-container" style={{ backgroundImage: `url(${loginbg})` }}>
         <div className="login-card">
           <div className="login-form">
             <Form
