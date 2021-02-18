@@ -14,6 +14,7 @@ const contentStyle = {
   width: "100%",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
+  backgroundPosition: "center center",
 };
 
 const HomeCarousel = () => {
