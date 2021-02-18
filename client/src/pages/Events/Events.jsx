@@ -5,6 +5,7 @@ import { Spin, Space, Radio } from "antd";
 
 //components
 import EventCard from "../../components/Events/EventCard/EventCard";
+import eventbg from "../../assets/etamaxbg.png";
 
 import "./Events.css";
 
@@ -33,7 +34,7 @@ const Events = () => {
 
     axios
       .get(
-        process.env.REACT_APP_WEB_URL+`/api/events?day=${selectedDay}&category=${selectedCat}`,
+        process.env.REACT_APP_WEB_URL + `/api/events?day=${selectedDay}&category=${selectedCat}`,
         config
       )
       .then((res) => {
@@ -46,42 +47,44 @@ const Events = () => {
 
   return (
     <Fragment>
-      <div className="e-top-main">
-        <div className="e-dropdown">
-          <Dropdown
-            className="e-dropdown-item"
-            value={menu[0].label}
-            options={menu}
-            onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
-            placeholder="Select Day"
-          />
+      <div className="e-wrap" style={{ backgroundImage: `url(${eventbg})` }}>
+        <div className="e-top-main">
+          <div className="e-dropdown">
+            <Dropdown
+              className="e-dropdown-item"
+              value={menu[0].label}
+              options={menu}
+              onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
+              placeholder="Select Day"
+            />
+          </div>
+          <div className="e-radio">
+            <Radio.Group
+              size="medium"
+              options={options}
+              onChange={(e) => setSelectedCat(e.target.value)}
+              value={selectedCat}
+              optionType="button"
+              buttonStyle="solid"
+            />
+          </div>
         </div>
-        <div className="e-radio">
-          <Radio.Group
-            size="medium"
-            options={options}
-            onChange={(e) => setSelectedCat(e.target.value)}
-            value={selectedCat}
-            optionType="button"
-            buttonStyle="solid"
-          />
-        </div>
-      </div>
 
-      <div className="e-main">
-        {events.length ? (
-          events.map((obj, i) => {
-            return (
-              <div className="e-main-item">
-                <EventCard key={i} data={obj} displayAdd={true} />
-              </div>
-            );
-          })
-        ) : (
-          <Space size="middle" className="e-loader">
-            <Spin size="large" />
-          </Space>
-        )}
+        <div className="e-main">
+          {events.length ? (
+            events.map((obj, i) => {
+              return (
+                <div className="e-main-item">
+                  <EventCard key={i} data={obj} displayAdd={true} />
+                </div>
+              );
+            })
+          ) : (
+              <Space size="middle" className="e-loader">
+                <Spin size="large" />
+              </Space>
+            )}
+        </div>
       </div>
     </Fragment>
   );
