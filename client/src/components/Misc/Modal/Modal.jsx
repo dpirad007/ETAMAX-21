@@ -13,7 +13,6 @@ const openNotification = (message) => {
 
 const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
   const onFinish = (values) => {
-    console.log(values);
     const token = window.localStorage.getItem("usertoken");
     const config = {
       headers: { Authorization: `Bearer ${token}` },

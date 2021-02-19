@@ -1,6 +1,6 @@
 .ho-dropdown {
   display: grid;
-  grid-template-columns: 0.6fr 0.4fr;
+
   grid-template-rows: 1fr;
   grid-template-areas: "h-dropdown h-broch";
   padding: 0.25rem;
@@ -9,13 +9,14 @@
 
 .ho-brochure {
   padding: 0.25rem;
+  width: 100%;
   grid-area: h-broch;
   align-self: center;
-  justify-self: right;
-  display:flex;
+  display: flex;
 }
 
 .ho-brochure-btn {
+  margin-left: auto;
   padding: 0.4rem;
   text-align: center;
   cursor: pointer;
@@ -23,10 +24,10 @@
   background: rgb(33, 150, 243);
   color: white;
   transition: transform 1s;
-  margin:5%;
 }
 
 .ho-brochure-btn1 {
+  margin-left: 20px;
   padding: 0.4rem;
   text-align: center;
   cursor: pointer;
@@ -34,10 +35,12 @@
   background: rgb(33, 150, 243);
   color: white;
   transition: transform 1s;
-  margin:5%;
 }
 
 .ho-brochure-btn:hover {
+  transform: scale(1.05);
+}
+.ho-brochure-btn1:hover {
   transform: scale(1.05);
 }
 

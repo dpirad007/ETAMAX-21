@@ -1,9 +1,18 @@
 import React, { Fragment } from "react";
 import axios from "axios";
-import { Form, Input, Button, Select } from "antd";
+import { Form, Input, Button, Select, notification } from "antd";
 import { useHistory } from "react-router-dom";
 
 const { Option } = Select;
+
+const openErrorNotification = (error) => {
+  const args = {
+    message: error,
+
+    duration: 3,
+  };
+  notification.warning(args);
+};
 
 const Details = ({ setProfileCheck, profileCheck }) => {
   let history = useHistory();
@@ -32,7 +41,8 @@ const Details = ({ setProfileCheck, profileCheck }) => {
         history.push("/");
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.response.data);
+        openErrorNotification(error.response.data);
       });
   };
 
