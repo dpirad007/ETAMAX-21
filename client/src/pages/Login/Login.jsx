@@ -115,7 +115,6 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
           </div>
         </div>
       </div>
-
     </Fragment>
   );
 };
