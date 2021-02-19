@@ -8,15 +8,18 @@ var Event = require("../models/event");
 var User = require("../models/user");
 var Team = require("../models/team");
 var authenticate = require("../authenticate");
-const user = require("../models/user");
 
 //URL: /api/events?day=n&category='C/T/F'
-router.get("/", async (req, res) => {
+router.get("/", authenticate.verifyUser, async (req, res) => {
   const urlObj = url.parse(req.originalUrl, true);
   try {
     let events = await Event.find({
       $and: [{ day: urlObj.query.day }, { category: urlObj.query.category }],
     });
+    exclude_list = []
+    if(req.user.rollNo[0] === '9'){
+      
+    }
     res.send(events);
   } catch (e) {
     res.status(401).send({ error: e.message });
