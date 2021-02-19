@@ -13,6 +13,14 @@ const options = [
   { value: 3, label: "Third Day" },
 ];
 
+class DownloadLink extends React.Component {
+  render() {
+    return (
+      <a style={this.props.style} href={this.props.src} download>{this.props.children}</a>
+    )
+  }
+}
+
 const Home = () => {
   const [selectedDay, setSelectedDay] = useState(1);
 
@@ -27,7 +35,7 @@ const Home = () => {
           placeholder="Select Day"
         />
         <div className="ho-brochure">
-          <div className="ho-brochure-btn">Brochure</div>
+          <div className="ho-brochure-btn"><DownloadLink style={{color: "white"}} src="/ETAMAX ESPERANZA 21.pdf">Brochure</DownloadLink></div>
           <Link to="/hackathon">
             <div className="ho-brochure-btn1">Hackathon</div>
           </Link>
