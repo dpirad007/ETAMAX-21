@@ -1,11 +1,16 @@
 .login-container{
-  height:100vh;
+  height:calc(100vh - 64px - 48px);
+  width: 100%;
   background-repeat: repeat-y;
   background-origin: border-box;
   background-position: center;
   background-size: 100%;
   display: flex;
   justify-content: center;
+}
+
+.login-background{
+  display: flex;
 }
 
 .login-card{

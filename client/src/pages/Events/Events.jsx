@@ -5,7 +5,6 @@ import { Spin, Space, Radio } from "antd";
 
 //components
 import EventCard from "../../components/Events/EventCard/EventCard";
-import eventbg from "../../assets/etamaxbg.png";
 
 import "./Events.css";
 
@@ -16,7 +15,7 @@ const menu = [
 ];
 
 const options = [
-  { label: "Techical", value: "T" },
+  { label: "Technical", value: "T" },
   { label: "Cultural", value: "C" },
   { label: "Fun", value: "F" },
 ];
@@ -47,7 +46,6 @@ const Events = () => {
 
   return (
     <Fragment>
-      <div className="e-wrap" style={{ backgroundImage: `url(${eventbg})` }}>
         <div className="e-top-main">
           <div className="e-dropdown">
             <Dropdown
@@ -85,7 +83,6 @@ const Events = () => {
               </Space>
             )}
         </div>
-      </div>
     </Fragment>
   );
 };
