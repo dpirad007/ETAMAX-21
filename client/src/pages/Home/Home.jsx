@@ -28,6 +28,7 @@ const Home = () => {
         />
         <div className="ho-brochure">
           <div className="ho-brochure-btn">Brochure</div>
+          <div className="ho-brochure-btn1">Hackathon</div>
         </div>
       </div>
       <div className="ho-main">

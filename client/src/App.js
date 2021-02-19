@@ -15,6 +15,7 @@ import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import Details from "./pages/Details/Details";
+import Hackathon from "./pages/Hackathon/Hackathon";
 // import Register from "./pages/Register/Register";
 
 import Events from "./pages/Events/Events";
@@ -121,6 +122,13 @@ function App() {
                   exact
                   path="/"
                   component={Home}
+                  auth={profileCheck.auth}
+                  tok={profileCheck.tok}
+                />
+                <Route
+                  exact
+                  path="/hackathon"
+                  component={Hackathon}
                   auth={profileCheck.auth}
                   tok={profileCheck.tok}
                 />
