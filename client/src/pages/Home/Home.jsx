@@ -35,7 +35,7 @@ const Home = () => {
           placeholder="Select Day"
         />
         <div className="ho-brochure">
-          <div className="ho-brochure-btn"><DownloadLink style={{color: "white"}} src="/ETAMAX ESPERANZA 21.pdf">Brochure</DownloadLink></div>
+          <div className="ho-brochure-btn"><DownloadLink style={{color: "white"}} src="/EtamaxBrochure2021.pdf">Brochure</DownloadLink></div>
           <Link to="/hackathon">
             <div className="ho-brochure-btn1">Hackathon</div>
           </Link>
