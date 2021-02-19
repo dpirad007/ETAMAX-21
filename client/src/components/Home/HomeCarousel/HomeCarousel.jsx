@@ -6,12 +6,9 @@ import logo3 from "../../../assets/16088.jpg";
 import "./HomeCarousel.css";
 
 const contentStyle = {
-  height: "400px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
+  height: "100%",
   width: "100%",
+  background: "#364d79",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   backgroundPosition: "center center",
@@ -20,33 +17,15 @@ const contentStyle = {
 const HomeCarousel = () => {
   return (
     <Fragment>
-      <Carousel autoplay effect="fade">
+      <Carousel autoplay effect="fade" dotPosition="top">
         <div>
-          <div
-            className="backImg"
-            style={{
-              ...contentStyle,
-              backgroundImage: `url(${logo1})`,
-            }}
-          ></div>
+          <img style={contentStyle} src={logo1} alt="logo" />
         </div>
         <div>
-          <div
-            className="backImg"
-            style={{
-              ...contentStyle,
-              backgroundImage: `url(${logo2})`,
-            }}
-          ></div>
+          <img style={contentStyle} src={logo2} alt="logo" />
         </div>
         <div>
-          <div
-            className="backImg"
-            style={{
-              ...contentStyle,
-              backgroundImage: `url(${logo3})`,
-            }}
-          ></div>
+          <img style={contentStyle} src={logo3} alt="logo" />
         </div>
       </Carousel>
     </Fragment>
