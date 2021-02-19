@@ -1,8 +1,8 @@
 import { Carousel } from "antd";
 import { Fragment } from "react";
-import logo1 from "../../../assets/16088.jpg";
-import logo2 from "../../../assets/1506250.jpg";
-import logo3 from "../../../assets/3499265.jpg";
+import logo1 from "../../../assets/PicsArt_02-17-02.39.53.jpg";
+import logo2 from "../../../assets/Hackathon.png";
+import logo3 from "../../../assets/16088.jpg";
 import "./HomeCarousel.css";
 
 const contentStyle = {
