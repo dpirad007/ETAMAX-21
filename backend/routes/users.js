@@ -30,17 +30,17 @@ router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
       return allowedFields.includes(field);
     });
     if (!isValidObject) {
-      throw new Error("Update not allowed for such fields");
+      return res.status(400).send({ message: "Update not allowed for such fields" });
     }
     // find and update current user data
     await User.findOneAndUpdate(
       { _id: req.user._id },
       { ...req.body, hasFilledProfile: true },
-      {runValidators: true}
+      { runValidators: true }
     );
     return res.status(200).send({ message: "Profile updated successfully!" });
   } catch (e) {
-    return res.status(400).send({ error: e.message });
+    return res.status(400).send(e.message);
   }
 });
 
