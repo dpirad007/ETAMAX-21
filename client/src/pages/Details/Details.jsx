@@ -63,6 +63,7 @@ const Details = ({ setProfileCheck, profileCheck }) => {
             {
               required: true,
               max: 10,
+              min: 10,
             },
           ]}
         >

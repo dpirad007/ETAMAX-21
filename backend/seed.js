@@ -106,6 +106,6 @@ const addEvents = async () => {
 };
 
 (async () => {
-  // await addUsers();
-  await addEvents();
+  await addUsers();
+  // await addEvents();
 })();
