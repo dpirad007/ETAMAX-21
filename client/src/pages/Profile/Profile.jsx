@@ -106,11 +106,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <Space size="middle" style={{ height: "50vh", marginLeft: "46%" }}>
-          <Spin size="large" />
-        </Space>
-      )}
+      ) : null}
 
       {critTrue ? (
         <div className="pr-pay-main">
