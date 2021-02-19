@@ -5,7 +5,14 @@ import axios from "axios";
 import "./Modal.css";
 
 const openNotification = (message) => {
-  notification.open({
+  notification.success({
+    message: message,
+    duration: 3,
+  });
+};
+
+const openErrorNotification = (message) => {
+  notification.warning({
     message: message,
     duration: 3,
   });
@@ -33,8 +40,8 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
       .catch(function (error) {
         if (error.response) {
           error.response.data.message
-            ? openNotification(error.response.data.message)
-            : openNotification("Error");
+            ? openErrorNotification(error.response.data.message)
+            : openErrorNotification("Error");
         }
       });
   };

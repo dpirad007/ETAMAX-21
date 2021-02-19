@@ -35,7 +35,6 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
   const openSuccessNotification = (error) => {
     const args = {
       message: error.message,
-
       duration: 3,
     };
     notification.success(args);
@@ -52,7 +51,10 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
 
   return (
     <Fragment>
-      <div className="login-container" style={{ backgroundImage: `url(${loginbg})` }}>
+      <div
+        className="login-container"
+        style={{ backgroundImage: `url(${loginbg})` }}
+      >
         <div className="login-card">
           <div className="login-form">
             <Form
@@ -100,12 +102,14 @@ const Login = ({ loginupdater, setProfileCheck, profileCheck }) => {
                   className="login-form-button"
                 >
                   Log in
-            </Button>
+                </Button>
               </Form.Item>
             </Form>
           </div>
           <div className="p-condet-main">
-            <div className="p-condet">For non FCRIT Students please contact:</div>
+            <div className="p-condet">
+              For non FCRIT Students please contact:
+            </div>
             <div className="p-condet">
               Dylan Pinto: <a href="tel:+917738087256">+91 7738087256</a>
             </div>
