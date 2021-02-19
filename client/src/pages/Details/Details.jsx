@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import { Form, Input, Button, Select, notification } from "antd";
 import { useHistory } from "react-router-dom";
-
 const { Option } = Select;
 
 const openErrorNotification = (error) => {
@@ -19,7 +18,12 @@ const Details = ({ setProfileCheck, profileCheck }) => {
   if (profileCheck.auth) {
     history.push("/");
   }
-
+  const openNotification = (message) => {
+    notification.open({
+      message: message,
+      duration: 2,
+    });
+  };
   const onFinish = (values) => {
     const token = window.localStorage.getItem("usertoken");
     const config = {
@@ -38,11 +42,15 @@ const Details = ({ setProfileCheck, profileCheck }) => {
       )
       .then(function (response) {
         setProfileCheck({ ...profileCheck, auth: true });
+        openNotification("Profile updated successfully!")
         history.push("/");
       })
       .catch(function (error) {
-        console.log(error.response.data);
-        openErrorNotification(error.response.data);
+        if (error.response) {
+          error.response.data
+            ? openErrorNotification(error.response.data)
+            : openNotification("Error");
+        }
       });
   };
 
