@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-
+import { Link } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
@@ -28,7 +28,7 @@ const Home = () => {
         />
         <div className="ho-brochure">
           <div className="ho-brochure-btn">Brochure</div>
-          <div className="ho-brochure-btn1">Hackathon</div>
+          <Link to="/hackathon"><div className="ho-brochure-btn1">Hackathon</div></Link>
         </div>
       </div>
       <div className="ho-main">
