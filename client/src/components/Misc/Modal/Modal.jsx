@@ -18,7 +18,13 @@ const openErrorNotification = (message) => {
   });
 };
 
-const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
+const ModalView = ({
+  changeModal,
+  modalVisible,
+  teamSize,
+  eventCode,
+  isTeamSizeStrict,
+}) => {
   const onFinish = (values) => {
     const token = window.localStorage.getItem("usertoken");
     const config = {
@@ -45,22 +51,38 @@ const ModalView = ({ changeModal, modalVisible, teamSize, eventCode }) => {
         }
       });
   };
-
   const items = [];
-  for (let i = 1; i < teamSize; i++) {
-    items.push(
-      <Form.Item
-        name={`member${i}`}
-        rules={[
-          {
-            required: true,
-            min: 6,
-          },
-        ]}
-      >
-        <Input className="m-input" placeholder={`Team Member ${i} Rollno`} />
-      </Form.Item>
-    );
+  if (isTeamSizeStrict) {
+    for (let i = 1; i < teamSize; i++) {
+      items.push(
+        <Form.Item
+          name={`member${i}`}
+          rules={[
+            {
+              required: true,
+              min: 6,
+            },
+          ]}
+        >
+          <Input className="m-input" placeholder={`Team Member ${i} Rollno`} />
+        </Form.Item>
+      );
+    }
+  } else {
+    for (let i = 1; i < teamSize; i++) {
+      items.push(
+        <Form.Item
+          name={`member${i}`}
+          rules={[
+            {
+              min: 6,
+            },
+          ]}
+        >
+          <Input className="m-input" placeholder={`Team Member ${i} Rollno`} />
+        </Form.Item>
+      );
+    }
   }
 
   return (
