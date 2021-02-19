@@ -23,6 +23,7 @@ const PayModal = ({ addModalVisible, changeAddModal }) => {
       >
         <h4>IFSC: IOBA 0000596</h4>
         <h4>Account No: 059601000007942</h4>
+        <h4>Beneficiary: FCRIT</h4>
       </Modal>
     </div>
   );
