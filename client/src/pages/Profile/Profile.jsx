@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Progress, Steps, Spin, Space } from "antd";
+import { Progress, Steps } from "antd";
 import axios from "axios";
 import MyEvents from "../../components/Profile/MyEvents";
 import "./Profile.css";

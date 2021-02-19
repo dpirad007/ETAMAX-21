@@ -33,7 +33,8 @@ const Events = () => {
 
     axios
       .get(
-        process.env.REACT_APP_WEB_URL + `/api/events?day=${selectedDay}&category=${selectedCat}`,
+        process.env.REACT_APP_WEB_URL +
+          `/api/events?day=${selectedDay}&category=${selectedCat}`,
         config
       )
       .then((res) => {
@@ -44,45 +45,52 @@ const Events = () => {
       });
   }, [selectedDay, selectedCat]);
 
+  let finalEvents = [];
+  if (events.length === 0) {
+    finalEvents = (
+      <div className="e-noevent">
+        <h1>No Events</h1>
+      </div>
+    );
+  } else if (events.length > 0) {
+    finalEvents = events.map((obj, i) => (
+      <div className="e-main-item">
+        <EventCard key={i} data={obj} displayAdd={true} />
+      </div>
+    ));
+  } else {
+    finalEvents = (
+      <Space size="middle" className="e-loader">
+        <Spin size="large" />
+      </Space>
+    );
+  }
+
   return (
     <Fragment>
-        <div className="e-top-main">
-          <div className="e-dropdown">
-            <Dropdown
-              className="e-dropdown-item"
-              value={menu[0].label}
-              options={menu}
-              onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
-              placeholder="Select Day"
-            />
-          </div>
-          <div className="e-radio">
-            <Radio.Group
-              size="medium"
-              options={options}
-              onChange={(e) => setSelectedCat(e.target.value)}
-              value={selectedCat}
-              optionType="button"
-              buttonStyle="solid"
-            />
-          </div>
+      <div className="e-top-main">
+        <div className="e-dropdown">
+          <Dropdown
+            className="e-dropdown-item"
+            value={menu[0].label}
+            options={menu}
+            onChange={(_onSelect) => setSelectedDay(_onSelect.value)}
+            placeholder="Select Day"
+          />
         </div>
+        <div className="e-radio">
+          <Radio.Group
+            size="medium"
+            options={options}
+            onChange={(e) => setSelectedCat(e.target.value)}
+            value={selectedCat}
+            optionType="button"
+            buttonStyle="solid"
+          />
+        </div>
+      </div>
 
-        <div className="e-main">
-          {events.length ? (
-            events.map((obj, i) => {
-              return (
-                <div className="e-main-item">
-                  <EventCard key={i} data={obj} displayAdd={true} />
-                </div>
-              );
-            })
-          ) : (
-              <Space size="middle" className="e-loader">
-                <Spin size="large" />
-              </Space>
-            )}
-        </div>
+      <div className="e-main">{finalEvents}</div>
     </Fragment>
   );
 };

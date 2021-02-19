@@ -52,6 +52,14 @@
   grid-column: 2;
 }
 
+.e-noevent {
+  line-height: 75vh;
+  height: 75vh;
+  width: 100%;
+  text-align: center;
+  grid-column: 2;
+}
+
 @media only screen and (max-width: 576px) {
   .e-main {
     display: grid;
@@ -90,6 +98,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    grid-column: 1;
+  }
+
+  .e-noevent {
+    line-height: 75vh;
+    height: 75vh;
+    width: 100%;
+    text-align: center;
     grid-column: 1;
   }
 }
