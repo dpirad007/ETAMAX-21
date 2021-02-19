@@ -5,7 +5,12 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var userSchema = new mongoose.Schema({
   name: {
     type: String,
-    validate: /^[a-zA-Z\']{1,50} [a-zA-Z\']{1,50}$/,
+    validate(value){
+      const re=/^[a-zA-Z\']{1,50} [a-zA-Z\']{1,50}$/
+      if (!re.test(String(value))) {
+        throw new Error('Incorrect name format');
+      }
+    },
   },
   email: {
     type: String,
@@ -68,7 +73,12 @@ var userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     trim: true,
-    validate: /^\d{10}$/,
+    validate(value) {
+      const re = /^\d{10}$/;
+      if (!re.test(String(value))) {
+        throw new Error('Invalid phone number');
+      }
+    },
   },
   events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
   eventTeams:[

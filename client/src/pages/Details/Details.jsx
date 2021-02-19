@@ -55,7 +55,7 @@ const Details = ({ setProfileCheck, profileCheck }) => {
             },
           ]}
         >
-          <Input placeholder="Name" />
+          <Input placeholder="FirstName LastName" />
         </Form.Item>
         <Form.Item
           name="phoneNo"
