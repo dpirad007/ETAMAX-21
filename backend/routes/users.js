@@ -35,7 +35,8 @@ router.post("/update-profile", authenticate.verifyUser, async (req, res) => {
     // find and update current user data
     await User.findOneAndUpdate(
       { _id: req.user._id },
-      { ...req.body, hasFilledProfile: true }
+      { ...req.body, hasFilledProfile: true },
+      {runValidators: true}
     );
     return res.status(200).send({ message: "Profile updated successfully!" });
   } catch (e) {
