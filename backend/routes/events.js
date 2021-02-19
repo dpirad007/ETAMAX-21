@@ -9,6 +9,27 @@ var User = require("../models/user");
 var Team = require("../models/team");
 var authenticate = require("../authenticate");
 
+const include_list = [
+  'MWALKERS',
+  'CDUETDANCE',
+  'CSOLOSINGING1',
+  'CDUETSINGING1',
+  'CMONOACTING1',
+  'CSHORTFILM1',
+  'CMASTERCHEF2',
+  'THACKATHON1',
+  'TIDEATHON1',
+  'TCODEOQUICK',
+  'TPOSTERPRESENTATION3',
+  'TPAPERPRESENTATION2',
+  'TCADMASTER2',
+  'SVALORANT123',
+  'SCSGO',
+  'SRKTLEAGUE22',
+  'SRKTLEAGUE33',
+  'SAMONGUS3'
+]
+
 //URL: /api/events?day=n&category='C/T/F'
 router.get("/", authenticate.verifyUser, async (req, res) => {
   const urlObj = url.parse(req.originalUrl, true);
@@ -16,9 +37,10 @@ router.get("/", authenticate.verifyUser, async (req, res) => {
     let events = await Event.find({
       $and: [{ day: urlObj.query.day }, { category: urlObj.query.category }],
     });
-    exclude_list = []
-    if(req.user.rollNo[0] === '9'){
-      
+    if (req.user.rollNo[0] === '9') {
+      events = events.filter((event) => {
+        return include_list.includes(event.eventCode)
+      })
     }
     res.send(events);
   } catch (e) {
@@ -169,18 +191,29 @@ router.post("/register-event", authenticate.verifyUser, async (req, res) => {
         });
       }
 
-      //Have any of the members in the input already registered for this event?
       for (let i = 0; i < team.length; i++) {
         let user_events = await User.findOne(
           { rollNo: team[i] },
           { events: 1 }
         );
+
+        //Do any of the entered roll numbers not exist
         if (!user_events) {
           return res.status(400).send({
             message: "The entered roll number(s) are invalid or do not exist!",
           });
         }
 
+        //If the entered roll no. is external do they have acces to event?
+        if (team[i][0] === '9') {
+          if(!include_list.includes(event.eventCode)){
+            return res.status(400).send({
+              message: "You may not add non FCRIT students for this event!",
+            });
+          }
+        }
+
+        //Have any of the members in the input already registered for this event?
         if (user_events.events.includes(event._id)) {
           return res.status(400).send({
             message:
