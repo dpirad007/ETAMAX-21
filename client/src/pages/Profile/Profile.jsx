@@ -18,16 +18,13 @@ const Profile = () => {
   const [userName, setUserName] = useState();
   const [criteriaDescription, setDescription] = useState();
   const [critTrue, setCritTrue] = useState(false);
+  const [isExternal, setIsExternal] = useState(false);
 
   const [addModalVisible, setAddModalVisible] = useState(false);
 
   const changeAddModal = (bool) => {
     setAddModalVisible(bool);
   };
-
-  useEffect(() => {
-    console.log(currentCompletion);
-  }, [currentCompletion]);
 
   useEffect(() => {
     axios
@@ -37,6 +34,7 @@ const Profile = () => {
         },
       })
       .then((response) => {
+        if (response.data.rollNo[0] === "9") setIsExternal(true);
         settotalAmt(response.data.moneyOwed);
         setUserName(response.data.name);
 
@@ -80,13 +78,9 @@ const Profile = () => {
 
   return (
     <Fragment>
-      {err ? (
-        <Space size="middle" style={{ height: "50vh", marginLeft: "46%" }}>
-          <Spin size="large" />
-        </Space>
-      ) : (
+      <div className="p-title-nam">Welcome, {userName}</div>
+      {!err && !isExternal ? (
         <div>
-          <div className="p-title-nam">Welcome, {userName}</div>
           <div className="p-main">
             <div className="p-circBar">
               <Progress type="circle" percent={currentCompletion.per} />
@@ -112,6 +106,10 @@ const Profile = () => {
             </div>
           </div>
         </div>
+      ) : (
+        <Space size="middle" style={{ height: "50vh", marginLeft: "46%" }}>
+          <Spin size="large" />
+        </Space>
       )}
 
       {critTrue ? (
