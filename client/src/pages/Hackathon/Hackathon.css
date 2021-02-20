@@ -4,4 +4,9 @@
     height: fit-content;
     justify-content: center;
     align-items: center;
+    display: inline-block;
+  }
+
+  .pdf-display canvas {
+    width: 100% !important;
   }
