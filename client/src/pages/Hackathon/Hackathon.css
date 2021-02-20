@@ -8,5 +8,10 @@
   }
 
   .pdf-display canvas {
-    width: 100% !important;
+    width: 80% !important;
+  }
+
+  .react-pdf__Page {
+    justify-content: center;
+    display:flex;
   }
