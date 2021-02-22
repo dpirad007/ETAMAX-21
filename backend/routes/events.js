@@ -28,7 +28,8 @@ const include_list = [
   'SRKTLEAGUE22',
   'SRKTLEAGUE33',
   'SAMONGUS3',
-  'SCODMOBILE'
+  'SCODMOBILE',
+  'TBIMT2'
 ]
 
 //URL: /api/events?day=n&category='C/T/F'
