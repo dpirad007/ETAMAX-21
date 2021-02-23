@@ -1,9 +1,11 @@
 import React from "react";
 import { Modal, notification, Input, Form, Button } from "antd";
+// eslint-disable-next-line
 import axios from "axios";
 
 import "./Modal.css";
 
+// eslint-disable-next-line
 const openNotification = (message) => {
   notification.success({
     message: message,
@@ -26,30 +28,32 @@ const ModalView = ({
   isTeamSizeStrict,
 }) => {
   const onFinish = (values) => {
-    const token = window.localStorage.getItem("usertoken");
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
+    changeModal(false);
+    openErrorNotification("Registration Ended");
+    // const token = window.localStorage.getItem("usertoken");
+    // const config = {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // };
 
-    const body = { ...values, eventCode: eventCode };
+    // const body = { ...values, eventCode: eventCode };
 
-    axios
-      .post(
-        process.env.REACT_APP_WEB_URL + "/api/events/register-event",
-        body,
-        config
-      )
-      .then(function (response) {
-        changeModal(false);
-        openNotification("Registered for Event!");
-      })
-      .catch(function (error) {
-        if (error.response) {
-          error.response.data.message
-            ? openErrorNotification(error.response.data.message)
-            : openErrorNotification("Error");
-        }
-      });
+    // axios
+    //   .post(
+    //     process.env.REACT_APP_WEB_URL + "/api/events/register-event",
+    //     body,
+    //     config
+    //   )
+    //   .then(function (response) {
+    //     changeModal(false);
+    //     openNotification("Registered for Event!");
+    //   })
+    //   .catch(function (error) {
+    //     if (error.response) {
+    //       error.response.data.message
+    //         ? openErrorNotification(error.response.data.message)
+    //         : openErrorNotification("Error");
+    //     }
+    //   });
   };
   const items = [];
   if (isTeamSizeStrict) {
